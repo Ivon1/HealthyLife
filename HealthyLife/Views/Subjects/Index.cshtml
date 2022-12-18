@@ -1,0 +1,50 @@
+﻿@model IEnumerable<HealthyLife.Models.Subject>
+
+@{
+    ViewData["Title"] = "Список тем курсів";
+}
+
+<h1 style="text-align: center">Список тем курсів</h1>
+<hr />
+
+<div style="display:flex; align-items:center;justify-content: center;">
+<div style="width: 45%;" class="form-shadow">
+        @foreach (var item in Model)
+        {
+        <div class="row">
+            <div class="col-3" style="margin-top: 5px;">
+                <h3>
+                        @Html.DisplayFor(modelItem => item.SubjectName)
+                </h3>
+            </div>
+
+            <div class="col-3">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="my-btn-warning" style="text-decoration: inherit;
+                    color: inherit; height: 47px; width:140px; display:flex; align-items:center; 
+                    justify-content: center;">Редагувати
+                </a>
+            </div>
+            <div class="col-3">
+                <a asp-action="Details" asp-route-id="@item.Id" class="my-btn-success" style="text-decoration: inherit;
+                    color: inherit; height: 47px; width:140px; display:flex; align-items:center; 
+                    justify-content: center;">Деталі
+                </a>
+            </div>
+            <div class="col-3">
+                <a asp-action="Delete" asp-route-id="@item.Id" class="my-btn-danger" style="text-decoration: inherit;
+                    color: inherit; height: 47px; width:140px; display:flex; align-items:center; 
+                    justify-content: center;">Видалити
+                </a>
+            </div>
+        </div>
+        <hr />
+        }
+</div>
+</div>
+
+<div style="display:flex; align-items:center; justify-content: center; margin-top: 30px; margin-bottom: 10%">
+    <a asp-action="Create" class="my-btn-primary" style="text-decoration: inherit;
+        color: inherit; height: 47px; width:170px; display:flex; align-items:center; justify-content: center;">
+        Створити нового
+    </a>
+</div>

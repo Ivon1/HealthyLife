@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Додавання ролі";
+}
+
+<h1 style="text-align:center">Створення ролі</h1>
+<hr />
+
+<div class="row" style="width: 100%; margin-bottom: 100px;">
+    <div class="col-md-4" style="margin-left:30%">
+        <h3 style="text-align: center">@ViewBag.mess</h3>
+        <form asp-action="Create" method="post" id="role-form" enctype="multipart/form-data" 
+            style="width: 600px;" class="form-shadow">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Назва ролі</label>
+                <input  id="name" type="text" name="name" value="@ViewBag.name"
+                        class="search-item-bordered input-this-file"required/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Створити" class="my-btn" style="margin-top: 20px;
+                    width: 140px; height: 57px; margin-bottom: 20px" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-top: -50px; margin-left: 150px">
+    <a asp-action="Index" class="my-btn" style="text-decoration: inherit;color: inherit;padding: 20px; ">
+        Повернутися до списку
+    </a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

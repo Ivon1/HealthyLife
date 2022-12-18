@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Список дозволів";
+}
+
+<div class="container">
+    <br />
+    <h2 class="text-info">Список дозволів</h2>
+
+    <br />
+    <div>
+        <table class="table table-striped border">
+            <tr class="table-info">
+                <th>Користувач</th>
+                <th>Роль</th>
+            </tr>
+            @foreach(var item in ViewBag.UserRoles)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td>@item.RoleName</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <br />
+    <a asp-action="Assign" class="my-btn" style="padding: 15px 50px">Створити новий дозвіл</a>
+</div>

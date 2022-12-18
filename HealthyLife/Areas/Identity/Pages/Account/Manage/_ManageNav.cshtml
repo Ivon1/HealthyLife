@@ -1,0 +1,34 @@
+﻿@inject SignInManager<HealthyLife.Models.ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column" >
+    <li class="nav-item">
+        <a class="nav-acc-item @ManageNavPages.CurrentCoursesClass(ViewContext)" id="currentCourses" 
+                asp-page="./CurrentCourses" onMouseOver="this.style.background='#F7A121'" onMouseOut="this.style.background='#FFFFFF'">
+                Активні курси
+        </a>
+        <a class="nav-acc-item @ManageNavPages.PurchasedCoursesClass(ViewContext)" id="purchasedCourses" 
+                asp-page="./PurchasedCourses" onMouseOver="this.style.background='#F47C50'" onMouseOut="this.style.background='#FFFFFF'">
+                Придбані курси
+        </a>
+        <a class="nav-acc-item @ManageNavPages.FinishedCoursesClass(ViewContext)" id="finishedCourses" 
+                asp-page="./FinishedCourses" onMouseOver="this.style.background='#1A9F83'" onMouseOut="this.style.background='#FFFFFF'">
+                Завершені курси
+        </a>
+        <a class="nav-acc-item @ManageNavPages.HistoryOperationsClass(ViewContext)" id="historyOperations" 
+                asp-page="./HistoryOperations" onMouseOver="this.style.background='#F25564'" onMouseOut="this.style.background='#FFFFFF'">
+                Історія операцій
+        </a>
+    </li>
+
+    @*<li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+    }
+    <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>*@
+</ul>

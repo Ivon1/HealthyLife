@@ -1,0 +1,63 @@
+﻿@model HealthyLife.Models.Subject
+
+@{
+    ViewData["Title"] = "Редагування";
+}
+
+<style>
+    .row {
+        font-family: 'Yanone Kaffeesatz';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 22px;
+        color: #2C3447;   
+    }
+
+    .form-group{
+        margin-top:20px;
+    }
+
+    .input-this-file {
+        width:322px; 
+        height: 47px;
+        margin-left:50px;
+    }
+</style>
+
+<h1 style="text-align: center;">Редагування тематики</h1>
+<hr />
+
+<div style="width: 100%; display:flex; align-items:center;justify-content: center;">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" style="width: 600px;" class="form-shadow">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="SubjectName" class="control-label">Назва тематики</label>
+                <input asp-for="SubjectName" class="search-item-bordered input-this-file" />
+                <span asp-validation-for="SubjectName" class="text-danger"></span>
+            </div>
+
+            <div style="display:flex; align-items:center;justify-content: center; margin-bottom: 20px">
+                <div class="form-group">
+                    <input type="submit" value="Сберегти" class="my-btn" style="width: 140px; height: 57px;"/>
+                </div>
+                <div>
+                    <a asp-action="Index" class="my-btn-primary" style="text-decoration: inherit;color: inherit;
+                            display:flex; align-items:center; justify-content: center; width: 140px; height: 57px;
+                            margin-top: 20px">
+                         До списку
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

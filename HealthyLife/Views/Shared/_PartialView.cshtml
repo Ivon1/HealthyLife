@@ -1,0 +1,7 @@
+﻿@model string
+
+<div class="btn-group">
+    <a asp-action="Edit" asp-route-id="@Model" class="my-btn-success">Редагування</a>
+    <a asp-action="Details" asp-route-id="@Model" class="my-btn-primary">Деталі</a>
+    <a asp-action="Lockout" asp-route-id="@Model" class="my-btn-danger">Заблокувати</a>
+</div>

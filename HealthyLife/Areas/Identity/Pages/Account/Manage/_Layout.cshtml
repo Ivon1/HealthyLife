@@ -1,0 +1,288 @@
+﻿@using HealthyLife.Data
+@using HealthyLife.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore
+@inject ApplicationDbContext _context
+@inject RoleManager<IdentityRole> RoleManager
+
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+    var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+    string date = "";
+    switch (currentUser.CreationTime.Date.Month)
+    {
+        case 1: date += "з січня "; break;
+        case 2: date += "з лютого "; break;
+        case 3: date += "з березня "; break;
+        case 4: date += "з квітня "; break;
+        case 5: date += "з травень "; break;
+        case 6: date += "з червня "; break;
+        case 7: date += "з липня "; break;
+        case 8: date += "з серпня "; break;
+        case 9: date += "з вересня "; break;
+        case 10: date += "з жовтня "; break;
+        case 11: date += "з листопада "; break;
+        case 12: date += "з грудня "; break;
+        default : date += "..."; break;
+    }
+    date += currentUser.CreationTime.Date.Year.ToString();
+    //var roles = new SelectList(_roleManager.Roles.ToList(), "Name", "Name");
+}
+<style>
+    /**{
+        border: 1px solid red;
+    }*/
+</style>
+
+<div style="width: 100%; height: 665px; display:block; overflow: hidden;
+        background: linear-gradient(270deg, #218F7A 0%, #296060 48.44%, #313648 100%);">
+        <h3 style="font-weight: 500;font-size: 40px;line-height: 40px;color: #FFFFFF; margin-left: 150px;
+                    margin-top: 30px">
+            Профіль користувача @currentUser.FirstName @currentUser.LastName
+        </h3>
+
+        <div style="border-radius: 19px; background-color: white; width: 1242px; height: 534px; margin-left: auto;
+                 margin-right: auto; margin-top: 30px; display:block;">
+            <div class="row" style="width: 100%; height: 100%; margin-left: 2px;">
+                <div class="col-6">
+                    <div class="row" style="height: 250px">
+                        <div class="col-3" style="width: auto">
+                            <img src="~/img/img_users_icons/default_icon_user.png" class="img-profile" 
+                                    style="margin: 40px 10px 10px 15px"/>
+                        </div>
+                        <div class="col-5">
+                            <h3 style="font-weight: 400;font-size: 35px;line-height: 35px; color: #2C3447;
+                                margin-top: 31px; display: inline-block; position: relative; width: 215px">
+                                    @currentUser.FirstName @currentUser.LastName
+                                <img src="~/img/icons/heka_plus_small.png" width="24" height="13px" 
+                                        style="position: absolute; float: right; right: 0; top: 0;"/>
+                            </h3>
+                            
+                            <h4 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #2C3447;
+                                margin-top: 3px">
+                                студент
+                            </h4>
+                            @*<select asp-for="@roles" asp-items="@roles" class="form-control"></select>*@
+
+                            <div style="display: inline-block">
+                                <h4 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #2C3447;
+                                    margin-top: 10px">
+                                    Код: 
+                                </h4> 
+                            </div>
+                            <div style="display:inline-block">
+                                <h3 style="font-weight: 400;font-size: 20px;line-height: 30px; color: #2C3447;">
+                                        567839
+                                </h3>
+                            </div>
+                            <br />
+                            <div style="display: inline-block">
+                                <h4 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #2C3447;">
+                                    Пошта: 
+                                </h4> 
+                            </div>
+                            <div style="display:inline-block">
+                                <h3 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #1A9F83;">
+                                    @User.Identity.Name.ToString()
+                                </h3>
+                            </div>
+                            <br />
+                            <div style="display: inline-block">
+                                <h4 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #2C3447;">
+                                    на ХЕКА: 
+                                </h4> 
+                            </div>
+                            <div style="display:inline-block">
+                                <h3 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #F47C50;">
+                                    @date
+                                </h3>
+                            </div>
+                            
+                        </div>
+                        <div class="col-3">
+                            <button class="btn-profile-settings" style="margin-top: 25px">
+                                <img src="~/img/icons/small_icon_setting.png" width="18px" height="18px"/>
+                            </button>
+                            <button class="btn-profile-settings">
+                                <img src="~/img/icons/small_icon_pencil_.png" width="18px" height="18px"/>
+                            </button>
+                            <button class="btn-profile-settings">
+                                <img src="~/img/icons/small_icon_calendar_.png" width="18px" height="18px"/>
+                            </button>
+                            <button class="btn-profile-settings">
+                                <img src="~/img/icons/small_icon_rating.png" width="18px" height="18px"/>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="received-certificates" style="margin: 21px">
+                        <h3 style="font-weight: 400;font-size: 30px;line-height: 30px;color: #2C3447;">
+                            Отримані сертифікати:
+                        </h3>
+
+                        <div style="margin-top: 20px">
+                            <img src="~/img/icons/fire_non_active.png" width="16px" height="25px" 
+                                style="display: inline-block; margin-bottom: 3px"/>
+                            <h3 style="display: inline-block; font-weight: 400;font-size: 25px;line-height: 25px;
+                                text-align: justify; color: #2C3447; margin-left: 5px">
+                                Ac pellentesque quam in tortor enim tempus donec ultricies.
+                            </h3>
+                            <br />
+                            <img src="~/img/icons/fire_non_active.png" width="16px" height="25px" 
+                                style="display: inline-block; margin-bottom: 3px"/>
+                            <h3 style="display: inline-block; font-weight: 400;font-size: 25px;line-height: 25px;
+                                text-align: justify; color: #2C3447; margin-left: 5px">
+                                Ac pellentesque quam in tortor enim tempus donec ultricies.
+                            </h3>
+                            <br />
+                            <img src="~/img/icons/fire_non_active.png" width="16px" height="25px" 
+                                style="display: inline-block; margin-bottom: 3px"/>
+                            <h3 style="display: inline-block; font-weight: 400;font-size: 25px;line-height: 25px;
+                                text-align: justify; color: #2C3447; margin-left: 5px">
+                                Ac pellentesque quam in tortor enim tempus donec ultricies.
+                            </h3>
+                            <br />
+                            <img src="~/img/icons/fire_non_active.png" width="16px" height="25px" 
+                                style="display: inline-block; margin-bottom: 3px"/>
+                            <h3 style="display: inline-block; font-weight: 400;font-size: 25px;line-height: 25px;
+                                text-align: justify; color: #2C3447; margin-left: 5px">
+                                Ac pellentesque quam in tortor enim tempus donec ultricies.
+                            </h3>
+                            <br />
+                            <img src="~/img/icons/fire_non_active.png" width="16px" height="25px" 
+                                style="display: inline-block; margin-bottom: 3px"/>
+                            <h3 style="display: inline-block; font-weight: 400;font-size: 25px;line-height: 25px;
+                                text-align: justify; color: #2C3447; margin-left: 5px">
+                                Ac pellentesque quam in tortor enim tempus donec ultricies.
+                            </h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px">
+                    <div style="background-image: url('../../../../../img/icons/cirlcle.png'); width: 153px; height: 153px;
+                                background-repeat: no-repeat;background-size: cover; overflow: hidden;
+                                margin-left:auto; margin-right: auto;">
+                        <p style="text-align: center; margin-top:40%; font-weight: 400;font-size: 25px;
+                                  line-height: 37px;text-align: center;color: #2C3447;">
+                            75%
+                        </p>
+                    </div>
+                    
+                    <div class="row" style="margin-right:auto; margin-left:auto;">
+                        <div class="col">
+                            <img src="~/img/icons/kvadrat_orange.png" width="15px" height="15px" 
+                                 style="margin-left: 40%"/>
+                            <br />
+                            <img src="~/img/icons/kvadrat_grey.png" width="15px" height="15px"
+                                 style="margin-left: 40%"/>
+                        </div>
+                        <div class="col">
+                            <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
+                                    text-align: center;color: #2C3447; margin-right: 40px; margin-top: 7px">
+                                Sit ante
+                            </h4>
+                            <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
+                                    text-align: center;color: #2C3447; margin-right: 40px;">
+                                Sit ante
+                            </h4>
+                        </div>
+                    </div>
+                    <hr style="width: 70%; margin-right:auto;margin-left:auto; 
+                        border: 2px solid rgba(128, 128, 128, 0.6);"/>
+
+                    <img src="~/img/icons/graphic.png" width="245px" height="150px" 
+                         style="margin-left: 20px"/>
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col">
+                            <img src="~/img/icons/palka.png" width="15px" height="8px" style="margin-left:40px"/>
+                        </div>
+                        <div class="col">
+                            <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
+                                    text-align: center;color: #2C3447; margin-top: 5px; margin-right: 40px">
+                                Sit ante
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px">
+
+                    <img src="~/img/icons/graphic2.png" width="245px" height="150px" 
+                         style="margin-left: 20px"/>
+
+                    <div class="row" style="margin-right:auto; margin-left:auto; margin-top: 3px">
+                        <div class="col">
+                            <img src="~/img/icons/kvadrat_green.png" width="15px" height="15px" 
+                                 style="margin-left: 40%"/>
+                            <br />
+                            <img src="~/img/icons/kvadrat_grey.png" width="15px" height="15px"
+                                 style="margin-left: 40%"/>
+                        </div>
+                        <div class="col">
+                            <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
+                                    text-align: center;color: #2C3447; margin-right: 40px; margin-top: 7px">
+                                Sit ante
+                            </h4>
+                            <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
+                                    text-align: center;color: #2C3447; margin-right: 40px;">
+                                Sit ante
+                            </h4>
+                        </div>
+                    </div>
+                    <hr style="width: 70%; margin-right:auto;margin-left:auto; 
+                        border: 2px solid rgba(128, 128, 128, 0.6);"/>
+
+                    <div style="background-image: url('../../../../../img/icons/circle_green.png'); 
+                                width: 153px; height: 153px;
+                                background-repeat: no-repeat;background-size: cover; overflow: hidden;
+                                margin-left:auto; margin-right: auto;">
+                        <p style="text-align: center; margin-top:40%; font-weight: 400;font-size: 25px;
+                                  line-height: 37px;text-align: center;color: #2C3447;">
+                            87%
+                        </p>
+                    </div>
+                    
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col">
+                            <img src="~/img/icons/palka.png" width="15px" height="8px" style="margin-left:40px"/>
+                        </div>
+                        <div class="col">
+                            <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
+                                    text-align: center;color: #2C3447; margin-top: 5px; margin-right: 40px">
+                                Sit ante
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container" style="margin-bottom: 10%">
+    <div>
+        <div class="row">
+            <div class="col-md-3" style="margin-top: 20px">
+                <partial name="_ManageNav" />
+            </div>
+            <div class="col-md-9" style="margin-top: 60px">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

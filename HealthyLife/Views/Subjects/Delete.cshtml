@@ -1,0 +1,24 @@
+﻿@model HealthyLife.Models.Subject
+
+@{
+    ViewData["Title"] = "Видалення тематики";
+}
+
+<h1 style="text-align:center">Видалення тематики</h1>
+<hr />
+
+<div style="width: 40%; margin-left: 30%" class="form-shadow">
+    <div style="display:flex; align-items:center; justify-content: center; font-weight: 300;font-size: 40px;
+            line-height: 64px;text-align: center; color: #2C3447;" >
+        @Html.DisplayFor(model => model.SubjectName)
+    </div>
+    
+    <form asp-action="Delete" style="display:flex; align-items:center; justify-content: center; margin-bottom: 30px; 
+            margin-top: 20px">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Видалити" class="my-btn-danger"  style="width: 140px; height: 47px"/>
+        <a asp-action="Index" class="my-btn" style="text-decoration: inherit;color: inherit; height: 47px; width:140px">
+            <div style="margin-top: 3px">Назад до списку</div>
+        </a>
+    </form>
+</div>

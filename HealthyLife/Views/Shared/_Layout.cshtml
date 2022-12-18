@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Yanone Kaffeesatz' rel='stylesheet'>
+    <title>@ViewData["Title"] - HealthyLife</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/swiper.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/HealthyLife.styles.css" asp-append-version="true" />
+    <link rel="icon" href="~/img/icons/logo.png"/>
+</head>
+
+<body>
+    <header>
+
+        <div id="pre-header" style="padding-top: 10px;color:#FFFFFF">
+            <h4>Інвестуй у себе, інвестуй у здоров'я</h4> 
+        </div>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
+            <div class="container" style="padding-top: 13px">
+
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/img/icons/logo.png" width="111" height="75" style="margin-right:28px"/>
+                </a>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" >
+
+                        @if(ViewData["Title"].Equals("Каталог"))
+                        {
+                            <a class="nav-link text-dark disabled"
+                                style="width: 141px; height: 58px; display:flex; align-items:center; 
+                                justify-content: center; background-color:#FFE1D2;padding: 10px ; 
+                                    box-sizing: border-box; border: 1px solid #808080; border-radius: 10px;"
+                                asp-controller="Courses" asp-action="Index">КУРСИ
+                            </a>
+                        }
+                        else {
+                            <a class="nav-link text-dark nav-item-bordered"
+                                style="width: 140px; height: 57px; display:flex; align-items:center; 
+                                justify-content: center;"
+                                asp-controller="Courses" asp-action="Index">КУРСИ
+                            </a>
+                        }
+
+                        <a class="nav-link text-dark nav-item-bordered" 
+                            style="width: 140px; height: 57px; display:flex; align-items:center; 
+                            justify-content: center;"
+                            asp-controller="Home" asp-action="Privacy">ТОП-20
+                        </a>
+
+                        <a class="nav-link text-dark nav-item-bordered" 
+                           style="width: 140px; height: 57px; display:flex; align-items:center; 
+                           justify-content: center;"
+                           asp-controller="Home" asp-action="Privacy">ПРО НАС
+                       </a>
+
+                    </ul>
+
+                    <form class="search-item-bordered" method="post" style="height:57px; width:322px">
+                        <input type="text" placeholder="Пошук..." class="input-search"
+                            style="outline: none; text-indent: 10px; border: 0px solid; margin-top:2.5%;" />
+
+                        <img src="~/img/icons/glass_search_zoom_icon.png" style="height:40px; width:40px; margin-left:25%;"/>
+                    </form>
+
+                    <img src="~/img/icons/stick.png" height="85px" width="2px"/>                  
+
+                    <partial name="_LoginPartial" />
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top footer text-muted" style="margin-bottom: -19%">
+        <div class="container">
+            <div class="row">
+
+                <div class="col" style="margin-right: 30px">
+                    <table>  
+                        <tr><th><img src="~/img/icons/logo2.png" style="width:76px; height: 142px; margin-top: 45px;
+                            margin-bottom: 30px; margin-left: 90px"/></th></tr>
+                        <tr><th><img src="~/img/icons/logo3.png" style="width: 71px; height: 47px; 
+                            margin-bottom: 45px; margin-left: 100px"/></th></tr>
+                    </table>
+                </div>
+
+                <div class="col">
+                    <img src="~/img/icons/stick_footer.png" style="height: 264px; width: 11px; margin-top: 15%;"/>
+                </div>
+
+                <div class="col" style="color: white; font-weight:normal;">
+
+                    <div style="margin-left:-75%; margin-top: 20%">
+                        <p><h6><a>КУРСИ</a></h6></p>
+                        <p><h6><a>ТОП-20</a></h6></p>
+                        <p><h6><a>ПРО НАС</a></h6></p>
+
+                        <p style="margin-top: 40px"><h6><a>Як це працює?</a></h6></p>
+                        <p><h6><a>Умови використання</a></h6></p>
+                        <p><h6><a>Політика конфіденційності</a></h6></p>
+                        <p><h6><a>F&A</a></h6></p>
+                    </div>
+
+                </div>
+
+                <div class="col" style="color: white; font-weight:normal; margin-left: 18%; margin-right: -10%">
+
+                    <div style="margin-left:-70%; margin-top: 18%">
+                        <p><h6><a>Контакти:</a></h6></p>
+                        <p><h6><a>+38 (050) 777 ** **</a></h6></p>
+                        <p><h6><a>+38 (067) 777 ** **</a></h6></p>
+                        <p><h6><a>+38 (093) 777 ** **</a></h6></p>
+                        <p><h6><a>(044) 777 ** **</a></h6></p>
+
+                        <p style="margin-top: 40px"><h6><a>Поштова адреса:</a></h6></p>
+                        <p><h6><a>xeka@heka.ua</a></h6></p>
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <img src="~/img/icons/stick_footer.png" style="height: 264px; width: 11px; margin-top: 15%;"/>
+                </div>
+
+                <div class="col" style="color: white; font-weight:normal;">
+                    <p><h5 style="text-align: left; margin-left: -150px; margin-top: 15%">Офіс</h5></p>
+                    <p><h6 style="text-align: left; margin-left: -150px; margin-top: 15%">
+                        02000, м. Киїів, вул. Еспланадна, 20 <br>м. Палац спорта
+                    </h6></p>
+
+                    <p></p>
+                    <h6 style="text-align: left; margin-left: -150px; margin-top: 15%">Ми у соц. мережах</h6>
+
+                    <div class="row" style="margin-left: -160px; margin-top: 15%">
+                        <div class="col">
+                            <img src="~/img/icons/inst.png" style="height: 28px; width: 28px; margin-top: 15%;"/>
+                        </div>
+                        <div class="col">
+                            <img src="~/img/icons/facebook.png" style="height: 28px; width: 28px; margin-top: 15%;"/>
+                        </div>
+                        <div class="col">
+                            <img src="~/img/icons/telegram.png" style="height: 28px; width: 28px; margin-top: 15%;"/>
+                        </div>
+                        <div class="col">
+                            <img src="~/img/icons/twitter.png" style="height: 28px; width: 28px; margin-top: 15%;"/>
+                        </div>
+                        <div class="col">
+                            <img src="~/img/icons/youtube.png" style="height: 28px; width: 35px; margin-top: 15%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottomline" style="height: 49px; background-color: #354752; text-align:center; padding: 15px 0">
+            <h5 class="text-white" style="margin-bottom: auto;">© ТОВ “ХЕКА” 2022</h5>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

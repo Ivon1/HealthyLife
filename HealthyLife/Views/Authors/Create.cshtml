@@ -1,0 +1,67 @@
+﻿@model HealthyLife.Models.Author
+
+@{
+    ViewData["Title"] = "Створення автора";
+}
+
+<h1 style="text-align:center">Створення автора</h1>
+<hr />
+
+<style>
+    .row {
+        font-family: 'Yanone Kaffeesatz';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 22px;
+        color: #2C3447;   
+    }
+
+    .form-group{
+        margin-top:20px;
+    }
+
+    label{
+        margin-left: 50px; 
+        width:150px
+    }
+
+    .input-this-file {
+        width:322px; 
+        height: 47px;
+        margin-left:50px;
+    }
+
+    select {
+        width:322px; 
+        height: 47px;
+        margin-left:50px;
+    }
+</style>
+
+<div class="row" style="width: 100%; margin-bottom: 100px;">
+    <div class="col-md-4" style="margin-left:30%">
+        <form asp-action="Create" style="width: 600px;" class="form-shadow">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AuthorName" class="control-label">ФІО/ФІРМА</label>
+                <input asp-for="AuthorName" class="search-item-bordered input-this-file" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Створити" class="my-btn" style="margin-top: 20px;
+                    width: 140px; height: 57px; margin-bottom: 20px" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-top: -50px; margin-left: 150px">
+    <a asp-action="Index" class="my-btn" style="text-decoration: inherit;color: inherit;padding: 20px; ">
+        Повернутися до списку
+    </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

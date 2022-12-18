@@ -1,0 +1,57 @@
+﻿@using HealthyLife.Models;
+@model IEnumerable<ApplicationUser>
+
+
+@{
+    ViewData["Title"] = "Список пользователей";
+}
+
+<div class="container">
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="text-info">Список користувачів</h3>
+    </div>
+
+    <div class="col-6 text-lg-end">
+        <a asp-action="Create" class="my-btn-primary" style="padding: 20px">Додати користувача</a>
+    </div>
+</div>
+
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>Ім'я</th>
+            <th>E-mail</th>
+            <th>Статус</th>
+            <th class="text-center">Управління</th>
+        </tr>
+
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.UserName</td>
+                @if(item.LockoutEnd > DateTime.Now && item.LockoutEnd != null)
+                {
+                    <td>Заблокований</td>
+                    <td>
+                        <div class="btn-group">
+                            <a asp-action="Active" asp-route-id="@item.Id" class="my-btn-primary">Разблокувати</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="my-btn-danger">Заблокувати</a>
+                        </div>
+                    </td>
+                } 
+                else
+                {
+                    <td>Активний</td>
+                    <td style="width: 150px">
+                        <partial name="_PartialView" model="@item.Id" />
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+</div>

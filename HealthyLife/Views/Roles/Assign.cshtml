@@ -1,0 +1,42 @@
+﻿@model HealthyLife.ViewModels.RoleUserVm;
+
+@{
+    ViewData["Title"] = "Сопоставлення ролей";
+}
+
+<div class="container">
+    <br />
+    <h2 class="text-info">Сопоставлення ролей</h2>
+
+    <br />
+    <form asp-action="Assign" method="post" enctype="multipart/form-data">
+        <div class="p-4 rounded border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <h3 style="color:red;">@ViewBag.mess</h3>
+
+            <div class="form-group row">
+                <div class="col-2"><label asp-for="UserId"></label></div>
+                <div class="col-5">
+                    <select asp-for="UserId" asp-items="ViewBag.UserId" class="form-control"></select>
+                </div>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2"><label asp-for="RoleId"></label></div>
+                <div class="col-5">
+                    <select asp-for="RoleId" asp-items="ViewBag.RoleId" class="form-control"></select>
+                </div>
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row" style="width: 50%; margin-top: 20px">
+                <input type="submit" value="Сопоставити" class="my-btn col" style="padding: 15px 20px"/>
+                <a asp-action="AssignUserRole" class="my-btn-success col text-center" style="padding: 10px;">
+                     Вернутись до списку
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
