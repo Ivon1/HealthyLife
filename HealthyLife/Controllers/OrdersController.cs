@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HealthyLife.Data;
 using HealthyLife.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HealthyLife.Controllers
 {
+    [Authorize (Roles = "Admin, Moderator")]
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;

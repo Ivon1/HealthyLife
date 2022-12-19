@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using HealthyLife.Models;
 using HealthyLife.Data;
 using HealthyLife.ViewModels;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthyLife.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
