@@ -1,11 +1,13 @@
 ﻿using HealthyLife.Data;
 using HealthyLife.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace HealthyLife.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;

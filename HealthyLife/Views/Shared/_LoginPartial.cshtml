@@ -10,7 +10,7 @@
         <img src="~/img/icons/heart.png" height="28px" width="28px"/>
     </a>
 
-        <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Manage/Index"
+    <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Manage/Index"
             style="width:54px; height: 57px; display:flex; align-items:center; justify-content: center">
         <img src="~/img/icons/person_label.png" height="28px" width="28px"/>
     </a>
@@ -20,26 +20,20 @@
         <img src="~/img/icons/cart.png" height="28px" width="28px" />
     </a>
 
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Вихід</button>
+    <a sp-area="Identity" asp-page="/Account/Login" style="width:54px; height: 57px;">
+        <form asp-area="Identity" asp-page="/Account/Logout" 
+              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
+              class="account-partial-bordered"
+              style="width:100%; height: 57px; display:flex; align-items:center; justify-content: center; padding:0">
+                  
+            <button type="submit" style="width:100%; height: 57px; border:none; background: none; padding: 0;">
+                  <img src="~/img/icons/check-out.png" height="28px" width="28px" />
+            </button>
         </form>
-    </li>
-
-@*    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>*@
+    </a>
 }
 else
 {
-
-    @**@
-
     <a class="nav-link text-dark nav-item-bordered"
             style="width: 141px; height: 57px; display:flex; align-items:center; justify-content: center;
             background-color:#1A9F83; color: #FFFFFF!important"

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HealthyLife.Data;
 using HealthyLife.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HealthyLife.Controllers
 {
+    [Authorize(Roles = "Admin, Moderator")]
     public class CoursesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,6 +24,7 @@ namespace HealthyLife.Controllers
         }
 
         // GET: Courses
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Course.Include(c => c.Aurhor).Include(c => c.Subject);
@@ -29,6 +32,7 @@ namespace HealthyLife.Controllers
         }
 
         // GET: Courses/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Course == null)
@@ -180,6 +184,7 @@ namespace HealthyLife.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [AllowAnonymous]
         private bool CourseExists(int id)
         {
           return (_context.Course?.Any(e => e.Id == id)).GetValueOrDefault();
