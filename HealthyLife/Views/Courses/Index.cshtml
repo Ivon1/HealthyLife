@@ -289,6 +289,63 @@
                         <div class="row" style="margin-top: 10%">
                             <div class="col-md-4" style="position: sticky; text-align: justify">
                                 <div style="display: flex; margin-top: 3%">
+                                    @if (course.Rating >= 0 && course.Rating < 0.5)
+                                    {
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                    }
+                                    @if (course.Rating >= 0.5 && course.Rating < 1.5)
+                                    {
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                    }
+                                    @if (course.Rating >= 1.5 && course.Rating < 2.5)
+                                    {
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                    }
+                                    @if (course.Rating >= 2.5 && course.Rating < 3.5)
+                                    {
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                    }
+                                    @if (course.Rating >= 3.5 && course.Rating < 4.5)
+                                    {
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                    }
+                                    @if (course.Rating >= 4.5 && course.Rating <= 5)
+                                    {
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                    }
+                                    <h5 style="font-weight: 400; font-size: 17px; margin-left: 7%; color: #F47C50">
+                                        @{
+                                            var rating = Math.Round(course.Rating, 1);
+                                            @rating
+                                        }
+                                        / 5
+                                    </h5>
+                                </div>
+                                <div style="display: flex; margin-top: 4%">                                    
                                     <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px; margin-left: 17%" />
                                     <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
                                         @{
@@ -296,7 +353,7 @@
                                             @timesSelected
                                         }
                                     </h5>
-                                    <img src="~/img/icons/likednumber.png" style="width: 19px; height: 19px; margin-left: 25%" />
+                                    <img src="~/img/icons/likednumber.png" style="width: 19px; height: 19px; margin-left: 20%" />
                                     <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
                                         @{
                                             var likedNumber = Convert.ToInt32(course.LikedNumber).ToString();
