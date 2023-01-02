@@ -10,9 +10,9 @@ namespace HealthyLife.Data
             : base(options)
         { }
 
-        public DbSet<Course> Course { get; set; } = default!;
-        public DbSet<Author> Author { get; set; } = default!;
-        public DbSet<Subject> Subject { get; set; } = default!;
+        public DbSet<Course> Courses { get; set; } = default!;
+        public DbSet<Author> Authors { get; set; } = default!;
+        public DbSet<Subject> Subjects { get; set; } = default!;
 
         public DbSet<Order> Orders { get; set; } = default!;
         public DbSet<UserOrder> UserOrders { get; set; } = default!;

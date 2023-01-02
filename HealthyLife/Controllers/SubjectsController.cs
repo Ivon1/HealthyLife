@@ -24,20 +24,20 @@ namespace HealthyLife.Controllers
         // GET: Subjects
         public async Task<IActionResult> Index()
         {
-              return _context.Subject != null ? 
-                          View(await _context.Subject.ToListAsync()) :
+              return _context.Subjects != null ? 
+                          View(await _context.Subjects.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Subject'  is null.");
         }
 
         // GET: Subjects/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Subject == null)
+            if (id == null || _context.Subjects == null)
             {
                 return NotFound();
             }
 
-            var subject = await _context.Subject
+            var subject = await _context.Subjects
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (subject == null)
             {
@@ -72,12 +72,12 @@ namespace HealthyLife.Controllers
         // GET: Subjects/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Subject == null)
+            if (id == null || _context.Subjects == null)
             {
                 return NotFound();
             }
 
-            var subject = await _context.Subject.FindAsync(id);
+            var subject = await _context.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return NotFound();
@@ -123,12 +123,12 @@ namespace HealthyLife.Controllers
         // GET: Subjects/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Subject == null)
+            if (id == null || _context.Subjects == null)
             {
                 return NotFound();
             }
 
-            var subject = await _context.Subject
+            var subject = await _context.Subjects
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (subject == null)
             {
@@ -143,14 +143,14 @@ namespace HealthyLife.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Subject == null)
+            if (_context.Subjects == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Subject'  is null.");
             }
-            var subject = await _context.Subject.FindAsync(id);
+            var subject = await _context.Subjects.FindAsync(id);
             if (subject != null)
             {
-                _context.Subject.Remove(subject);
+                _context.Subjects.Remove(subject);
             }
             
             await _context.SaveChangesAsync();
@@ -159,7 +159,7 @@ namespace HealthyLife.Controllers
 
         private bool SubjectExists(int id)
         {
-          return (_context.Subject?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Subjects?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

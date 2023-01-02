@@ -1,0 +1,35 @@
+﻿.tabs {
+    float: right;
+    margin: 10px;
+}
+
+.content {
+    display: none;
+    padding-top: 20px;
+    position: absolute;
+}
+
+.tabs:active .content {
+    display: block;
+}
+
+.content:hover {
+    display: block;
+}
+
+.filter-hr {
+    border: none;
+    padding-left: 5%;
+    color: black;
+    background-color: black;
+    height: 2px;
+}
+
+.page-link {
+    border: 2px solid royalblue;
+    font-size: 30px;
+}
+
+.page-item {
+    font-size: 30px;
+}
