@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HealthyLife.Data;
 using HealthyLife.Models;
 using Microsoft.AspNetCore.Authorization;
+using HealthyLife.ViewModels;
 
 namespace HealthyLife.Controllers
 {
@@ -25,22 +26,45 @@ namespace HealthyLife.Controllers
 
         // GET: Courses
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? aid, int? sid, int page = 1)
         {
-            var applicationDbContext = _context.Course.Include(c => c.Aurhor).Include(c => c.Subject);
-            return View(await applicationDbContext.ToListAsync());
+            int pageSize = 3;
+            IQueryable<Course> courses = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
+
+            if (aid != null && aid != 0)
+                courses = courses.Where(c => c.AuthorId == aid);
+            if (sid != null && sid != 0)
+                courses = courses.Where(c => c.SubjectId == sid);
+
+            List<Author> authors = _context.Authors.ToList();
+            List<Subject> subjects = _context.Subjects.ToList();            
+
+            var count = await courses.CountAsync();
+            var items = await courses.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+
+            FilterViewModel viewModel = new FilterViewModel()
+            {
+                Courses = items,
+                Authors = authors,
+                Subjects = subjects,
+                PageViewModel = pageViewModel
+            };
+
+            //var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
+            return View(viewModel);
         }
 
         // GET: Courses/Details/5
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Course == null)
+            if (id == null || _context.Courses == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Course
+            var course = await _context.Courses
                 .Include(c => c.Aurhor)
                 .Include(c => c.Subject)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -93,12 +117,12 @@ namespace HealthyLife.Controllers
         // GET: Courses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Course == null)
+            if (id == null || _context.Courses == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Course.FindAsync(id);
+            var course = await _context.Courses.FindAsync(id);
             if (course == null)
             {
                 return NotFound();
@@ -148,12 +172,12 @@ namespace HealthyLife.Controllers
         // GET: Courses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Course == null)
+            if (id == null || _context.Courses == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Course
+            var course = await _context.Courses
                 .Include(c => c.Aurhor)
                 .Include(c => c.Subject)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -170,14 +194,14 @@ namespace HealthyLife.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Course == null)
+            if (_context.Courses == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Course'  is null.");
             }
-            var course = await _context.Course.FindAsync(id);
+            var course = await _context.Courses.FindAsync(id);
             if (course != null)
             {
-                _context.Course.Remove(course);
+                _context.Courses.Remove(course);
             }
             
             await _context.SaveChangesAsync();
@@ -187,7 +211,7 @@ namespace HealthyLife.Controllers
         [AllowAnonymous]
         private bool CourseExists(int id)
         {
-          return (_context.Course?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Courses?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

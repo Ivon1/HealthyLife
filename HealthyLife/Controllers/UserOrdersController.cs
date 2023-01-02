@@ -53,7 +53,7 @@ namespace HealthyLife.Controllers
         public IActionResult Create()
         {
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription");
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription");
             return View();
         }
 
@@ -71,7 +71,7 @@ namespace HealthyLife.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", userOrder.UserId);
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription", userOrder.CourseId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription", userOrder.CourseId);
             return View(userOrder);
         }
 
@@ -89,7 +89,7 @@ namespace HealthyLife.Controllers
                 return NotFound();
             }
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", userOrder.UserId);
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription", userOrder.CourseId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription", userOrder.CourseId);
             return View(userOrder);
         }
 
@@ -126,7 +126,7 @@ namespace HealthyLife.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", userOrder.UserId);
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription", userOrder.CourseId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription", userOrder.CourseId);
             return View(userOrder);
         }
 

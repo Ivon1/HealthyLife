@@ -24,20 +24,20 @@ namespace HealthyLife.Controllers
         // GET: Authors
         public async Task<IActionResult> Index()
         {
-              return _context.Author != null ? 
-                          View(await _context.Author.ToListAsync()) :
+              return _context.Authors != null ? 
+                          View(await _context.Authors.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Author'  is null.");
         }
 
         // GET: Authors/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Author == null)
+            if (id == null || _context.Authors == null)
             {
                 return NotFound();
             }
 
-            var author = await _context.Author
+            var author = await _context.Authors
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (author == null)
             {
@@ -72,12 +72,12 @@ namespace HealthyLife.Controllers
         // GET: Authors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Author == null)
+            if (id == null || _context.Authors == null)
             {
                 return NotFound();
             }
 
-            var author = await _context.Author.FindAsync(id);
+            var author = await _context.Authors.FindAsync(id);
             if (author == null)
             {
                 return NotFound();
@@ -123,12 +123,12 @@ namespace HealthyLife.Controllers
         // GET: Authors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Author == null)
+            if (id == null || _context.Authors == null)
             {
                 return NotFound();
             }
 
-            var author = await _context.Author
+            var author = await _context.Authors
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (author == null)
             {
@@ -143,14 +143,14 @@ namespace HealthyLife.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Author == null)
+            if (_context.Authors == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Author'  is null.");
             }
-            var author = await _context.Author.FindAsync(id);
+            var author = await _context.Authors.FindAsync(id);
             if (author != null)
             {
-                _context.Author.Remove(author);
+                _context.Authors.Remove(author);
             }
             
             await _context.SaveChangesAsync();
@@ -159,7 +159,7 @@ namespace HealthyLife.Controllers
 
         private bool AuthorExists(int id)
         {
-          return (_context.Author?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Authors?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
