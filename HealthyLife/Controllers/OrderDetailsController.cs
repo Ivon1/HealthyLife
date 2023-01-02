@@ -51,7 +51,7 @@ namespace HealthyLife.Controllers
         // GET: OrderDetails/Create
         public IActionResult Create()
         {
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription");
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription");
             ViewData["OrderId"] = new SelectList(_context.Orders, "Id", "Name");
             return View();
         }
@@ -69,7 +69,7 @@ namespace HealthyLife.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription", orderDetail.CourseId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription", orderDetail.CourseId);
             ViewData["OrderId"] = new SelectList(_context.Orders, "Id", "Name", orderDetail.OrderId);
             return View(orderDetail);
         }
@@ -87,7 +87,7 @@ namespace HealthyLife.Controllers
             {
                 return NotFound();
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription", orderDetail.CourseId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription", orderDetail.CourseId);
             ViewData["OrderId"] = new SelectList(_context.Orders, "Id", "Name", orderDetail.OrderId);
             return View(orderDetail);
         }
@@ -124,7 +124,7 @@ namespace HealthyLife.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "CourseDescription", orderDetail.CourseId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "CourseDescription", orderDetail.CourseId);
             ViewData["OrderId"] = new SelectList(_context.Orders, "Id", "Name", orderDetail.OrderId);
             return View(orderDetail);
         }

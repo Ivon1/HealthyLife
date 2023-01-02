@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Html;
-@model IEnumerable<HealthyLife.Models.Course>
+@*model IEnumerable<HealthyLife.Models.Course>*@
+@model HealthyLife.ViewModels.FilterViewModel
+
+@addTagHelper *, HealthyLife
 
 @{
     ViewData["Title"] = "Каталог";
@@ -65,31 +68,41 @@
 </div>
 
 <div style="width: 100%; height: 145px; background: rgb(205,112,121);
-    background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%); display: flex; align-items: center;">
+    background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%); display: flex;">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <button class="nav-link nav-item-bordered" style="width: 100%; height: 70px; margin-top: 10px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; padding-left: 15px; padding-bottom: 10px">
-                    ОБЕРІТЬ ТЕМАТИКУ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
+                <button class="nav-link nav-item-bordered filter" style="width: 100%; position: sticky; height: 70px; margin-top: 14%; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; padding-left: 15px; padding-bottom: 10px">
+                    ОБЕРІТЬ ТЕМАТИКУ<i class="fa fa-arrow-circle-down arrow" style="float: right; font-size: 40px; padding-right: 10px"></i>
                 </button>
+                <div class="row subject-list" style="display: none; width: 42.5%; border: 1px solid #808080; border-radius: 20px; background-color: white; position: absolute; float: right; left: 9%; z-index: 100">
+                    <h4 style="font-weight: 500; font-size: 26px; margin: 7px; padding: 10px">ТЕМАТИКА КУРСУ (ПОШУК ЗА ТЕГАМИ)</h4>
+                    <hr class="filter-hr">
+                    @foreach (var s in Model.Subjects)
+                    {
+                        <div class="col-md-6">
+                            <h5 style="font-weight: 400; font-size: 20px; margin: 7px; padding: 5px;">@{HtmlString subject = new HtmlString(s.SubjectName);}@subject</h5>
+                        </div>
+                    }                                       
+                </div>
             </div>
             <div class="col-md-3">
-                <button class="nav-link nav-item-bordered" style="width: 100%; height: 70px; margin-left: 23px; margin-top: 10px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; padding-left: 15px; padding-bottom: 10px">
+                <button class="nav-link nav-item-bordered" style="width: 100%; height: 70px; margin-left: 23px; margin-top: 14%; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; padding-left: 15px; padding-bottom: 10px">
                     ТРИВАЛІСТЬ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
                 </button>
             </div>
             <div class="col-md-3">
-                <button class="nav-link nav-item-bordered" style="width: 100%; height: 70px; margin-left: 23px; margin-top: 10px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; padding-left: 15px; padding-bottom: 10px">
+                <button class="nav-link nav-item-bordered" style="width: 100%; height: 70px; margin-left: 23px; margin-top: 14%; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; padding-left: 15px; padding-bottom: 10px">
                     ВАРТІСТЬ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
                 </button>
             </div>
             <div class="col-md-2 justify-content-center align-items-center">
-                <button class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-left: 15%; margin-right: 10%; margin-top: 10px; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564; color: white; font-size: 27px; text-align: center; padding-bottom: 10px">
+                <button class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-left: 15%; margin-right: 10%; margin-top: 22%; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564; color: white; font-size: 27px; text-align: center; padding-bottom: 10px">
                     ЗНАЙТИ
                 </button>
             </div>
             <div class="col-md-1">
-                <button class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-top: 10px; padding-bottom: 15px; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564;">
+                <button class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-top: 50%; padding-bottom: 15px; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564;">
                     <img src="~/img/icons/filter.png" style="width: 55%; height: 40px" />
                 </button>
             </div>
@@ -116,7 +129,7 @@
 
 <div class="container" style="margin:0px 5% 0px 7%; width: 100%; margin-top: -45px;">
     <div class="row grid-div">
-        @foreach (var course in Model)
+        @foreach (var course in Model.Courses)
         {
             <div class="col-md-4 course" style="margin-top: 35px;">
                 <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto');">
@@ -240,7 +253,7 @@
         }
     </div>
     <div class="list-div" style="display: none">
-        @foreach (var course in Model)
+        @foreach (var course in Model.Courses)
         {
             <div style="margin-top: 35px; margin-bottom: 20px; height: 295px" class="row product-card-list">
                 <div class="col-4" style="position:sticky; left: 0; margin: 0; padding: 0">
@@ -471,6 +484,9 @@
             </div>
         }
     </div>
+    <div class="container mt-5" style="text-align: center;">
+        <page-link page-model="Model.PageViewModel" page-action="Index" style="display: flex; justify-content: center;"></page-link>
+    </div>    
 </div>
 <div style="width: 100%; height: 50px; margin-top: 35px; background: rgb(205,112,121);
      background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%);">

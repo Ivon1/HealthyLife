@@ -110,5 +110,10 @@ $(document).ready(function () {
             $(this).addClass('grid5');
         });
     });
+
+    $('.filter').click(function () {
+        $('.subject-list').css('display', 'flex');
+        $('.arrow').css('color', '#F25564');
+    });
 });
 
