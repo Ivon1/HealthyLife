@@ -7,7 +7,9 @@ namespace HealthyLife.Models
     {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
+        public string NickNameUser { get; set; } = string.Empty;
         public DateTime CreationTime { get; set; }
+        public string PathToPhoto { get; set; } = string.Empty;
 
         public List<UserOrder> UserOrders { get; set; } = new List<UserOrder>();
     }
