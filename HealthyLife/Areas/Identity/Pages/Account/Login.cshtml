@@ -5,7 +5,169 @@
     ViewData["Title"] = "Вхід";
 }
 
-<div class="container">
+<style>
+    /**{
+        border:1px solid red;
+    }*/
+
+    .text {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        color: #2C3447;
+    }
+
+    .my-btn-login {
+        width: 299px;
+        height: 51px;
+        box-shadow: 3px 3px #808080;
+        border: 3px solid grey;
+        border-radius: 10px;
+        background-color: #1A9F83;
+        color: #FFFFFF;
+        transition: 0.5s;
+        text-align: center;
+        display:flex; 
+        align-items:center; 
+        justify-content: center;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 22px;
+    }
+
+    .my-btn-login:hover {
+        box-shadow: 0px 0px;
+        transition: 0.5s;
+    }
+
+    .input-in-form{
+        width: 299px;
+        height: 51px;
+        box-sizing: border-box;
+        background: #FFFFFF;
+        border: 2px solid #1A9F83;
+        border-radius: 7px;
+        text-indent: 10px;
+    }
+</style>
+
+<div style="width: 100%; height: 60px; background: rgb(44,52,71);
+        background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);"
+        class="position-relative">
+    <h4 style="font-weight: 500; font-size: 25px; line-height: 25px;display: flex; 
+            align-items: center;text-transform: uppercase;color: #FFFFFF;"
+            class="position-absolute top-50 start-50 translate-middle">
+        Форма входу користувача
+    </h4>
+</div>
+
+<h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;
+    display: flex;align-items: center;color: #2C3447; margin-top: 30px; margin-left: 10%;">
+    Якщо вже маєте обліковий запис на платформі ХЕКА :
+</h3>
+<form id="account" method="post">
+    <div style="width: 100%; margin-top: 40px" class="center-items-inside">
+        <div class="row" style="width: 80%">
+            <div class="col-md-1 text" style="width: auto; margin-left:-15px">Логін</div>
+            <div class="col-md-3">
+                <input asp-for="Input.Email" class="input-in-form" autocomplete="username" 
+                    aria-required="true" placeholder="name@example.com" style="height: 51px"/>
+            </div>
+            <div class="col-md-1 text" style="width: auto; margin-left: 50px">Пароль</div>
+            <div class="col-md-3">
+                <input asp-for="Input.Password" class="input-in-form" autocomplete="current-password"
+                    aria-required="true" placeholder="password" style="height: 51px"/>
+            </div>
+            <div class="col-md-4" style="width: auto; margin-left: 50px">
+                <button id="login-submit" type="submit" class="my-btn-login">
+                        <text style="margin-top: 5px;">УВІЙТИ</text>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="position-relative" style="width: 100%; margin-top: 50px">
+    <div style="border: 2px solid rgba(128, 128, 128, 0.5);width: 30%;" 
+         class="position-absolute top-50 start-50 translate-middle"></div>
+</div>
+
+<h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;
+    display: flex;align-items: center;color: #2C3447; margin-top: 75px; margin-left: 10%;">
+    Увійти за допомогою соціальних мереж
+</h3>
+
+<div style="display:flex; align-items:center; justify-content: center; margin-top: 28px; ">
+    <table style="width: 60%; border-spacing:10px; border-collapse: separate;">
+        <tr>
+            <th>
+                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" 
+                    method="post" class="form-horizontal">
+                    <button type="submit" name="provider" value="@Model.ExternalLogins.ToList().Where(p => p.DisplayName == "Google").FirstOrDefault()"
+                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        <img src="~/img/icons/google_icon.png" height="24px" width="24px"/>
+                    </button>
+                </form>
+            </th>
+
+            <th>
+                <div style="border: 2px solid rgba(128, 128, 128, 0.25); height: 43px; width: 1px; 
+                    margin-left:auto!important; margin-right:auto!important; margin: 5px"></div>
+            </th>
+
+            <th>
+                <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                    <img src="~/img/icons/facebook_icon.png" height="24px" width="24px"/>
+                </a>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <div style="border: 2px solid rgba(128, 128, 128, 0.25); width: 50%; margin-left:auto; height: 1px"></div>
+            </th>
+            <td></td>
+            <td>
+                <div style="border: 2px solid rgba(128, 128, 128, 0.25); width: 50%; margin-right:auto; height: 1px"></div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                    <img src="~/img/icons/twitter_icon.png" height="24px" width="24px"/>
+                </a>
+            </th>
+
+            <td>
+                <div style="border: 2px solid rgba(128, 128, 128, 0.25); height: 43px; width: 1px; 
+                    margin-left:auto!important; margin-right:auto!important"></div>
+            </td>
+
+            <td>
+                <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                    <img src="~/img/icons/apple_icon.png" height="24px" width="24px"/>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin: 3% 10% 7% 10%" class="center-items-inside">
+    <div class="row">
+        <div class="col" style="width: auto;">
+            <a id="forgot-password" asp-page="./ForgotPassword" class="link">Забули пароль?</a>
+        </div>
+        <div class="col" style="width: auto;">
+            <a asp-page="./Register" class="link">Зареєструватися</a>
+        </div>
+        <div class="col" style="width: auto;">
+            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="link">Повторно відправити лист підтвердження пошти</a>
+        </div>
+    </div>
+</div>
+
+@*<div class="container">
     <div class="row">
         <div class="col-md-4">
             <section>
@@ -78,7 +240,7 @@
         </div>
     </div>
 
-</div>
+</div>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

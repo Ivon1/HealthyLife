@@ -32,9 +32,13 @@
     <table style="width: 60%; border-spacing:10px; border-collapse: separate;">
         <tr>
             <th>
-                <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
-                    <img src="~/img/icons/google_icon.png" height="24px" width="24px"/>
-                </a>
+                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" 
+                    method="post" class="form-horizontal">
+                    <button type="submit" name="provider" value="@Model.ExternalLogins.ToList().Where(p => p.DisplayName == "Google").FirstOrDefault()"
+                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        <img src="~/img/icons/google_icon.png" height="24px" width="24px"/>
+                    </button>
+                </form>
             </th>
 
             <th>
@@ -104,13 +108,14 @@
                     height: 51px;
                     border: 2px solid #808080;
                     border-radius: 7px;
+                    text-indent: 10px;
                 }
 
                 .my-btn-register {
                     width: 350px;
                     height: 48px;
                     box-shadow: 3px 3px #808080;
-                    border: 1px solid black;
+                    border: 3px solid grey;
                     border-radius: 10px;
                     background-color: #1A9F83;
                     color: #FFFFFF;
@@ -213,18 +218,18 @@
 
             <div>
                 <button id="login-submit" type="submit" class="my-btn-register">
-                    <text style="margin-top: 5px; ">РЕЄСТРАЦІЯ</text>
+                    <text style="margin-top: 5px;">РЕЄСТРАЦІЯ</text>
                 </button>
             </div>
-            <div>
+            <div style="margin-top: 20px">
                 <p>
-                    <a id="forgot-password" asp-page="./ForgotPassword">Забули пароль?</a>
+                    <a id="forgot-password" asp-page="./ForgotPassword" class="link">Забули пароль?</a>
                 </p>
                 <p>
-                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    <a asp-page="./Login" class="link">Вхід</a>
                 </p>
                 <p>
-                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="link">Повторно відправити лист підтвердження пошти</a>
                 </p>
             </div>
         </form>
