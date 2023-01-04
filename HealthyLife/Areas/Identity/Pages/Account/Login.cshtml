@@ -71,7 +71,7 @@
 <form id="account" method="post">
     <div style="width: 100%; margin-top: 40px" class="center-items-inside">
         <div class="row" style="width: 80%">
-            <div class="col-md-1 text" style="width: auto; margin-left:-15px">Логін</div>
+            <div class="col-md-1 text" style="width: auto; margin-left:-15px"required">Логін</div>
             <div class="col-md-3">
                 <input asp-for="Input.Email" class="input-in-form" autocomplete="username" 
                     aria-required="true" placeholder="name@example.com" style="height: 51px"/>
@@ -99,59 +99,61 @@
     Увійти за допомогою соціальних мереж
 </h3>
 
-<div style="display:flex; align-items:center; justify-content: center; margin-top: 28px; ">
-    <table style="width: 60%; border-spacing:10px; border-collapse: separate;">
-        <tr>
-            <th>
-                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" 
-                    method="post" class="form-horizontal">
-                    <button type="submit" name="provider" value="@Model.ExternalLogins.ToList().Where(p => p.DisplayName == "Google").FirstOrDefault()"
+<form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl"
+        method="post" class="form-horizontal">
+    <div style="display:flex; align-items:center; justify-content: center; margin-top: 28px; ">
+        <table style="width: 60%; border-spacing:10px; border-collapse: separate;">
+            <tr>
+                <th>
+                    <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.DisplayName == "Google")?.Name"
                         style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
                         <img src="~/img/icons/google_icon.png" height="24px" width="24px"/>
                     </button>
-                </form>
-            </th>
+                </th>
 
-            <th>
-                <div style="border: 2px solid rgba(128, 128, 128, 0.25); height: 43px; width: 1px; 
-                    margin-left:auto!important; margin-right:auto!important; margin: 5px"></div>
-            </th>
+                <th>
+                    <div style="border: 2px solid rgba(128, 128, 128, 0.25); height: 43px; width: 1px; 
+                        margin-left:auto!important; margin-right:auto!important; margin: 5px"></div>
+                </th>
 
-            <th>
-                <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
-                    <img src="~/img/icons/facebook_icon.png" height="24px" width="24px"/>
-                </a>
-            </th>
-        </tr>
-        <tr>
-            <th>
-                <div style="border: 2px solid rgba(128, 128, 128, 0.25); width: 50%; margin-left:auto; height: 1px"></div>
-            </th>
-            <td></td>
-            <td>
-                <div style="border: 2px solid rgba(128, 128, 128, 0.25); width: 50%; margin-right:auto; height: 1px"></div>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
-                    <img src="~/img/icons/twitter_icon.png" height="24px" width="24px"/>
-                </a>
-            </th>
+                <th>
+                    <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.Name == "Facebook")?.Name"
+                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        <img src="~/img/icons/facebook_icon.png" height="24px" width="24px"/>
+                    </button>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <div style="border: 2px solid rgba(128, 128, 128, 0.25); width: 50%; margin-left:auto; height: 1px"></div>
+                </th>
+                <td></td>
+                <td>
+                    <div style="border: 2px solid rgba(128, 128, 128, 0.25); width: 50%; margin-right:auto; height: 1px"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        <img src="~/img/icons/twitter_icon.png" height="24px" width="24px"/>
+                    </a>
+                </th>
 
-            <td>
-                <div style="border: 2px solid rgba(128, 128, 128, 0.25); height: 43px; width: 1px; 
-                    margin-left:auto!important; margin-right:auto!important"></div>
-            </td>
+                <td>
+                    <div style="border: 2px solid rgba(128, 128, 128, 0.25); height: 43px; width: 1px; 
+                        margin-left:auto!important; margin-right:auto!important"></div>
+                </td>
 
-            <td>
-                <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
-                    <img src="~/img/icons/apple_icon.png" height="24px" width="24px"/>
-                </a>
-            </td>
-        </tr>
-    </table>
-</div>
+                <td>
+                    <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.Name == "Microsoft")?.Name"
+                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        <img src="~/img/icons/microsoft_logo.png" height="24px" width="24px"/>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
 
 <div style="margin: 3% 10% 7% 10%" class="center-items-inside">
     <div class="row">

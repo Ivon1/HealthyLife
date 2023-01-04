@@ -19,13 +19,25 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication()
-   .AddGoogle("Microsoft.AspNetCore.Authentication.AuthenticationScheme", options =>
-   {
-       IConfigurationSection googleAuthNSection =
-       config.GetSection("Authentication:Google");
-       options.ClientId = googleAuthNSection["ClientId"];
-       options.ClientSecret = googleAuthNSection["ClientSecret"];
-   });
+.AddGoogle("Microsoft.AspNetCore.Authentication.AuthenticationScheme", options =>
+{
+    IConfigurationSection googleAuthNSection =
+    config.GetSection("Authentication:Google");
+    options.ClientId = googleAuthNSection["ClientId"];
+    options.ClientSecret = googleAuthNSection["ClientSecret"];
+})
+.AddFacebook(options =>
+{
+    IConfigurationSection FBAuthNSection =
+    config.GetSection("Authentication:Facebook");
+    options.ClientId = FBAuthNSection["AppId"];
+    options.ClientSecret = FBAuthNSection["AppSecret"];
+})
+.AddMicrosoftAccount(microsoftOptions =>
+{
+    microsoftOptions.ClientId = config["Authentication:Microsoft:ClientId"];
+    microsoftOptions.ClientSecret = config["Authentication:Microsoft:ClientSecret"];
+});
 
 var app = builder.Build();
 
