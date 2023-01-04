@@ -26,10 +26,39 @@ namespace HealthyLife.Controllers
 
         // GET: Courses
         [AllowAnonymous]
-        public async Task<IActionResult> Index(int? aid, int? sid, int page = 1)
+        public async Task<IActionResult> Index(string sortOrder, int? aid, int? sid, int page = 1)
         {
-            int pageSize = 3;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
+            ViewData["NameDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name" : "name_desc";
+            ViewData["RatingSortParm"] = sortOrder == "Rate" ? "rate_desc" : "Rate";
+            ViewData["RatingDescSortParm"] = sortOrder == "rate_desc" ? "Rate" : "rate_desc";
+            ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewData["PriceDescSortParm"] = sortOrder == "price_desc" ? "Price" : "price_desc";
+            int pageSize = 5;
             IQueryable<Course> courses = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
+
+            courses = from c in _context.Courses select c;
+            switch (sortOrder)
+            {
+                case "name":
+                    courses = courses.OrderBy(c => c.CourseDescriptionShort);
+                    break;
+                case "name_desc":
+                    courses = courses.OrderByDescending(c => c.CourseDescriptionShort);
+                    break;
+                case "Rate":
+                    courses = courses.OrderBy(c => c.Rating);
+                    break;
+                case "rate_desc":
+                    courses = courses.OrderByDescending(c => c.Rating);
+                    break;
+                case "Price":
+                    courses = courses.OrderBy(c => c.Price);
+                    break;
+                case "price_desc":
+                    courses = courses.OrderByDescending(c => c.Price);
+                    break;
+            }
 
             if (aid != null && aid != 0)
                 courses = courses.Where(c => c.AuthorId == aid);
@@ -41,6 +70,8 @@ namespace HealthyLife.Controllers
 
             var count = await courses.CountAsync();
             var items = await courses.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            
+
             PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
 
             FilterViewModel viewModel = new FilterViewModel()
