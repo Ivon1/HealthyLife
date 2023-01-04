@@ -111,22 +111,34 @@
 </div>
 
 <div class="container" style="width: 100%; height: 84px;">
-    <div style="margin-top: 26px; text-align: right">
-        <button class="nav-item-bordered" id="list" style="width: 55px; height: 55px; margin-right: 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 5px">
-            <img style="width: 90%; height: 30px;" src="~/img/icons/list.png" class="list-image" />
-        </button>
-        <button class="nav-item-bordered" id="grid3" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 5px">
-            <img style="width: 95%; height: 30px;" src="~/img/icons/grid3-active.png" class="grid3-image" />
-        </button>
-        <button class="nav-item-bordered" id="grid4" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 5px">
-            <img style="width: 90%; height: 30px;" src="~/img/icons/grid4.png" class="grid4-image" />
-        </button>
-        <button class="nav-item-bordered" id="grid5" style="width: 55px; height: 55px; margin-left: 12px; padding-top: 2px; margin-bottom: 20px; margin-right: 0px; border: 3px solid #1A9F83; border-radius: 5px">
-            <img style="width: 90%; height: 30px;" src="~/img/icons/grid5.png" class="grid5-image" />
-        </button>
+    <div style="margin-top: 26px; text-align: right; display: flex">
+        <div style="text-align: left; width: 20%">
+            <button class="dropdown-toggle" style="width: 100%; height: 55px; padding: 5px 15px; color: #808080; font-size: 28px; border: 3px solid #1A9F83; border-radius: 5px" data-bs-toggle="dropdown">ЗА ЗАМОВЧУВАННЯМ</button>
+            <ul class="dropdown-menu dropdown-menu-left">
+                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">За алфавітом</a></li>
+                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameDescSortParm"]">За зворотнім алфавітом</a></li>
+                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">Від дешевих до дорогих</a></li>
+                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceDescSortParm"]">Від дорогих до дешевих</a></li>
+                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["RatingSortParm"]">За зростанням рейтингу</a></li>
+                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["RatingDescSortParm"]">За спаданням рейтингу</a></li>
+            </ul>
+        </div>
+        <div style="text-align: right; width: 80%">
+            <button class="nav-item-bordered" id="list" style="width: 55px; height: 55px; margin-right: 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 5px">
+                <img style="width: 90%; height: 30px;" src="~/img/icons/list.png" class="list-image" />
+            </button>
+            <button class="nav-item-bordered" id="grid3" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 5px">
+                <img style="width: 95%; height: 30px;" src="~/img/icons/grid3-active.png" class="grid3-image" />
+            </button>
+            <button class="nav-item-bordered" id="grid4" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 5px">
+                <img style="width: 90%; height: 30px;" src="~/img/icons/grid4.png" class="grid4-image" />
+            </button>
+            <button class="nav-item-bordered" id="grid5" style="width: 55px; height: 55px; margin-left: 12px; padding-top: 2px; margin-bottom: 20px; margin-right: 0px; border: 3px solid #1A9F83; border-radius: 5px">
+                <img style="width: 90%; height: 30px;" src="~/img/icons/grid5.png" class="grid5-image" />
+            </button>
+        </div>
     </div>
 </div>
-
 <div class="container" style="margin:0px 5% 0px 7%; width: 100%; margin-top: -45px;">
     <div class="row grid-div">
         @foreach (var course in Model.Courses)

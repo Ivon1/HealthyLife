@@ -1,11 +1,80 @@
-﻿@model HealthyLife.Models.Course
+﻿@using Microsoft.AspNetCore.Html;
+@model HealthyLife.Models.Course
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Сторінка курсу";
 }
 
-<h1>Details</h1>
+<div class="pt-70px pb-70px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                <img class="m-auto" style="width: 570px; height: 475px; border-radius: 8px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)"/>
+            </div>
+            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-details-content quickview-content ml-25px">
+                    <h2>@Html.DisplayFor(model => model.CourseName)</h2>
+                    <div class="pricing-meta">
+                        @if (Model.Price.Equals(-1))
+                        {
+                            <h3>ХЕКА+</h3>
+                        }
+                        else if (Model.Price.Equals(0))
+                        {
+                            <h3>БЕЗКОШТОВНО</h3>
+                        }
+                        else
+                        {
+                            <h3>@Html.DisplayFor(model => model.Price) ₴</h3>
+                        }
+                    </div>
+                    <hr />
+                    <p class="mt-15px">
+                        @{
+                            HtmlString description = new HtmlString(Model.CourseDescriptionShort.ToString().Replace("<br>", " "));
+                            @description
+                        }
+                    </p>
+                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                        <table>
+                            <tr>
+                                <th><span>Автор:</span></th>
+                                <th><span style="color: #F7A121; margin-left: 5px">@Html.DisplayFor(model => model.Aurhor.AuthorName)</span></th>
+                            </tr>
+                            <tr>
+                                <th><span>Тематика:</span></th>
+                                <th><span style="color: #F7A121; margin-left: 5px">@Html.DisplayFor(model => model.Subject.SubjectName)</span></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pro-details-quality">
+                        <div class="pro-details-cart">
+                            <button class="add-cart">ДОДАТИ ДО КОШИКА</button>
+                        </div>
+                        <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                            <a href="#" style="background-color: white; border: 1px solid black"><img src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" /></a>
+                        </div>
+                    </div>
+                    <div class="description-review-wrapper">
+                        <div class="description-review-topbar nav">
+                            <button class="active" style="border: none; border-bottom: 3px solid #1A9F83; color: #1A9F83; font-weight: 500; font-size: 25px" data-bs-toggle="tab" data-bs-target="#des-details1">Опис курсу</button>
+                        </div>
+                        <div class="tab-content description-review-bottom">
+                            <div id="des-details1" class="tab-pane active">
+                                <div class="product-description-wrapper" style="margin-top: 5px">
+                                    <p>@Html.DisplayFor(model => model.CourseDescription)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+@*
+<h1>Details</h1>    
 <div>
     <h4>Course</h4>
     <hr />
@@ -81,4 +150,4 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
