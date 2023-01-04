@@ -192,6 +192,7 @@
         -ms-flex-align: center;
         align-items: center;
         letter-spacing: 1px;
+        transition: background-color 1.2s;
     }
 
         .product-details-content .pro-details-quality .pro-details-cart .add-cart:hover {
