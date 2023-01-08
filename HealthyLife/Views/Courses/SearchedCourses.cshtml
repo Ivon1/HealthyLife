@@ -6,21 +6,24 @@
 }
 <div style="display: flex; flex-direction:column; min-height: 80vh">
     <div style="width: 100%; height: 82px; background: rgb(198,62,62); background: linear-gradient(90deg, rgba(198,62,62,1) 0%, rgba(244,124,80,1) 54%, rgba(244,124,80,1) 100%);">
-        <div class="row" style="width: 100%">
-            <div class="col-3" style="width: 192px;">
-                <img src="~/img/icons/logo_catalog.png" width="100px" height="82px" style="margin-left: 5%" />
+        <div class="container">
+            <div class="row" style="width: 100%">
+                <div class="col-3" style="width: 192px;">
+                    <img src="~/img/icons/logo_catalog.png" width="100px" height="82px" style="margin-left: 5%" />
+                </div>
+                <div class="col-9" style="text-align: left;">
+                    <h1 style="font-weight: 400; font-size: 60px; color: #FFFFFF; padding: 10px">РЕЗУЛЬТАТИ ПОШУКУ:</h1>
+                </div>
             </div>
-            <div class="col-9" style="text-align: left;">
-                <h1 style="font-weight: 400; font-size: 60px; color: #FFFFFF; padding: 10px">РЕЗУЛЬТАТИ ПОШУКУ:</h1>
-            </div>        
-        </div>
+        </div>        
     </div>
     
-    <div class="container" style="flex-grow: 1; margin: 0px 5% 0px 7%; padding: 5px 2%; width: 100%; flex: 1 1 auto">
-        <div class="list-div" id="list-div" style="margin-top: 50px">
+    <div class="container" style="flex-grow: 1; width: 100%; flex: 1 1 auto">
+        <div class="list-div " id="list-div" style="margin-top: 50px">
             @foreach (var course in Model)
             {
-                <div style="margin-top: 35px; margin-bottom: 20px; height: 295px" class="row product-card-list">
+                <div class="col-md-12">
+                    <div style="margin-top: 35px; margin-bottom: 20px; height: 295px" class="row product-card-list">
                     <div class="col-4" style="position:sticky; left: 0; margin: 0; padding: 0">
                         <img style="border-radius: 10px; width: 100%; position:absolute; height: 295px; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.PathToPhoto" />
                         @if (course.Price.Equals(-1))
@@ -248,16 +251,16 @@
                         }
                     </div>
                 </div>
+                </div>
             }
         </div>
     </div>
     <div style="flex-shrink: 0; width: 100%; height: 82px; margin-top: 50px; background: rgb(44,52,71); background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);">
-        <div class="row" style="width:100%;">
-            <div class="col-11"></div>        
-            <div class="col-1" style="width:100%; margin-right: 43px; text-align: right">
-                <img src="~/img/icons/logo_catalog1.png" width="100px" height="82px" style="margin-right: -1%" />
+        <div class="container">
+            <div style="width:100%;">
+                <img src="~/img/icons/logo_catalog1.png" width="100px" height="82px" style="float: right"/>
             </div>
-        </div>
+        </div>                
     </div>
 </div>
 
