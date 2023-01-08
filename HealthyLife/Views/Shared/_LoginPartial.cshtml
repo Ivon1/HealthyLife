@@ -15,8 +15,9 @@
         <img src="~/img/icons/person_label.png" height="28px" width="28px"/>
     </a>
 
-    <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Login"
-            style="width:54px; height: 57px; display:flex; align-items:center; justify-content: center">
+        <a id="cart" class="nav-link text-dark account-partial-bordered" asp-controller="UserOrders" asp-action="Index">
+            <p id="cartItemsCount" style="display: none">0</p>
+            <p id="cost" style="display: none">0</p>
         <img src="~/img/icons/cart.png" height="28px" width="28px" />
     </a>
 
@@ -39,8 +40,9 @@ else
             asp-area="Identity" asp-page="/Account/Login">ВХІД
     </a>
 
-    <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Login"
-        style="width:54px; height: 57px; display:flex; align-items:center; justify-content: center">
+    <a id="cart" class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-controller="UserOrders" asp-action="Index">
+            <p id="cartItemsCount" style="display: none">0</p>
+            <p id="cost" style="display: none">0</p>
         <img src="~/img/icons/cart.png" height="28px" width="28px" />
     </a>
 }

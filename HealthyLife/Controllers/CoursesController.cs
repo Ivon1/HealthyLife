@@ -9,6 +9,8 @@ using HealthyLife.Data;
 using HealthyLife.Models;
 using Microsoft.AspNetCore.Authorization;
 using HealthyLife.ViewModels;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace HealthyLife.Controllers
 {
@@ -33,11 +35,12 @@ namespace HealthyLife.Controllers
             ViewData["RatingSortParm"] = sortOrder == "Rate" ? "rate_desc" : "Rate";
             ViewData["RatingDescSortParm"] = sortOrder == "rate_desc" ? "Rate" : "rate_desc";
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
-            ViewData["PriceDescSortParm"] = sortOrder == "price_desc" ? "Price" : "price_desc";
+            ViewData["PriceDescSortParm"] = sortOrder == "price_desc" ? "Price" : "price_desc";            
+
             int pageSize = 5;
             IQueryable<Course> courses = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
 
-            courses = from c in _context.Courses select c;
+            courses = from c in _context.Courses select c;            
             switch (sortOrder)
             {
                 case "name":
@@ -243,6 +246,18 @@ namespace HealthyLife.Controllers
         private bool CourseExists(int id)
         {
           return (_context.Courses?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> SearchedCourses(string searchString)
+        {
+            ViewData["CurrentSearch"] = searchString;
+            IQueryable<Course> courses = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                courses = courses.Where(c => c.CourseName.Contains(searchString) || c.CourseDescriptionShort.Contains(searchString) || c.CourseDescription.Contains(searchString));
+            }
+            return View(await courses.ToListAsync());
         }
     }
 }

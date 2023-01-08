@@ -17,6 +17,9 @@
 </head>
 
 <body>
+    <div class="wrapper">
+
+    </div>
     <header>
 
         <div id="pre-header" style="padding-top: 10px;color:#FFFFFF">
@@ -64,14 +67,15 @@
 
                     </ul>
 
-                    <form class="search-item-bordered" asp-action="Index" method="get" style="height:57px; width:322px">
-                        <input type="text" placeholder="Пошук..." class="input-search"
-                            style="outline: none; text-indent: 10px; border: 0px solid; margin-top:2.5%;" />
-                            
-                        <img src="~/img/icons/glass_search_zoom_icon.png" style="height:40px; width:40px; margin-left:25%;"/>
+                    <form class="search-item-bordered" asp-controller="Courses" asp-action="SearchedCourses" method="get" style="height:57px; width:322px">
+                        <input type="text" placeholder="Пошук..." name="searchString" id="searchString" value="@ViewData["CurrentSearch"]" class="input-search"
+                            style="outline: none; text-indent: 10px; border: 0px solid; margin-top:2.5%;" required/>
+                        <button type="submit" style="border: none; float: right; margin-right: 5%; background: none; width: 35px">
+                            <img src="~/img/icons/glass_search_zoom_icon.png" style="height:40px; width:40px;" />
+                        </button>                        
                     </form>
 
-                    <img src="~/img/icons/stick.png" height="85px" width="2px"/>                  
+                    <img src="~/img/icons/stick.png" height="85px" width="2px"/>
 
                     <partial name="_LoginPartial" />
                 </div>
@@ -79,11 +83,12 @@
             </div>
         </nav>
 
-    </header>
-
-    <main role="main">
-        @RenderBody()
-    </main>
+    </header>    
+        <main role="main">
+            @RenderBody()
+        </main>
+    
+    
 
     <footer class="border-top footer text-muted" style="margin-bottom: -19%">
         <div class="container">
@@ -177,6 +182,7 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,0 +1,285 @@
+﻿@using Microsoft.AspNetCore.Html
+@model IEnumerable<HealthyLife.Models.Course>
+
+@{
+    ViewData["Title"] = "Результати пошуку";
+}
+<div style="display: flex; flex-direction:column; min-height: 80vh">
+    <div style="width: 100%; height: 82px; background: rgb(198,62,62); background: linear-gradient(90deg, rgba(198,62,62,1) 0%, rgba(244,124,80,1) 54%, rgba(244,124,80,1) 100%);">
+        <div class="row" style="width: 100%">
+            <div class="col-3" style="width: 192px;">
+                <img src="~/img/icons/logo_catalog.png" width="100px" height="82px" style="margin-left: 5%" />
+            </div>
+            <div class="col-9" style="text-align: left;">
+                <h1 style="font-weight: 400; font-size: 60px; color: #FFFFFF; padding: 10px">РЕЗУЛЬТАТИ ПОШУКУ:</h1>
+            </div>        
+        </div>
+    </div>
+    
+    <div class="container" style="flex-grow: 1; margin: 0px 5% 0px 7%; padding: 5px 2%; width: 100%; flex: 1 1 auto">
+        <div class="list-div" id="list-div" style="margin-top: 50px">
+            @foreach (var course in Model)
+            {
+                <div style="margin-top: 35px; margin-bottom: 20px; height: 295px" class="row product-card-list">
+                    <div class="col-4" style="position:sticky; left: 0; margin: 0; padding: 0">
+                        <img style="border-radius: 10px; width: 100%; position:absolute; height: 295px; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.PathToPhoto" />
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
+                        }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a style="background-color: #F47C50;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
+                        }
+                    </div>
+                    <div class="col-8" style="position:sticky; display: block; left: 0; margin: 0; padding: 0">
+                        <div class="row">
+                            <div class="col-md-12" style="position: sticky">
+                                <h4 id="courseDescriptionShort" style="font-weight: 500; font-size: 35px; position: absolute; margin-left: 5%; margin-top: 4%">
+                                    @{
+                                        HtmlString str = new HtmlString(course.CourseDescriptionShort.Replace("<br>", ""));
+                                        @str
+                                    }
+                                </h4>
+                            </div>
+                            <div class="row" style="margin-top: 10%">
+                                <div class="col-md-4" style="position: sticky; text-align: justify">
+                                    <div style="display: flex; margin-top: 3%">
+                                        @if (course.Rating >= 0 && course.Rating < 0.5)
+                                        {
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 0.5 && course.Rating < 1.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 1.5 && course.Rating < 2.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 2.5 && course.Rating < 3.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 3.5 && course.Rating < 4.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 4.5 && course.Rating <= 5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 7%; color: #F47C50">
+                                            @{
+                                                var rating = Math.Round(course.Rating, 1);
+                                                @rating
+                                            }
+                                            / 5
+                                        </h5>
+                                    </div>
+                                    <div style="display: flex; margin-top: 4%">
+                                        <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px; margin-left: 17%" />
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
+                                            @{
+                                                var timesSelected = Convert.ToInt32(course.TimesSelected).ToString();
+                                                @timesSelected
+                                            }
+                                        </h5>
+                                        <img src="~/img/icons/likednumber.png" style="width: 19px; height: 19px; margin-left: 20%" />
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
+                                            @{
+                                                var likedNumber = Convert.ToInt32(course.LikedNumber).ToString();
+                                                @likedNumber
+                                            }
+                                        </h5>
+                                    </div>
+                                    <div style="display: flex; margin-top: 1%; margin-bottom: 1%">
+                                        <img src="~/img/icons/duration.png" style="width: 19px; height: 19px; margin-left: 17%" />
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
+                                            @{
+                                                HtmlString duration = new HtmlString(course.Duration);
+                                                @duration
+                                            }
+                                        </h5>
+                                    </div>
+                                    <h6 style="font-weight: 400; font-size: 16px; margin-left: 17%;">
+                                        АВТОР КУРСУ/СПІКЕР:<br>
+                                        @{
+                                            HtmlString author = new HtmlString(course.Aurhor.AuthorName);
+                                            @author
+                                        }
+                                    </h6>
+                                    <div style="display: flex; float: right; margin-right: 18%">                                        
+                                        <button style="border: none">
+                                            <img src="~/img/icons/hear_ico.png" style="width: 23px; height: 20px;" />
+                                        </button>
+                                        <button style="margin-right: 5%; border: none" class="add-cart">
+                                            <input type="hidden" class="courseId" value="@course.Id" />
+                                            <img src="~/img/icons/cart-gray.png" style="width: 23px; height: 20px;" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-7" style="position: relative;  text-align: justify; border-left: 1px solid #808080; height: 170px">
+                                    <h4 id="courseDescription" style="font-weight: 400; font-size:23px; margin-left: 5%">
+                                        @{
+                                            HtmlString str3 = new HtmlString(course.CourseDescription);
+                                            @str3
+                                        }
+                                    </h4>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ХЕКА+</h3>
+                            </a>
+
+                        }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 25%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
+                            </a>
+                        }
+                        else
+                        {
+                            <a style="background-color: #F47C50; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 28%; top: 5px; color: #FFFFFF">
+                                    @{
+                                        var price = Convert.ToInt16(course.Price).ToString();
+                                    }
+                                    @price ₴
+                                </h3>
+                            </a>
+                        }
+
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+                        else if (course.Price > 0)
+                        {
+                            <a style="background-color: #F47C50; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div style="flex-shrink: 0; width: 100%; height: 82px; margin-top: 50px; background: rgb(44,52,71); background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);">
+        <div class="row" style="width:100%;">
+            <div class="col-11"></div>        
+            <div class="col-1" style="width:100%; margin-right: 43px; text-align: right">
+                <img src="~/img/icons/logo_catalog1.png" width="100px" height="82px" style="margin-right: -1%" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(() => {
+            const list = document.getElementById('list-div');
+            const word = $('#searchString').val();
+            let cds = document.querySelectorAll('#courseDescriptionShort');
+            let cd = document.querySelectorAll('#courseDescription');            
+            for (let elem of cds) {                
+                let cds2 = elem.innerHTML.replaceAll(word, '<span class="highlight">' + word + '</span>');
+                elem.innerHTML = cds2;
+            }
+            for (let elem of cd) {                
+                let cd2 = elem.innerHTML.replaceAll(word, '<span class="highlight">' + word + '</span>');
+                elem.innerHTML = cd2;
+            }
+            if (list.innerHTML.trim().length == 0) {
+                list.innerHTML += `<p style="margin-left: 5%; font-weight: 400; font-size: 35px">На жаль, за Вашим запитом нічого не знайдено...</p>`;
+            }            
+        });
+    </script>
+}

@@ -25,7 +25,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Course.CourseDescription)
+                @Html.DisplayFor(model => item.Course.CourseDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApplicationUser.Id)
