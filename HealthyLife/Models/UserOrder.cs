@@ -11,12 +11,12 @@ namespace HealthyLife.Models
         public int CourseId { get; set; }
 
         [Required, Display(Name = "UserId")]
-        public string UserId { get; set; } = string.Empty;
+        public string UserId { get; set; }
 
         [ForeignKey("CourseId")]
-        public Course Course { get; set;} = new Course();
+        public Course Course { get; set;}
 
         [ForeignKey("UserId")]
-        public ApplicationUser ApplicationUser { get; set; } = new ApplicationUser();
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

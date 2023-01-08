@@ -294,3 +294,11 @@
     }
 }
 
+.hidden {
+    display: none;
+}
+
+.highlight {
+    background-color: #F25564;
+    color: #FFFFFF;
+}

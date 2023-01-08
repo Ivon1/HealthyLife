@@ -8,6 +8,7 @@
 <div class="pt-70px pb-70px">
     <div class="container">
         <div class="row">
+            <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)"/>
             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                 <img class="m-auto" style="width: 570px; height: 475px; border-radius: 8px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)"/>
             </div>
@@ -49,6 +50,7 @@
                     </div>
                     <div class="pro-details-quality">
                         <div class="pro-details-cart">
+                            <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
                             <button class="add-cart">ДОДАТИ ДО КОШИКА</button>
                         </div>
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
@@ -61,7 +63,7 @@
                         </div>
                         <div class="tab-content description-review-bottom">
                             <div id="des-details1" class="tab-pane active">
-                                <div class="product-description-wrapper" style="margin-top: 5px">
+                                <div class="product-description-wrapper" style="margin-top: 5px; margin-bottom: 50px;">
                                     <p>@Html.DisplayFor(model => model.CourseDescription)</p>
                                 </div>
                             </div>
@@ -151,3 +153,4 @@
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>*@
+

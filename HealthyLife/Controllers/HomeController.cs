@@ -20,8 +20,8 @@ namespace HealthyLife.Controllers
         }
 
         public async Task<IActionResult> Index()
-        {
-            var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
+        {            
+            var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);            
             return View(await applicationDbContext.ToListAsync());
         }
         public IActionResult Privacy()

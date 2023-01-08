@@ -8,11 +8,17 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using HealthyLife.Data;
 using HealthyLife.Models;
-
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace HealthyLife.Controllers
 {
-    [Authorize]
+    public class StatInfo
+    {
+        public int Count { get; set; } 
+        public decimal Cost { get; set; }
+    }
+
+    [AllowAnonymous]
     public class UserOrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,10 +28,47 @@ namespace HealthyLife.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public StatInfo GetStatInfo()
+        {
+            var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            if (currentUser == null)
+            {
+                return new StatInfo() { Count = 0, Cost = 0 };
+            }
+            else
+            {
+                int count = 0;
+                decimal cost = 0;
+
+                var currentUserOrders = _context.UserOrders.Include(u => u.ApplicationUser).Include(u => u.Course).Where(u => u.ApplicationUser.UserName == User.Identity.Name).ToList();
+                foreach (var userOrder in currentUserOrders)
+                {
+                    count++;
+                    cost += userOrder.Course.Price;
+                }
+                return new StatInfo() { Count = count, Cost = cost };
+            }
+        }
+
+        [HttpPost]
+        public StatInfo AddCourseToCart(int courseId)
+        {
+            var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).First();
+            _context.UserOrders.Add(new UserOrder()
+            {
+                UserId = currentUser.Id,
+                CourseId = courseId
+            });
+            _context.SaveChanges();
+            return GetStatInfo();
+        }
+
         // GET: UserOrders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.UserOrders.Include(u => u.ApplicationUser).Include(u => u.Course);
+            var applicationDbContext = _context.UserOrders.Include(u => u.ApplicationUser).Include(u => u.Course).Include(u => u.Course.Aurhor).Include(u => u.Course.Subject).Where(u => u.ApplicationUser.UserName == User.Identity.Name);
             return View(await applicationDbContext.ToListAsync());
         }
 
