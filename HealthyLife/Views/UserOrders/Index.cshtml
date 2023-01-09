@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<HealthyLife.Models.UserOrder>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Кошик";
 }
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -25,7 +22,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Course.CourseDescription)
+                @Html.DisplayFor(model => item.Course.CourseDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApplicationUser.Id)
