@@ -1,5 +1,6 @@
 using HealthyLife.Data;
 using HealthyLife.Models;
+using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +38,11 @@ builder.Services.AddAuthentication()
 {
     microsoftOptions.ClientId = config["Authentication:Microsoft:ClientId"];
     microsoftOptions.ClientSecret = config["Authentication:Microsoft:ClientSecret"];
+})
+.AddTwitter(twitterOptions => 
+{
+    twitterOptions.ConsumerKey = builder.Configuration["Authentication:Twitter:ConsumerAPIKey"];
+    twitterOptions.ConsumerSecret = builder.Configuration["Authentication:Twitter:ConsumerSecret"];
 });
 
 var app = builder.Build();
@@ -52,7 +58,7 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseAuthentication();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

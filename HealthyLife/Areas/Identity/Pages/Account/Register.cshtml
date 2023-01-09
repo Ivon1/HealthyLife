@@ -3,11 +3,14 @@
 @{
     ViewData["Title"] = "Реєстрація";
 }
-@*<style>
-    *{
-        border:1px solid red;
-    }
-</style>*@
+<style>
+    /**{
+        border: 1px solid red;
+    }*/
+</style>
+
+<link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+
 <div style="width: 100%; height: 60px; background: rgb(44,52,71);
         background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);"
         class="position-relative">
@@ -63,9 +66,10 @@
             </tr>
             <tr>
                 <th>
-                    <a href="" style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                    <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.DisplayName == "Twitter")?.Name"
+                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
                         <img src="~/img/icons/twitter_icon.png" height="24px" width="24px"/>
-                    </a>
+                    </button>
                 </th>
 
                 <td>
@@ -97,129 +101,92 @@
         </h3>
 
         <div class="row">
-           <h3 style="color:#F47C50; width: 6.45px; height: 6.62px;" class="col-1">*</h3>
-           <h3 style="font-style: normal; font-weight: 400;font-size: 15px;line-height: 15px;
-                color: #808080; margin-top:5px" class="col-10">- обов’язкові поля для заповнення</h3>
+           <h3 style="color:#F47C50;" class="col-1">*</h3>
+           <h3 class="col-8 label" style="margin-left:-15px">- обов’язкові поля для заповнення</h3>
         </div>
 
         <form id="account" method="post" style="margin-top: 20px">
-
-            <style>
-                .input-in-form{
-                    width: 350px;
-                    height: 51px;
-                    border: 2px solid #808080;
-                    border-radius: 7px;
-                    text-indent: 10px;
-                }
-
-                .my-btn-register {
-                    width: 350px;
-                    height: 48px;
-                    box-shadow: 3px 3px #808080;
-                    border: 3px solid grey;
-                    border-radius: 10px;
-                    background-color: #1A9F83;
-                    color: #FFFFFF;
-                    transition: 0.5s;
-                    text-align: center;
-                    display:flex; 
-                    align-items:center; 
-                    justify-content: center;
-                    font-weight: 400;
-                    font-size: 22px;
-                    line-height: 22px;
-                }
-                .my-btn-register:hover {
-                    box-shadow: 0px 0px;
-                    transition: 0.5s;
-                }
-            </style>
-
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert" id="alert-text"></div>
             <div class="form-floating mb-3">
 
-                <div class="row" style="margin-left: 10px">   
-                   <h3 style="font-style: normal; font-weight: 400;font-size: 20px;line-height: 20px;
-                        color: #808080; margin-top:5px" class="col-1">Ім’я</h3>
-                   <h3 style="color:#F47C50; width: 6.45px; height: 6.62px;" class="col-1">*</h3>
+                <div class="row" style="margin-left: 5px; width: 335px">   
+                   <h3 class="col-2 label">Ім’я</h3>
+                   <h3 style="color:#F47C50;" class="col-1">*</h3>
+                   <h3 style="color:#F25564; direction: rtl;" class="col-9 label" id="name-res">введіть ім’я</h3>
                 </div>
-                <input asp-for="Input.FirstName" class="input-in-form" autocomplete="username" 
-                       aria-required="true" />
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                <input asp-for="Input.FirstName" class="input-reg text ml-auto" autocomplete="username" 
+                       aria-required="true" required id="name-input" placeholder="Марк"/>
 
             </div>
             <div class="form-floating mb-3">
 
-                <div class="row" style="margin-left: 10px">   
-                   <h3 style="font-style: normal; font-weight: 400;font-size: 20px;line-height: 20px;
-                        color: #808080; margin-top:5px" class="col-1">Прізвище</h3>
-                   <h3 style="color:#F47C50; width: 6.45px; height: 6.62px; margin-left:30px" class="col-1">*</h3>
+                <div class="row" style="margin-left: 5px; width: 335px">   
+                   <h3 class="col-3 label">Прізвище</h3>
+                   <h3 style="color:#F47C50;" class="col-1">*</h3>
+                   <h3 style="color:#F25564; direction: rtl;" class="col-8 label" id="lastname-res">введіть призвіще</h3>
                 </div>
 
-                <input asp-for="Input.LastName" class="input-in-form" autocomplete="username" 
-                       aria-required="true"/>
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                <input asp-for="Input.LastName" class="input-reg text" autocomplete="username" 
+                       aria-required="true" required id="last-name-input" placeholder="Цукерберг"/>
             </div>
 
             <div class="form-floating mb-3">
 
-                <div class="row" style="margin-left: 10px">   
-                   <h3 style="font-style: normal; font-weight: 400;font-size: 20px;line-height: 20px;
-                        color: #808080; margin-top:5px" class="col-1">Пошта</h3>
-                   <h3 style="color:#F47C50; width: 6.45px; height: 6.62px; margin-left:10px" class="col-1">*</h3>
+                <div class="row" style="margin-left: 5px; width: 335px">   
+                    <label class="col-2 label">Пошта</label>
+                    <h3 style="color:#F47C50;" class="col-1">*</h3>
+                    <h3 style="color:#F25564; direction: rtl;" class="col-9 label" 
+                        id="email-res">введіть пошту</h3>
                 </div>
 
-                <input asp-for="Input.Email" class="input-in-form" autocomplete="username" 
-                       aria-required="true"/>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <input asp-for="Input.Email" class="input-reg text" autocomplete="username" 
+                       aria-required="true" required id="email-input-reg" placeholder="name@example.com"/>
 
             </div>
 
             <div class="form-floating mb-3">
 
-                <div class="row" style="margin-left: 10px">   
-                   <h3 style="font-style: normal; font-weight: 400;font-size: 20px;line-height: 20px;
-                        color: #808080; margin-top:5px" class="col-1">Пароль</h3>
-                   <h3 style="color:#F47C50; width: 6.45px; height: 6.62px; margin-left:15px" class="col-1">*</h3>
+                <div class="row" style="margin-left: 5px; width: 335px">   
+                   <h3 class="col-2 label">Пароль</h3>
+                   <h3 style="color:#F47C50;" class="col-1">*</h3>
+                   <h3 style="color:#F25564; direction: rtl;" class="col-9 label" id="pass-res">введіть пароль</h3>
                 </div>
 
-                <input asp-for="Input.Password" class="input-in-form" autocomplete="current-password" 
-                       aria-required="true"/>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <input asp-for="Input.Password" class="input-reg text" autocomplete="current-password" 
+                       aria-required="true" id="passw-input" required />
 
             </div>
 
             <div class="form-floating mb-3">
 
-                <div class="row" style="margin-left: 10px">   
-                   <h3 style="font-style: normal; font-weight: 400;font-size: 20px;line-height: 20px;
-                        color: #808080; margin-top:5px" class="col-4">Повторити пароль</h3>
-                   <h3 style="color:#F47C50; width: 6.45px; height: 6.62px; margin-left: -15px" class="col-1">*</h3>
+                <div class="row" style="margin-left: 10px;width: 335px">   
+                   <h3 class="col-2 label">Повтор пароля</h3>
+                   <h3 style="color:#F47C50;" class="col-1">*</h3>
+                   <h3 style="color:#F25564; direction: rtl;" class="col-9 label" id="conf-pass-res">введіть повтор</h3>
                 </div>
 
-                <input asp-for="Input.ConfirmPassword" class="input-in-form" autocomplete="current-password" 
-                       aria-required="true"/>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <input asp-for="Input.ConfirmPassword" class="input-reg text" autocomplete="current-password" 
+                       aria-required="true" id="conf-pass-input" required/>
 
             </div>
 
             <div class="checkbox mb-3">
                 <label class="form-label">
-                    <input class="form-check-input" type="checkbox"/>
+                    <input class="form-check-input" type="checkbox" id="checkbox1"/>
                      Політика конфіденційності
                 </label>
             </div>
 
             <div class="checkbox mb-3">
                 <label class="form-label">
-                    <input class="form-check-input" type="checkbox"/>
+                    <input class="form-check-input" type="checkbox" id="checkbox2"/>
                      Правила спільноти
                 </label>
             </div>
 
             <div>
-                <button id="login-submit" type="submit" class="my-btn-register">
+                <button id="register-submit" type="submit" class="my-btn-register-disabled">
                     <text style="margin-top: 5px;">РЕЄСТРАЦІЯ</text>
                 </button>
             </div>

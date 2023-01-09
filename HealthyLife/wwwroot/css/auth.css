@@ -1,0 +1,125 @@
+﻿.text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.my-btn-login {
+    width: 299px;
+    height: 51px;
+    box-shadow: 3px 3px #808080;
+    border: 3px solid grey;
+    border-radius: 10px;
+    background-color: #1A9F83;
+    color: #FFFFFF;
+    transition: 0.5s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 22px;
+}
+
+.my-btn-login:hover {
+    box-shadow: 0px 0px;
+    transition: 0.5s;
+}
+
+.input-login {
+    width: 299px;
+    height: 51px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    color: gray;
+    border: 3px solid grey;
+    border-radius: 7px;
+    text-indent: 10px;
+    outline: none;
+}
+
+.error {
+    border: 3px solid #F25564 !important;
+    color: #F25564;
+}
+
+.ok-input {
+    border: 3px solid #1A9F83 !important;
+    color: #1A9F83;
+}
+
+.input-reg {
+    width: 350px;
+    height: 51px;
+    border: 3px solid #808080;
+    border-radius: 7px;
+    text-indent: 10px;
+    outline: none;
+}
+
+.input-reg::placeholder {
+    color: #999; /* изменение цвета текста */
+    font-size: 20px; /* изменение размера шрифта */
+    font-weight: bold; /* изменение толщины шрифта */
+}
+
+.my-btn-register {
+    width: 350px;
+    height: 48px;
+    box-shadow: 3px 3px #808080;
+    border: 3px solid grey;
+    border-radius: 10px;
+    background-color: #1A9F83;
+    color: #FFFFFF;
+    transition: 0.5s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 22px;
+}
+.my-btn-register-disabled {
+    width: 350px;
+    height: 48px;
+    box-shadow: 0px 0px #808080;
+    border: 3px solid grey;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    color: gray;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 22px;
+    pointer-events: none;
+}
+
+.my-btn-register:hover {
+    box-shadow: 0px 0px;
+    transition: 0.5s;
+}
+
+.label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #808080;
+    margin-top: 5px
+}
+
+.res-succ {
+    color: green;
+}
+
+.res-fail {
+    color: #F25564;
+}

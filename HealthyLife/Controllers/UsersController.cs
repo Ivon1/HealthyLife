@@ -99,5 +99,12 @@ namespace HealthyLife.Controllers
         {
             return View();
         }
+
+        [AllowAnonymous]
+        public JsonResult CheckEmail(string email)
+        {
+            bool exists = _db.Users.Any(u => u.Email == email);
+            return Json(new { exists });
+        }
     }
 }
