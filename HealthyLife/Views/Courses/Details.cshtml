@@ -54,7 +54,8 @@
                             <button class="add-cart">ДОДАТИ ДО КОШИКА</button>
                         </div>
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                            <a href="#" style="background-color: white; border: 2px solid #F7A121"><img src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" /></a>
+                            <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
+                            <button class="add-wishlist" style="background-color: white; border: 2px solid #F7A121"><img src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" /></button>
                         </div>
                     </div>
                     <div class="description-review-wrapper">
