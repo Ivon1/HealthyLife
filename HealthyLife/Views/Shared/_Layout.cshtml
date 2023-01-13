@@ -52,13 +52,22 @@
                                 asp-controller="Courses" asp-action="Index">КУРСИ
                             </a>
                         }
-
-                        <a class="nav-link text-dark nav-item-bordered" 
-                            style="width: 140px; height: 57px; display:flex; align-items:center; 
-                            justify-content: center;"
-                            asp-controller="Home" asp-action="Privacy">ТОП-20
-                        </a>
-
+                        @if(ViewData["Title"].Equals("Топ-20"))
+                        {
+                            <a class="nav-link text-dark disabled" 
+                                style="width: 141px; height: 58px; display:flex; align-items:center; 
+                                justify-content: center; background-color:#FFE1D2;padding: 10px ;
+                                    box-sizing: border-box; border: 1px solid #808080; border-radius: 10px;"
+                                asp-controller="Home" asp-action="TopTwenty">ТОП-20
+                            </a>
+                        }
+                        else {
+                            <a class="nav-link text-dark nav-item-bordered" 
+                                style="width: 140px; height: 57px; display:flex; align-items:center; 
+                                justify-content: center;"
+                                asp-controller="Home" asp-action="TopTwenty">ТОП-20
+                            </a>
+                        }
                         <a class="nav-link text-dark nav-item-bordered" 
                            style="width: 140px; height: 57px; display:flex; align-items:center; 
                            justify-content: center;"

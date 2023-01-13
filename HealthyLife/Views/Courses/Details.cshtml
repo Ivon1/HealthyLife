@@ -9,10 +9,10 @@
     <div class="container">
         <div class="row">
             <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)"/>
-            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
-                <img class="m-auto" style="width: 570px; height: 475px; border-radius: 8px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)"/>
+            <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                <img class="m-auto" style="width: 100%; height: 375px; border-radius: 8px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)"/>
             </div>
-            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-7 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="product-details-content quickview-content ml-25px">
                     <h2>@Html.DisplayFor(model => model.CourseName)</h2>
                     <div class="pricing-meta">
