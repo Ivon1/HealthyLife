@@ -1,23 +1,4 @@
-﻿.tabs {
-    float: right;
-    margin: 10px;
-}
-
-.content {
-    display: none;
-    padding-top: 20px;
-    position: absolute;
-}
-
-.tabs:active .content {
-    display: block;
-}
-
-.content:hover {
-    display: block;
-}
-
-.filter-hr {
+﻿.filter-hr {
     border: none;
     padding-left: 5%;
     color: black;

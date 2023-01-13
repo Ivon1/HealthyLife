@@ -1,0 +1,106 @@
+﻿@model IEnumerable<HealthyLife.Models.Course>
+@using Microsoft.AspNetCore.Html;
+
+@{
+    ViewData["Title"] = "Топ-20";
+}
+
+<div class="container">
+    <div style="width: 100%; display:flex; align-items:center;
+        justify-content: center; margin-top: 36px; margin-bottom: 40px">
+        <img src="~/img/icons/rate-top.jpg" width="40.47px" height="66.85px" style="margin-right:21.02px;
+            margin-bottom: 30px" />
+        <h3 style="font-weight:400; font-size: 65px; color: #2C3447">ТОП-20 КУРСІВ</h3>
+        <img src="~/img/icons/rate-top.jpg" width="40.47px" height="66.85px" style="margin-left:21.02px;
+            margin-bottom: 30px; transform: scaleX(-1);" />
+    </div>
+    @{int k=0;}
+    <div style="width: 100%; display: block; margin-top: 0px; margin-bottom: 20px;">
+        @foreach(var course in Model)
+        {
+            k++;
+            if (k == 20) break;
+            <div class="row" style="width: 100%; display: flex; margin-bottom: 20px">
+                <div class="col-md-4">
+                    <img style="border-radius: 10px; width: 100%; height: 245px" src="~/img/img_courses/@course.PathToPhoto" />
+                </div>
+                <div class="col-md-8">
+                    @if (k == 1) {
+                        <h2 style="margin-left: 2%; font-weight: 500"><span style="color: gold">@k місце</span> -  @course.CourseDescriptionShort.Replace("<br>", " ")</h2>
+                    }
+                    else if (k == 2) {
+                        <h2 style="margin-left: 2%; font-weight: 500"><span style="color: dimgray">@k місце</span> -  @course.CourseDescriptionShort.Replace("<br>", " ")</h2>
+                    }
+                    else if (k == 3) {
+                        <h2 style="margin-left: 2%; font-weight: 500"><span style="color: #cd7f32">@k місце</span> -  @course.CourseDescriptionShort.Replace("<br>", " ")</h2>
+                    }
+                    else {
+                        <h2 style="margin-left: 2%; font-weight: 500"><span style="color: #1A9F83">@k місце</span> -  @course.CourseDescriptionShort.Replace("<br>", " ")</h2>
+                    }
+                    <div style="display: flex; margin-left: 2%">
+                        <h3 style="font-weight: 400">Оцінка курсу:</h3>
+                        @if (course.Rating >= 0 && course.Rating < 0.5)
+                        {
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                        }
+                        @if (course.Rating >= 0.5 && course.Rating < 1.5)
+                        {
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                        }
+                        @if (course.Rating >= 1.5 && course.Rating < 2.5)
+                        {
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                        }
+                        @if (course.Rating >= 2.5 && course.Rating < 3.5)
+                        {
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                        }
+                        @if (course.Rating >= 3.5 && course.Rating < 4.5)
+                        {
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                        }
+                        @if (course.Rating >= 4.5 && course.Rating <= 5)
+                        {
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                        }
+                        <h3 style="font-weight: 400; margin-left: 2%; color: #F47C50">
+                            @{
+                                var rating = Math.Round(course.Rating, 1);
+                                @rating
+                            }
+                            / 5
+                        </h3>
+                    </div>
+                    <p style="font-weight: 400; margin-left: 2%; margin-bottom: 7px;">@course.CourseDescription</p>
+                    <a class="nav-link text-dark nav-item-bordered" style="width: 200px; height: 50px; font-weight: 400; font-size: 19px;" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                        <h3>ПЕРЕЙТИ ДО КУРСУ</h3>
+                    </a>
+                </div>                
+            </div>
+        }
+    </div>    
+</div>

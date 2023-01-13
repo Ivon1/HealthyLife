@@ -111,10 +111,17 @@ $(document).ready(function () {
         });
     });
 
-    $('.filter').click(function () {
-        $('.subject-list').css('display', 'flex');
-        $('.arrow').css('color', '#F25564');
-    });
+    $('#choiceSubject').click(function () {
+        if (!$(this).hasClass('clicked')) { // если класса нет
+            $(this).addClass('clicked');
+            $('.subject-list').css('display', 'flex');
+            $('.arrow').css('color', '#F25564');
+        } else {
+            $(this).removeClass('clicked');
+            $('.subject-list').css('display', 'none');
+            $('.arrow').css('color', '#808080');
+        }
+    });   
 
     // auth functions
     var nameCheck = false;

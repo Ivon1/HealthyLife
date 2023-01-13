@@ -28,7 +28,7 @@ namespace HealthyLife.Controllers
 
         // GET: Courses
         [AllowAnonymous]
-        public async Task<IActionResult> Index(string sortOrder, int? aid, int? sid, int page = 1)
+        public async Task<IActionResult> Index(string sortOrder, int? aid, List<int>? sid, int page = 1)
         {
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
             ViewData["NameDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name" : "name_desc";
@@ -65,8 +65,11 @@ namespace HealthyLife.Controllers
 
             if (aid != null && aid != 0)
                 courses = courses.Where(c => c.AuthorId == aid);
-            if (sid != null && sid != 0)
-                courses = courses.Where(c => c.SubjectId == sid);
+            if (sid != null && sid.Any())
+            {
+                courses = courses.Where(c => sid.Contains(c.SubjectId));
+                ViewData["sid"] = courses.Where(c => sid.Contains(c.SubjectId));
+            }
 
             List<Author> authors = _context.Authors.ToList();
             List<Subject> subjects = _context.Subjects.ToList();            
