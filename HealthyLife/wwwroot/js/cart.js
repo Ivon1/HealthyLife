@@ -1,4 +1,4 @@
-﻿$(document).ready(() => {        
+﻿$(document).ready(() => {
     $.ajax({
         type: 'POST',
         url: '/UserOrders/GetStatInfo',
@@ -9,8 +9,7 @@
             if (result.count > 0) {
                 $('#cartItemsCount').html(result.count);
                 $('#cost').html(result.cost);
-                $('#cartItemsCount').css('display', 'block');
-                $('#cost').css('display', 'block');
+                $('#cartItemsCount').css('display', 'block');                
             }            
         }
     });
@@ -32,7 +31,6 @@
                 $('#cost').html(result.cost);
             }
         });
-        $('#cartItemsCount').css('display', 'block');
-        $('#cost').css('display', 'block');
+        $('#cartItemsCount').css('display', 'block');        
     });
 });

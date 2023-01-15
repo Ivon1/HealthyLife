@@ -61,6 +61,20 @@ namespace HealthyLife.Controllers
             return GetStatInfo();
         }
 
+        [HttpPost]
+        public StatInfo2 DeleteCourseToWishList(int courseId)
+        {
+            var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).First();
+            var userWish = _context.UserWishes
+                .Include(u => u.ApplicationUser)
+                .Include(u => u.Course)
+                .Include(u => u.Course.Aurhor)
+                .Include(u => u.Course.Subject).Where(u => u.CourseId == courseId && u.ApplicationUser == currentUser).FirstOrDefault();
+            _context.UserWishes.Remove(userWish);
+            _context.SaveChanges();
+            return GetStatInfo();
+        }
+
         // GET: UserWishes
         public async Task<IActionResult> Index()
         {
@@ -79,6 +93,8 @@ namespace HealthyLife.Controllers
             var userWish = await _context.UserWishes
                 .Include(u => u.ApplicationUser)
                 .Include(u => u.Course)
+                .Include(u => u.Course.Aurhor)
+                .Include(u => u.Course.Subject)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (userWish == null)
             {
@@ -180,6 +196,8 @@ namespace HealthyLife.Controllers
             var userWish = await _context.UserWishes
                 .Include(u => u.ApplicationUser)
                 .Include(u => u.Course)
+                .Include(u => u.Course.Aurhor)
+                .Include(u => u.Course.Subject)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (userWish == null)
             {

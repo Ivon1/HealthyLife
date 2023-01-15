@@ -7,513 +7,503 @@
 @{
     ViewData["Title"] = "Каталог";
 }
-
-<div style="width: 100%; height: 164px; background: rgb(198,62,62);
-     background: linear-gradient(90deg, rgba(198,62,62,1) 0%, rgba(244,124,80,1) 54%, rgba(244,124,80,1) 100%);">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <img src="~/img/icons/logo_catalog.png" width="192px" height="164px" />
-            </div>
-            <div class="col-md-8" style="display:flex; align-items:center; justify-content: center;">
-                <h3 style="font-weight: 500;font-size: 50px;color: #FFFFFF;line-height: 50px;">
-                    Nam morbi libero adipiscing dolor mauris id dictumst.
-                </h3>
-                <h4 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;color: #FFFFFF;">
-                    Accumsan, odio leo dui ante mattis tellus lectus. Leo bibendum orci mauris, rhoncus tellus et nunc.
-                </h4>
-            </div>
-            <div class="col-md-2" style="display:flex; align-items:center; justify-content: center; margin: 0; padding: 0">
-                <a class="nav-link nav-item-bordered"
-                   style="width: 100%; height: 57px; display:flex; align-items:center; justify-content: center; margin-right: 0px;
-                   background-color: #FFFFFF; color:#2C3447"
-                   href="#">
-                    <h3 style="font-weight: 500;font-size: 30px;line-height: 30px;
-                        text-align: center;text-transform: uppercase;color: #2C3447">
-                        ХЕКА+
+<div style="width: 100%; min-height: 100vh">
+    <div style="width: 100%; height: 164px; background: rgb(198,62,62);
+         background: linear-gradient(90deg, rgba(198,62,62,1) 0%, rgba(244,124,80,1) 54%, rgba(244,124,80,1) 100%);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="~/img/icons/logo_catalog.png" width="192px" height="164px" />
+                </div>
+                <div class="col-md-10" style="display:flex; align-items:center; justify-content: center;">
+                    <h3 style="font-weight: 500;font-size: 45px;color: #FFFFFF;line-height: 45px; text-align: center;">
+                        Найцінніший плід здоров’я – можливість отримувати задоволення.<br />(М.Монтень)
                     </h3>
-                </a>
+                    <h4 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;color: #FFFFFF; text-align: center">
+                        Здоровому і нездорове здорово, а нездоровому і здоров’я нездорово.<br />(Народна мудрість)
+                    </h4>
+                </div>
+                @*<div class="col-md-2" style="display:flex; align-items:center; justify-content: center; margin: 0; padding: 0">
+                    <a class="nav-link nav-item-bordered"
+                       style="width: 100%; height: 57px; display:flex; align-items:center; justify-content: center; margin-right: 0px;
+                       background-color: #FFFFFF; color:#2C3447"
+                       href="#">
+                        <h3 style="font-weight: 500;font-size: 30px;line-height: 30px;
+                            text-align: center;text-transform: uppercase;color: #2C3447">
+                            ХЕКА+
+                        </h3>
+                    </a>
+                </div>*@
             </div>
         </div>
     </div>
-</div>
 
-<div style="width: 100%; height: 130px; background: rgb(44,52,71);
-        background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2" style="display:flex; align-items:center; justify-content: center;">
-                <a class="nav-link nav-item-bordered"
-                   style="width: 220px; height: 70px; display:flex; align-items:center; justify-content: center;
-               background-color: #FFFFFF; color:#2C3447"
-                   href="#">
-                    <h3 style="font-weight: 500;font-size: 25px;line-height: 25px;text-align: center;
-                    text-transform: uppercase;color: #2C3447;">
-                        ОБМІНЯТИ СЕРТИФІКАТ
+    <div style="width: 100%; height: 130px; background: rgb(44,52,71);
+            background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);">
+        <div class="container">
+            <div class="row">                
+                <div class="col-md-10" style="text-align: right; display:flex; align-items:center; justify-content: center; padding: 5px 5px 5px 0">
+                    <h3 style="font-weight: 500;font-size: 40px;line-height: 40px;text-align: center;color: #FFFFFF;">
+                        Якщо людина сама стежить за своїм здоров’ям, то важко знайти лікаря, який знав би краще корисне для її здоров’я, ніж вона сама. (Сократ)
                     </h3>
-                </a>
-            </div>
-            <div class="col-md-8" style="text-align: right; display:flex; align-items:center; justify-content: center;">
-                <h3 style="font-weight: 500;font-size: 45px;line-height: 45px;text-align: right;color: #FFFFFF;">
-                    Nam morbi libero adipiscing dolor mauris id dictumst.
-                </h3>
-                <h4 style="font-style: normal;font-weight: 500;font-size: 25px;line-height: 25px;text-align: right;color: #FFFFFF;">
-                    Accumsan, odio leo dui ante mattis tellus lectus. Leo bibendum orci mauris, rhoncus tellus et nunc.
-                </h4>
-            </div>
+                    <h4 style="font-style: normal;font-weight: 500;font-size: 25px;line-height: 25px; margin-left: 10%; text-align: center;color: #FFFFFF;">
+                        Немає друга, подібного здоров’ю, немає ворога, подібного хворобі. (Староіндійське висловлювання)
+                    </h4>
+                </div>
 
-            <div class="col-md-2">
-                <img src="~/img/icons/logo_catalog1.png" width="112px" height="130px" style="float: right;"/>
+                <div class="col-md-2">
+                    <img src="~/img/icons/logo_catalog1.png" width="112px" height="130px" style="float: right;"/>
+                </div>
             </div>
         </div>
-    </div>
     
-</div>
+    </div>
 
-<div style="width: 100%; height: 145px; background: rgb(205,112,121);
-    background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%); display: flex;">
-    <div class="container">        
-            <div class="row" style="height: 145px; display: flex; justify-content: center; align-items: center;">
-            <form method="get" style="display: flex">
-                <div class="col-md-3" style="padding: 0px 5px">                
-                    <button type="button" id="choiceSubject" class="nav-link nav-item-bordered" style="width: 100%; position: sticky; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
-                        ОБЕРІТЬ ТЕМАТИКУ<i class="fa fa-arrow-circle-down arrow" style="float: right; font-size: 40px; padding-right: 10px"></i>
-                    </button>
-                    <div class="row subject-list" style="display: none; width: 42.5%; border: 1px solid #808080; border-radius: 20px; background-color: white; position: absolute; float: right; z-index: 100">
-                        <h4 style="font-weight: 500; font-size: 26px; margin: 7px; padding: 10px">ТЕМАТИКА КУРСУ (ПОШУК ЗА ТЕГАМИ)</h4>
-                        <hr class="filter-hr">
-                        @foreach (var s in Model.Subjects)
+    <div style="width: 100%; height: 145px; background: rgb(205,112,121);
+        background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%); display: flex;">
+        <div class="container">        
+                <div class="row" style="height: 145px; display: flex; justify-content: center; align-items: center;">
+                <form method="get" style="display: flex">
+                    <div class="col-md-3" style="padding: 0px 5px">                
+                        <button type="button" id="choiceSubject" class="nav-link nav-item-bordered" style="width: 100%; position: sticky; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
+                            ОБЕРІТЬ ТЕМАТИКУ<i class="fa fa-arrow-circle-down arrow" style="float: right; font-size: 40px; padding-right: 10px"></i>
+                        </button>
+                        <div class="row subject-list" style="display: none; width: 42.5%; border: 1px solid #808080; border-radius: 20px; background-color: white; position: absolute; float: right; z-index: 100">
+                            <h4 style="font-weight: 500; font-size: 26px; margin: 7px; padding: 10px">ТЕМАТИКА КУРСУ (ПОШУК ЗА ТЕГАМИ)</h4>
+                            <hr class="filter-hr">
+                            @foreach (var s in Model.Subjects)
+                            {
+                                <div class="col-md-6" style="display: flex">                                
+                                    <input name="sid" id="@s.Id" type="checkbox" style="border-radius: 10px; padding: 7px" value="@s.Id" />                                
+                                    <h5 style="font-weight: 400; font-size: 20px; margin: 7px; padding: 5px;">
+                                        @{
+                                            HtmlString subject = new HtmlString(s.SubjectName);
+                                        }@subject
+                                    </h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 5px">
+                        <button type="button" class="nav-link nav-item-bordered" style="width: 100%; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
+                            ТРИВАЛІСТЬ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-3" style="padding: 0px 5px">
+                        <button type="button" class="nav-link nav-item-bordered" style="width: 100%; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
+                            ВАРТІСТЬ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2 justify-content-center align-items-center" style="padding: 0px 5px">
+                        <button type="submit" class="nav-link nav-item-bordered" style="width: 100%; height: 70px; margin-left: 0px; margin-right: 10%; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564; color: white; font-size: 27px; text-align: center; padding-bottom: 10px">
+                            ЗНАЙТИ
+                        </button>
+                    </div>
+                    <div class="col-md-1" style="padding: 0px 5px">
+                        <button type="button" class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-left: 0px; padding-bottom: 15px; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564;">
+                            <img src="~/img/icons/filter.png" style="width: 55%; height: 40px" />
+                        </button>
+                    </div>
+                </form>
+            </div>
+        
+        </div>
+    </div>
+
+    <div class="container" style="width: 100%; height: 84px;">
+        <div style="margin-top: 26px; text-align: right; display: flex">
+            <div style="text-align: left; width: 20%">
+                <button class="dropdown-toggle" style="width: 100%; height: 55px; padding: 5px 15px; color: #808080; font-size: 28px; border: 3px solid #1A9F83; border-radius: 15px" data-bs-toggle="dropdown">ЗА ЗАМОВЧУВАННЯМ</button>
+                <ul class="dropdown-menu dropdown-menu-left">
+                    <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">За алфавітом</a></li>
+                    <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameDescSortParm"]">За зворотнім алфавітом</a></li>
+                    <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">Від дешевих до дорогих</a></li>
+                    <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceDescSortParm"]">Від дорогих до дешевих</a></li>
+                    <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["RatingSortParm"]">За зростанням рейтингу</a></li>
+                    <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["RatingDescSortParm"]">За спаданням рейтингу</a></li>
+                </ul>
+            </div>
+            <div style="text-align: right; width: 80%">
+                <button class="nav-item-bordered" id="list" style="width: 55px; height: 55px; margin-right: 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 10px">
+                    <img style="width: 90%; height: 30px;" src="~/img/icons/list.png" class="list-image" />
+                </button>
+                <button class="nav-item-bordered" id="grid3" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 10px">
+                    <img style="width: 95%; height: 30px;" src="~/img/icons/grid3-active.png" class="grid3-image" />
+                </button>
+                <button class="nav-item-bordered" id="grid4" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 10px">
+                    <img style="width: 90%; height: 30px;" src="~/img/icons/grid4.png" class="grid4-image" />
+                </button>
+                <button class="nav-item-bordered" id="grid5" style="width: 55px; height: 55px; margin-left: 12px; padding-top: 2px; margin-bottom: 20px; margin-right: 0px; border: 3px solid #1A9F83; border-radius: 10px">
+                    <img style="width: 90%; height: 30px;" src="~/img/icons/grid5.png" class="grid5-image" />
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="width: 100%;">
+        <div class="row grid-div">
+            @foreach (var course in Model.Courses)
+            {
+                <div class="col-md-4 course" style="margin-top: 20px;">
+                    <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto');">                    
+                        @if (course.Price.Equals(-1))
                         {
-                            <div class="col-md-6" style="display: flex">                                
-                                <input name="sid" id="@s.Id" type="checkbox" style="border-radius: 10px; padding: 7px" value="@s.Id" />                                
-                                <h5 style="font-weight: 400; font-size: 20px; margin: 7px; padding: 5px;">
-                                    @{
-                                        HtmlString subject = new HtmlString(s.SubjectName);
-                                    }@subject
-                                </h5>
-                            </div>
+                            <a style="background-color: #F7A121;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
                         }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a style="background-color: #F47C50;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
+                        }
+
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ХЕКА+</h3>
+                            </a>
+
+                        }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 25%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
+                            </a>
+                        }
+                        else
+                        {
+                            <a style="background-color: #F47C50; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 28%; top: 5px; color: #FFFFFF">
+                                    @{
+                                        var price = Convert.ToInt16(course.Price).ToString();
+                                    }
+                                    @price ₴
+                                </h3>
+                            </a>
+                        }
+
+                        <img src="~/img/icons/white.png" width="100%" height="145px" style="margin-top: 148px;
+                                    filter: alpha(Opacity=90);opacity: 0.90;
+                                    border-radius: 0% 0% 20px 20px" />
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+                        else if (course.Price > 0)
+                        {
+                            <a style="background-color: #F47C50; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+
+                        <h4 style="font-weight: 400; font-size:25px; margin-top: -130px; position: absolute; margin-left:23px">
+                            @{
+                                HtmlString str = new HtmlString(course.CourseDescriptionShort);
+                                @str
+                            }
+                        </h4>
+                        <input type="hidden" class="courseId" value="@course.Id" />
+                        <img src="~/img/icons/hear_ico.png" class="add-wishlist" width="23px" height="20px" style="position: absolute;
+                         right: 5%; bottom: 32%; id="like-item"
+                         onmouseover="hover(this);" onmouseout="unhover(this);" />
                     </div>
                 </div>
-                <div class="col-md-3" style="padding: 0px 5px">
-                    <button type="button" class="nav-link nav-item-bordered" style="width: 100%; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
-                        ТРИВАЛІСТЬ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
-                    </button>
-                </div>
-                <div class="col-md-3" style="padding: 0px 5px">
-                    <button type="button" class="nav-link nav-item-bordered" style="width: 100%; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: 27px; text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
-                        ВАРТІСТЬ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
-                    </button>
-                </div>
-                <div class="col-md-2 justify-content-center align-items-center" style="padding: 0px 5px">
-                    <button type="submit" class="nav-link nav-item-bordered" style="width: 100%; height: 70px; margin-left: 0px; margin-right: 10%; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564; color: white; font-size: 27px; text-align: center; padding-bottom: 10px">
-                        ЗНАЙТИ
-                    </button>
-                </div>
-                <div class="col-md-1" style="padding: 0px 5px">
-                    <button type="button" class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-left: 0px; padding-bottom: 15px; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564;">
-                        <img src="~/img/icons/filter.png" style="width: 55%; height: 40px" />
-                    </button>
-                </div>
-            </form>
+            }
         </div>
-        
-    </div>
-</div>
-
-<div class="container" style="width: 100%; height: 84px;">
-    <div style="margin-top: 26px; text-align: right; display: flex">
-        <div style="text-align: left; width: 20%">
-            <button class="dropdown-toggle" style="width: 100%; height: 55px; padding: 5px 15px; color: #808080; font-size: 28px; border: 3px solid #1A9F83; border-radius: 15px" data-bs-toggle="dropdown">ЗА ЗАМОВЧУВАННЯМ</button>
-            <ul class="dropdown-menu dropdown-menu-left">
-                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">За алфавітом</a></li>
-                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameDescSortParm"]">За зворотнім алфавітом</a></li>
-                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">Від дешевих до дорогих</a></li>
-                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceDescSortParm"]">Від дорогих до дешевих</a></li>
-                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["RatingSortParm"]">За зростанням рейтингу</a></li>
-                <li><a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["RatingDescSortParm"]">За спаданням рейтингу</a></li>
-            </ul>
-        </div>
-        <div style="text-align: right; width: 80%">
-            <button class="nav-item-bordered" id="list" style="width: 55px; height: 55px; margin-right: 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 10px">
-                <img style="width: 90%; height: 30px;" src="~/img/icons/list.png" class="list-image" />
-            </button>
-            <button class="nav-item-bordered" id="grid3" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 10px">
-                <img style="width: 95%; height: 30px;" src="~/img/icons/grid3-active.png" class="grid3-image" />
-            </button>
-            <button class="nav-item-bordered" id="grid4" style="width: 55px; height: 55px; margin: 0 12px; padding-top: 2px; border: 3px solid #1A9F83; border-radius: 10px">
-                <img style="width: 90%; height: 30px;" src="~/img/icons/grid4.png" class="grid4-image" />
-            </button>
-            <button class="nav-item-bordered" id="grid5" style="width: 55px; height: 55px; margin-left: 12px; padding-top: 2px; margin-bottom: 20px; margin-right: 0px; border: 3px solid #1A9F83; border-radius: 10px">
-                <img style="width: 90%; height: 30px;" src="~/img/icons/grid5.png" class="grid5-image" />
-            </button>
-        </div>
-    </div>
-</div>
-<div class="container" style="width: 100%;">
-    <div class="row grid-div">
-        @foreach (var course in Model.Courses)
-        {
-            <div class="col-md-4 course" style="margin-top: 20px;">
-                <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto');">                    
-                    @if (course.Price.Equals(-1))
-                    {
-                        <a style="background-color: #F7A121;
-                                        height: 36px; width: 37px; border-bottom-right-radius: 20px;
-                                        position: absolute; border-top-left-radius: 20px; padding: 20px"
-                   asp-action="Details" asp-route-id="@course.Id">
-                            <img src="~/img/icons/I.png" width="20px" height="20px"
-                         style="position: absolute; left: 10px; top: 10px" />
-                        </a>
-                    }
-                    else if (course.Price.Equals(0))
-                    {
-                        <a style="background-color: #1A9F83;
-                                        height: 36px; width: 37px; border-bottom-right-radius: 20px;
-                                        position: absolute; border-top-left-radius: 20px; padding: 20px"
-                   asp-action="Details" asp-route-id="@course.Id">
-                            <img src="~/img/icons/I.png" width="20px" height="20px"
-                         style="position: absolute; left: 10px; top: 10px" />
-                        </a>
-                    }
-                    else
-                    {
-                        <a style="background-color: #F47C50;
-                                        height: 36px; width: 37px; border-bottom-right-radius: 20px;
-                                        position: absolute; border-top-left-radius: 20px; padding: 20px"
-                   asp-action="Details" asp-route-id="@course.Id">
-                            <img src="~/img/icons/I.png" width="20px" height="20px"
-                         style="position: absolute; left: 10px; top: 10px" />
-                        </a>
-                    }
-
-                    @if (course.Price.Equals(-1))
-                    {
-                        <a style="background-color: #F7A121; position: absolute;
-                                        height: 36px; width: 112px; border-bottom-left-radius: 20px;
-                                        border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                        text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ХЕКА+</h3>
-                        </a>
-
-                    }
-                    else if (course.Price.Equals(0))
-                    {
-                        <a style="background-color: #1A9F83; position: absolute;
-                                        height: 36px; width: 112px; border-bottom-left-radius: 20px;
-                                        border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                        text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 25%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
-                        </a>
-                    }
-                    else
-                    {
-                        <a style="background-color: #F47C50; position: absolute;
-                                        height: 36px; width: 112px; border-bottom-left-radius: 20px;
-                                        border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                        text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 28%; top: 5px; color: #FFFFFF">
-                                @{
-                                    var price = Convert.ToInt16(course.Price).ToString();
-                                }
-                                @price ₴
-                            </h3>
-                        </a>
-                    }
-
-                    <img src="~/img/icons/white.png" width="100%" height="145px" style="margin-top: 148px;
-                                filter: alpha(Opacity=90);opacity: 0.90;
-                                border-radius: 0% 0% 20px 20px" />
-                    @if (course.Price.Equals(-1))
-                    {
-                        <a style="background-color: #F7A121; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
-                    else if (course.Price.Equals(0))
-                    {
-                        <a style="background-color: #1A9F83; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
-                    else if (course.Price > 0)
-                    {
-                        <a style="background-color: #F47C50; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
-
-                    <h4 style="font-weight: 400; font-size:25px; margin-top: -130px; position: absolute; margin-left:23px">
-                        @{
-                            HtmlString str = new HtmlString(course.CourseDescriptionShort);
-                            @str
+        <div class="list-div" style="display: none">
+            @foreach (var course in Model.Courses)
+            {
+                <div style="margin-top: 35px; margin-bottom: 20px; height: 295px" class="row product-card-list">
+                    <div class="col-4" style="position:sticky; left: 0; margin: 0; padding: 0">
+                        <img style="border-radius: 10px; width: 100%; position:absolute; height: 295px; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.PathToPhoto" />
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
                         }
-                    </h4>
-                    <input type="hidden" class="courseId" value="@course.Id" />
-                    <img src="~/img/icons/hear_ico.png" class="add-wishlist" width="23px" height="20px" style="position: absolute;
-                     right: 5%; bottom: 32%; id="like-item"
-                     onmouseover="hover(this);" onmouseout="unhover(this);" />
-                </div>
-            </div>
-        }
-    </div>
-    <div class="list-div" style="display: none">
-        @foreach (var course in Model.Courses)
-        {
-            <div style="margin-top: 35px; margin-bottom: 20px; height: 295px" class="row product-card-list">
-                <div class="col-4" style="position:sticky; left: 0; margin: 0; padding: 0">
-                    <img style="border-radius: 10px; width: 100%; position:absolute; height: 295px; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.PathToPhoto" />
-                    @if (course.Price.Equals(-1))
-                    {
-                        <a style="background-color: #F7A121;
-                                        height: 36px; width: 37px; border-bottom-right-radius: 20px;
-                                        position: absolute; border-top-left-radius: 20px; padding: 20px"
-                   asp-action="Details" asp-route-id="@course.Id">
-                            <img src="~/img/icons/I.png" width="20px" height="20px"
-                         style="position: absolute; left: 10px; top: 10px" />
-                        </a>
-                    }
-                    else if (course.Price.Equals(0))
-                    {
-                        <a style="background-color: #1A9F83;
-                                        height: 36px; width: 37px; border-bottom-right-radius: 20px;
-                                        position: absolute; border-top-left-radius: 20px; padding: 20px"
-                   asp-action="Details" asp-route-id="@course.Id">
-                            <img src="~/img/icons/I.png" width="20px" height="20px"
-                         style="position: absolute; left: 10px; top: 10px" />
-                        </a>
-                    }
-                    else
-                    {
-                        <a style="background-color: #F47C50;
-                                        height: 36px; width: 37px; border-bottom-right-radius: 20px;
-                                        position: absolute; border-top-left-radius: 20px; padding: 20px"
-                   asp-action="Details" asp-route-id="@course.Id">
-                            <img src="~/img/icons/I.png" width="20px" height="20px"
-                         style="position: absolute; left: 10px; top: 10px" />
-                        </a>
-                    }
-                </div>
-                <div class="col-8" style="position:sticky; display: block; left: 0; margin: 0; padding: 0">
-                    <div class="row">
-                        <div class="col-md-12" style="position: sticky">
-                            <h4 style="font-weight: 500; font-size: 35px; position: absolute; margin-left: 5%; margin-top: 4%">
-                                @{
-                                    HtmlString str = new HtmlString(course.CourseDescriptionShort.Replace("<br>", ""));
-                                    @str
-                                }
-                            </h4>
-                        </div>
-                        <div class="row" style="margin-top: 10%">
-                            <div class="col-md-4" style="position: sticky; text-align: justify">
-                                <div style="display: flex; margin-top: 3%">
-                                    @if (course.Rating >= 0 && course.Rating < 0.5)
-                                    {
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 17%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                    }
-                                    @if (course.Rating >= 0.5 && course.Rating < 1.5)
-                                    {
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                    }
-                                    @if (course.Rating >= 1.5 && course.Rating < 2.5)
-                                    {
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                    }
-                                    @if (course.Rating >= 2.5 && course.Rating < 3.5)
-                                    {
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                    }
-                                    @if (course.Rating >= 3.5 && course.Rating < 4.5)
-                                    {
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                    }
-                                    @if (course.Rating >= 4.5 && course.Rating <= 5)
-                                    {
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                        <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
-                                    }
-                                    <h5 style="font-weight: 400; font-size: 17px; margin-left: 7%; color: #F47C50">
-                                        @{
-                                            var rating = Math.Round(course.Rating, 1);
-                                            @rating
-                                        }
-                                        / 5
-                                    </h5>
-                                </div>
-                                <div style="display: flex; margin-top: 4%">                                    
-                                    <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px; margin-left: 17%" />
-                                    <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
-                                        @{
-                                            var timesSelected = Convert.ToInt32(course.TimesSelected).ToString();
-                                            @timesSelected
-                                        }
-                                    </h5>
-                                    <img src="~/img/icons/likednumber.png" style="width: 19px; height: 19px; margin-left: 20%" />
-                                    <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
-                                        @{
-                                            var likedNumber = Convert.ToInt32(course.LikedNumber).ToString();
-                                            @likedNumber
-                                        }
-                                    </h5>
-                                </div>
-                                <div style="display: flex; margin-top: 1%; margin-bottom: 1%">
-                                    <img src="~/img/icons/duration.png" style="width: 19px; height: 19px; margin-left: 17%" />
-                                    <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
-                                        @{
-                                            HtmlString duration = new HtmlString(course.Duration);
-                                            @duration
-                                        }
-                                    </h5>
-                                </div>
-                                <h6 style="font-weight: 400; font-size: 16px; margin-left: 17%;">
-                                    АВТОР КУРСУ/СПІКЕР:<br>
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a style="background-color: #F47C50;
+                                            height: 36px; width: 37px; border-bottom-right-radius: 20px;
+                                            position: absolute; border-top-left-radius: 20px; padding: 20px"
+                       asp-action="Details" asp-route-id="@course.Id">
+                                <img src="~/img/icons/I.png" width="20px" height="20px"
+                             style="position: absolute; left: 10px; top: 10px" />
+                            </a>
+                        }
+                    </div>
+                    <div class="col-8" style="position:sticky; display: block; left: 0; margin: 0; padding: 0">
+                        <div class="row">
+                            <div class="col-md-12" style="position: sticky">
+                                <h4 style="font-weight: 500; font-size: 35px; position: absolute; margin-left: 5%; margin-top: 4%">
                                     @{
-                                        HtmlString author = new HtmlString(course.Aurhor.AuthorName);
-                                        @author
-                                    }
-                                </h6>
-                                <div style="display: flex; float: right; margin-right: 18%">
-                                    <button style="border: none" class="add-wishlist">
-                                        <input type="hidden" class="courseId" value="@course.Id" />
-                                        <img src="~/img/icons/hear_ico.png" style="width: 23px; height: 20px;" />
-                                    </button>                                   
-                                    <button style="margin-right: 5%; border: none" class="add-cart">
-                                        <input type="hidden" class="courseId" value="@course.Id" />
-                                        <img src="~/img/icons/cart-gray.png" style="width: 23px; height: 20px;" />
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-7" style="position: relative;  text-align: justify; border-left: 1px solid #808080; height: 170px">
-                                <h4 style="font-weight: 400; font-size:23px; margin-left: 5%">
-                                    @{
-                                        HtmlString str3 = new HtmlString(course.CourseDescription);
-                                        @str3
+                                        HtmlString str = new HtmlString(course.CourseDescriptionShort.Replace("<br>", ""));
+                                        @str
                                     }
                                 </h4>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="row" style="margin-top: 10%">
+                                <div class="col-md-4" style="position: sticky; text-align: justify">
+                                    <div style="display: flex; margin-top: 3%">
+                                        @if (course.Rating >= 0 && course.Rating < 0.5)
+                                        {
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 0.5 && course.Rating < 1.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 1.5 && course.Rating < 2.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 2.5 && course.Rating < 3.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 3.5 && course.Rating < 4.5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        @if (course.Rating >= 4.5 && course.Rating <= 5)
+                                        {
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
+                                        }
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 7%; color: #F47C50">
+                                            @{
+                                                var rating = Math.Round(course.Rating, 1);
+                                                @rating
+                                            }
+                                            / 5
+                                        </h5>
+                                    </div>
+                                    <div style="display: flex; margin-top: 4%">                                    
+                                        <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px; margin-left: 17%" />
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
+                                            @{
+                                                var timesSelected = Convert.ToInt32(course.TimesSelected).ToString();
+                                                @timesSelected
+                                            }
+                                        </h5>
+                                        <img src="~/img/icons/likednumber.png" style="width: 19px; height: 19px; margin-left: 20%" />
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
+                                            @{
+                                                var likedNumber = Convert.ToInt32(course.LikedNumber).ToString();
+                                                @likedNumber
+                                            }
+                                        </h5>
+                                    </div>
+                                    <div style="display: flex; margin-top: 1%; margin-bottom: 1%">
+                                        <img src="~/img/icons/duration.png" style="width: 19px; height: 19px; margin-left: 17%" />
+                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
+                                            @{
+                                                HtmlString duration = new HtmlString(course.Duration);
+                                                @duration
+                                            }
+                                        </h5>
+                                    </div>
+                                    <h6 style="font-weight: 400; font-size: 16px; margin-left: 17%;">
+                                        АВТОР КУРСУ/СПІКЕР:<br>
+                                        @{
+                                            HtmlString author = new HtmlString(course.Aurhor.AuthorName);
+                                            @author
+                                        }
+                                    </h6>
+                                    <div style="display: flex; float: right; margin-right: 18%">
+                                        <button style="border: none" class="add-wishlist">
+                                            <input type="hidden" class="courseId" value="@course.Id" />
+                                            <img src="~/img/icons/hear_ico.png" style="width: 23px; height: 20px;" />
+                                        </button>                                   
+                                        <button style="margin-right: 5%; border: none" class="add-cart">
+                                            <input type="hidden" class="courseId" value="@course.Id" />
+                                            <img src="~/img/icons/cart-gray.png" style="width: 23px; height: 20px;" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-7" style="position: relative;  text-align: justify; border-left: 1px solid #808080; height: 170px">
+                                    <h4 style="font-weight: 400; font-size:23px; margin-left: 5%">
+                                        @{
+                                            HtmlString str3 = new HtmlString(course.CourseDescription);
+                                            @str3
+                                        }
+                                    </h4>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
                         </div>
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ХЕКА+</h3>
+                            </a>
+
+                        }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 25%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
+                            </a>
+                        }
+                        else
+                        {
+                            <a style="background-color: #F47C50; position: absolute;
+                                            height: 36px; width: 112px; border-bottom-left-radius: 20px;
+                                            border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                            text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 28%; top: 5px; color: #FFFFFF">
+                                    @{
+                                        var price = Convert.ToInt16(course.Price).ToString();
+                                    }
+                                    @price ₴
+                                </h3>
+                            </a>
+                        }
+
+                        @if (course.Price.Equals(-1))
+                        {
+                            <a style="background-color: #F7A121; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+                        else if (course.Price.Equals(0))
+                        {
+                            <a style="background-color: #1A9F83; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
+                        else if (course.Price > 0)
+                        {
+                            <a style="background-color: #F47C50; position: absolute;
+                                                height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                                border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                                text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                        font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                            </a>
+                        }
                     </div>
-                    @if (course.Price.Equals(-1))
-                    {
-                        <a style="background-color: #F7A121; position: absolute;
-                                        height: 36px; width: 112px; border-bottom-left-radius: 20px;
-                                        border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                        text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ХЕКА+</h3>
-                        </a>
-
-                    }
-                    else if (course.Price.Equals(0))
-                    {
-                        <a style="background-color: #1A9F83; position: absolute;
-                                        height: 36px; width: 112px; border-bottom-left-radius: 20px;
-                                        border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                        text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 25%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
-                        </a>
-                    }
-                    else
-                    {
-                        <a style="background-color: #F47C50; position: absolute;
-                                        height: 36px; width: 112px; border-bottom-left-radius: 20px;
-                                        border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                        text-decoration:none" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 28%; top: 5px; color: #FFFFFF">
-                                @{
-                                    var price = Convert.ToInt16(course.Price).ToString();
-                                }
-                                @price ₴
-                            </h3>
-                        </a>
-                    }
-
-                    @if (course.Price.Equals(-1))
-                    {
-                        <a style="background-color: #F7A121; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
-                    else if (course.Price.Equals(0))
-                    {
-                        <a style="background-color: #1A9F83; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
-                    else if (course.Price > 0)
-                    {
-                        <a style="background-color: #F47C50; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
                 </div>
-            </div>
-        }
+            }
+        </div>        
     </div>
     <div class="container mt-5" style="text-align: center;">
-        <page-link page-model="Model.PageViewModel" page-action="Index" style="display: flex; justify-content: center;"></page-link>
-    </div>    
-</div>
-<div style="width: 100%; height: 50px; margin-bottom: auto; margin-top: 35px; background: rgb(205,112,121);
-     background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%);">
+            <page-link page-model="Model.PageViewModel" page-action="Index" style="display: flex; justify-content: center;"></page-link>
+        </div> 
+    <div style="width: 100%;  height: 60px; margin: 0 auto; background: rgb(205,112,121);
+         background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%);">
+    </div>
 </div>
 

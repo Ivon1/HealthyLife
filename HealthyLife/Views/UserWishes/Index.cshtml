@@ -12,25 +12,11 @@
             <div class="col-md-2">
                 <img src="~/img/icons/logo_catalog.png" width="192px" height="164px" />
             </div>
-            <div class="col-md-8" style="display:flex; align-items:center; justify-content: center;">
-                <h3 style="font-weight: 500;font-size: 50px;color: #FFFFFF;line-height: 50px;">
-                    Nam morbi libero adipiscing dolor mauris id dictumst.
-                </h3>
-                <h4 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;color: #FFFFFF;">
-                    Accumsan, odio leo dui ante mattis tellus lectus. Leo bibendum orci mauris, rhoncus tellus et nunc.
-                </h4>
-            </div>
-            <div class="col-md-2" style="display:flex; align-items:center; justify-content: center; margin: 0; padding: 0">
-                <a class="nav-link nav-item-bordered"
-                   style="width: 100%; height: 57px; display:flex; align-items:center; justify-content: center; margin-right: 0px;
-                   background-color: #FFFFFF; color:#2C3447"
-                   href="#">
-                    <h3 style="font-weight: 500;font-size: 30px;line-height: 30px;
-                        text-align: center;text-transform: uppercase;color: #2C3447">
-                        ХЕКА+
-                    </h3>
-                </a>
-            </div>
+            <div class="col-md-10" style="display:flex; align-items:center; justify-content: center;">
+                <h3 style="font-weight: 500;font-size: 40px;color: #FFFFFF; line-height: 40px; text-align: center">
+                    Якщо подивитись навколо поглядом лікаря, який шукає ліки, то можна сказати, що ми живемо в світі ліків, бо немає в природі речовини, яку б не можна було б використати для лікування. (Давньобуддійська заповідь)
+                </h3>                
+            </div>            
         </div>
     </div>
 </div>
@@ -108,43 +94,17 @@
 
                     <img src="~/img/icons/white.png" width="100%" height="145px" style="margin-top: 148px;
                                 filter: alpha(Opacity=90);opacity: 0.90;
-                                border-radius: 0% 0% 20px 20px" />
-                    @if (course.Course.Price.Equals(-1))
-                    {
-                        <a style="background-color: #F7A121; position: absolute;
+                                border-radius: 0% 0% 20px 20px" /> 
+                            <a style="background-color: #F25564; position: absolute;
                                             height: 36px; width: 112px; border-bottom-right-radius: 20px;
                                             border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
-                    else if (course.Course.Price.Equals(0))
-                    {
-                        <a style="background-color: #1A9F83; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
-                    else if (course.Course.Price > 0)
-                    {
-                        <a style="background-color: #F47C50; position: absolute;
-                                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
-                                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
-                                            text-decoration:none; margin-top: -39px" asp-action="Details" asp-route-id="@course.Id">
-                            <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                                    font-weight:400; font-size: 25px">
-                                детальніше
-                            </h3>
-                        </a>
-                    }
+                                            text-decoration:none; display: flex; justify-content: center; align-items: center" asp-action="Delete" asp-route-id="@course.Id">
+                                <h3 style="text-align: center; color: #FFFFFF; font-weight:400; font-size: 25px; padding-top: 5px">
+                                    видалити
+                                </h3>
+                            </a>
+                                            
+                    
 
                     <h4 style="font-weight: 400; font-size:25px; margin-top: -130px; position: absolute; margin-left:23px">
                         @{
