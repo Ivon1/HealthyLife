@@ -14,3 +14,11 @@
 .page-item {
     font-size: 30px;
 }
+
+.course-image {
+    transition: all 1s ease;
+}
+
+.course-image:hover {
+    transform: scale(1.11);
+}

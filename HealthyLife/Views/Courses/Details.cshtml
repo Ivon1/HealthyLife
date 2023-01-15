@@ -8,26 +8,87 @@
 <div class="pt-70px pb-70px">
     <div class="container">
         <div class="row">
-            <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)"/>
+            <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
             <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
-                <img class="m-auto" style="width: 100%; height: 375px; border-radius: 8px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)"/>
+                <img class="m-auto course-image" style="width: 100%; height: 375px; border-radius: 8px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)" />
             </div>
             <div class="col-lg-7 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="product-details-content quickview-content ml-25px">
-                    <h2>@Html.DisplayFor(model => model.CourseName)</h2>
-                    <div class="pricing-meta">
-                        @if (Model.Price.Equals(-1))
-                        {
-                            <h3>ХЕКА+</h3>
-                        }
-                        else if (Model.Price.Equals(0))
-                        {
-                            <h3>БЕЗКОШТОВНО</h3>
-                        }
-                        else
-                        {
-                            <h3>@Html.DisplayFor(model => model.Price) ₴</h3>
-                        }
+                    <h2 style="text-align: left">@Html.DisplayFor(model => model.CourseName)</h2>
+                    <div style="display: flex;">
+                        <div style="display: flex; justify-content: flex-start; width: 50%">
+                            <div class="pricing-meta">
+                                @if (Model.Price.Equals(-1))
+                                {
+                                    <h3>ХЕКА+</h3>
+                                }
+                                else if (Model.Price.Equals(0))
+                                {
+                                    <h3>БЕЗКОШТОВНО</h3>
+                                }
+                                else
+                                {
+                                    <h3>@Html.DisplayFor(model => model.Price) ₴</h3>
+                                }
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end; width: 50%">
+                            @if (Model.Rating >= 0 && Model.Rating < 0.5)
+                            {
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            }
+                            @if (Model.Rating >= 0.5 && Model.Rating < 1.5)
+                            {
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            }
+                            @if (Model.Rating >= 1.5 && Model.Rating < 2.5)
+                            {
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            }
+                            @if (Model.Rating >= 2.5 && Model.Rating < 3.5)
+                            {
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            }
+                            @if (Model.Rating >= 3.5 && Model.Rating < 4.5)
+                            {
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            }
+                            @if (Model.Rating >= 4.5 && Model.Rating <= 5)
+                            {
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            }
+                            <h3 style="font-weight: 400; margin-left: 2%; font-size: 25px; color: #F47C50">
+                                @{
+                                    var rating = Math.Round(Model.Rating, 1);
+                                    @rating
+                                }
+                                / 5
+                            </h3>
+                        </div>
                     </div>
                     <hr />
                     <p class="mt-15px">
@@ -55,17 +116,17 @@
                         </div>
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
                             <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
-                            <button class="add-wishlist" style="background-color: white; border: 2px solid #F7A121"><img src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" /></button>
+                            <button class="add-wishlist" style="background-color: white; border: 2px solid #F7A121"><img class="heart_image" src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" /></button>
                         </div>
                     </div>
                     <div class="description-review-wrapper">
                         <div class="description-review-topbar nav">
-                            <button class="active" style="border: none; border-bottom: 3px solid #1A9F83; color: #1A9F83; font-weight: 500; font-size: 25px" data-bs-toggle="tab" data-bs-target="#des-details1">Опис курсу</button>
+                            <button class="active" style="border: none; text-align: center; border-bottom: 3px solid #1A9F83; color: #1A9F83; font-weight: 500; font-size: 25px" data-bs-toggle="tab" data-bs-target="#des-details1">Опис курсу</button>
                         </div>
                         <div class="tab-content description-review-bottom">
                             <div id="des-details1" class="tab-pane active">
                                 <div class="product-description-wrapper" style="margin-top: 5px; margin-bottom: 50px;">
-                                    <p>@Html.DisplayFor(model => model.CourseDescription)</p>
+                                    <p style="font-weight: 400">@Html.DisplayFor(model => model.CourseDescription)</p>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +138,7 @@
 </div>
 
 @*
-<h1>Details</h1>    
+<h1>Details</h1>
 <div>
     <h4>Course</h4>
     <hr />

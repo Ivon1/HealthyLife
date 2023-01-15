@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using HealthyLife.ViewModels;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Net.Sockets;
 
 namespace HealthyLife.Controllers
 {
@@ -104,7 +105,7 @@ namespace HealthyLife.Controllers
             var course = await _context.Courses
                 .Include(c => c.Aurhor)
                 .Include(c => c.Subject)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);            
             if (course == null)
             {
                 return NotFound();
