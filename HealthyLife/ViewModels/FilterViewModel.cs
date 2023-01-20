@@ -8,6 +8,6 @@ namespace HealthyLife.ViewModels
         public IEnumerable<Course> Courses { get; set; }
         public List<Author> Authors { get; set; }
         public List<Subject> Subjects { get; set; }
-        public PageViewModel PageViewModel { get; set; }
+        public PageViewModel PageViewModel { get; set; }        
     }    
 }

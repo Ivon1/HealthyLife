@@ -153,7 +153,7 @@ body {
     transition: 0.5s;
 }
 
-#cost {
+#courseIdList {
     width: 23px;
     height: 23px;
     text-align: center;
@@ -193,6 +193,7 @@ body {
     border-radius: 20px;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;    
     position: sticky;
 }
 
@@ -439,4 +440,12 @@ body {
     font-size: 25px;
     line-height: 25px;
     color: #2C3447;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+option:hover {
+    cursor: pointer;
 }

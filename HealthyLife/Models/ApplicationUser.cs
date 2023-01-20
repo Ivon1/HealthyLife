@@ -6,8 +6,7 @@ namespace HealthyLife.Models
     public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string NickNameUser { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;        
         public DateTime CreationTime { get; set; }
         public string PathToPhoto { get; set; } = string.Empty;
 

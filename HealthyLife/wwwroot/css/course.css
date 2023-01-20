@@ -175,8 +175,8 @@
         -webkit-box-shadow: none;
         box-shadow: none;
         text-transform: capitalize;
-        display: inline-block;        
-        background: #F7A121;
+        display: inline-block;
+        background: #F47C50;
         color: #fff;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -196,7 +196,7 @@
     }
 
         .product-details-content .pro-details-quality .pro-details-cart .add-cart:hover {
-            background-color: #1A9F83;
+            background-color: #F7A121;
         }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -242,12 +242,42 @@
     border-radius: 5px;
     background-color: #454545;
     width: 50px;
-    height: 50px;
-    transition: all 1.2s;
+    height: 50px;    
 }
 
 @media only screen and (max-width: 479px) {
     .product-details-content .pro-details-compare-wishlist button {
+        margin-left: 5px;
+    }
+}
+
+.product-details-content .pro-details-compare-wishlist a {
+    padding: 0;
+    border: none;
+    color: #fff;
+    font-size: 23px;
+    margin-left: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #454545;
+    width: 50px;
+    height: 50px;
+}
+
+@media only screen and (max-width: 479px) {
+    .product-details-content .pro-details-compare-wishlist a {
         margin-left: 5px;
     }
 }

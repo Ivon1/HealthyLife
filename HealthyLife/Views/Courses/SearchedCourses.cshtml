@@ -275,13 +275,15 @@
             const list = document.getElementById('list-div');
             const word = $('#searchString').val();
             let cds = document.querySelectorAll('#courseDescriptionShort');
-            let cd = document.querySelectorAll('#courseDescription');            
-            for (let elem of cds) {                
-                let cds2 = elem.innerHTML.replaceAll(word, '<span class="highlight">' + word + '</span>');
+            let cd = document.querySelectorAll('#courseDescription');
+            let regEx = new RegExp(word, "ig");
+            let replaceWord = '<span class="highlight">' + word + '</span>';
+            for (let elem of cds) {
+                let cds2 = elem.innerHTML.replaceAll(RegExp(word, 'gi'), '<span class="highlight">$&</span>');
                 elem.innerHTML = cds2;
             }
-            for (let elem of cd) {                
-                let cd2 = elem.innerHTML.replaceAll(word, '<span class="highlight">' + word + '</span>');
+            for (let elem of cd) {
+                let cd2 = elem.innerHTML.replaceAll(RegExp(word, 'gi'), '<span class="highlight">$&</span>');
                 elem.innerHTML = cd2;
             }
             if (list.innerHTML.trim().length == 0) {

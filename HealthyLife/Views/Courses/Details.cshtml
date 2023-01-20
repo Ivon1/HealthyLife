@@ -5,7 +5,7 @@
     ViewData["Title"] = "Сторінка курсу";
 }
 
-<div class="pt-70px pb-70px">
+<div class="pt-70px pb-70px" style="min-height: 60vh">
     <div class="container">
         <div class="row">
             <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
@@ -20,15 +20,15 @@
                             <div class="pricing-meta">
                                 @if (Model.Price.Equals(-1))
                                 {
-                                    <h3>ХЕКА+</h3>
+                                    <h3 style="color: #F7A121; font-weight: 500">ХЕКА+</h3>
                                 }
                                 else if (Model.Price.Equals(0))
                                 {
-                                    <h3>БЕЗКОШТОВНО</h3>
+                                    <h3 style="color: #1A9F83; font-weight: 500">БЕЗКОШТОВНО</h3>
                                 }
                                 else
                                 {
-                                    <h3>@Html.DisplayFor(model => model.Price) ₴</h3>
+                                    <h3 style="color: #F47C50; font-weight: 500">@Html.DisplayFor(model => model.Price) ₴</h3>
                                 }
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <hr />
-                    <p class="mt-15px">
+                    <p class="mt-15px" style="font-weight: 600; color: #1A9F83">
                         @{
                             HtmlString description = new HtmlString(Model.CourseDescriptionShort.ToString().Replace("<br>", " "));
                             @description
@@ -115,8 +115,24 @@
                             <button class="add-cart">ДОДАТИ ДО КОШИКА</button>
                         </div>
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                            <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
-                            <button class="add-wishlist" style="background-color: white; border: 2px solid #F7A121"><img class="heart_image" src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" /></button>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <p class="hidden itemCourseId" id="@Model.Id">@Model.Id</p>
+                                <button id="add-wishlist" class="add-wishlist" style="background-color: white; border: 2px solid #F7A121">
+                                    <input type="hidden" class="courseId" value="@Model.Id" />
+                                    <img class="heart_image" src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" />
+                                </button>
+                                <button id="del-wishlist" class="del-wishlist" style="display: none; background-color: silver; border: 2px solid dimgrey">
+                                    <input type="hidden" class="courseId" value="@Model.Id" />
+                                    <img class="heart_image" src="~/img/icons/heart_purpur.png" style="width: 20px; height: 20px;" />
+                                </button>
+                            }
+                            else
+                            {
+                                <a class="add-wishlist" asp-area="Identity" asp-page="/Account/Login" style="background-color: white; border: 2px solid #F7A121">                                    
+                                    <img class="heart_image" src="~/img/icons/hear_ico.png" style="width: 20px; height: 20px;" />
+                                </a>                                
+                            }
                         </div>
                     </div>
                     <div class="description-review-wrapper">
@@ -136,7 +152,9 @@
         </div>
     </div>
 </div>
-
+<div style="width: 100%; height: 50px; margin-bottom: auto; margin-top: 15px; background: rgb(205,112,121);
+     background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%);">
+</div>
 @*
 <h1>Details</h1>
 <div>
