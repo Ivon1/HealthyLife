@@ -1,0 +1,81 @@
+﻿@page
+@model EditionalData
+@{
+    ViewData["Title"] = "Додаткова інформація";
+    ViewData["ActivePage"] = SettingsNavPages.EditionalData;
+    Layout = "/Areas/Identity/Pages/Account/Settings/_Layout.cshtml";
+}
+<style>
+    /**{
+        border: 1px solid red;
+    }*/
+</style>
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<div style="margin-left: 15px; margin-top: 30px">
+    <form id="add-adtitional-data" method="post" enctype="multipart/form-data">
+        <h3 class="edditional-text">Стать</h3>
+
+        <div class="row" style="width: 650px; margin-top: 28px">
+            <div class="col-3">
+                @if (Model.Input.Gender == "Жіноча")
+                {
+                    <input type="radio" id="woman" name="gender" value="Жіноча" asp-for="Input.Gender" checked="checked">
+                } 
+                else
+                {
+                    <input type="radio" id="woman" name="gender" value="Жіноча" asp-for="Input.Gender">
+                }
+
+                <label class="edditional-text" for="woman" style="font-size: 20px;line-height: 20px; margin-left: 15px">
+                    Жіноча
+                </label>
+            </div>
+
+            <div class="col-3">
+                @if (Model.Input.Gender == "Чоловіча")
+                {
+                    <input type="radio" id="man" name="gender" value="Чоловіча" asp-for="Input.Gender" checked="checked">
+                }
+                else
+                {
+                    <input type="radio" id="man" name="gender" value="Чоловіча" asp-for="Input.Gender">
+                }
+                
+                <label class="edditional-text" for="man" style="font-size: 20px;line-height: 20px; margin-left: 15px">
+                    Чоловіча
+                </label>
+            </div>
+
+            <div class="col-4">
+                @if (Model.Input.Gender == "Бажаю не вказувати")
+                {
+                    <input type="radio" id="none" name="gender" value="Бажаю не вказувати" asp-for="Input.Gender" checked="checked">
+                }
+                else
+                {
+                    <input type="radio" id="none" name="gender" value="Бажаю не вказувати" asp-for="Input.Gender">
+                }
+
+                
+                <label class="edditional-text" for="none" style="font-size: 20px;line-height: 20px; margin-left: 15px">
+                    Бажаю не вказувати
+                </label>
+            </div>
+        </div>
+        
+        <h3 class="edditional-text" style="margin-top: 43px;">День народження</h3>
+        <input type="date" id="birthDate" asp-for="Input.BirthDate"/>
+
+        <p></p>
+
+        <div class="center-items-inside" style="margin-top: 50px">
+            <button class="save-btn" type="submit">Зберегти інформацію</button>
+        </div>
+        
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -7,6 +7,8 @@
 @inject ApplicationDbContext _context
 @inject RoleManager<IdentityRole> RoleManager
 
+<link rel="stylesheet" href="~/css/drop-down-menu.css" asp-append-version="true" />
+
 @{
     if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
     {
@@ -36,9 +38,13 @@
         default : date += "..."; break;
     }
     date += currentUser.CreationTime.Date.Year.ToString();
-    //var roles = new SelectList(_roleManager.Roles.ToList(), "Name", "Name");
+    var roles = new SelectList(RoleManager.Roles.ToList(), "Name", "Name");
+    var currentUserRoles = await UserManager.GetRolesAsync(currentUser);
 }
 <style>
+    .none {
+        display: none;
+    }
     /**{
         border: 1px solid red;
     }*/
@@ -46,34 +52,47 @@
 
 <div style="width: 100%; height: 665px; display:block; overflow: hidden;
         background: linear-gradient(270deg, #218F7A 0%, #296060 48.44%, #313648 100%);">
-        <h3 style="font-weight: 500;font-size: 40px;line-height: 40px;color: #FFFFFF; margin-left: 150px;
-                    margin-top: 30px">
-            Профіль користувача @currentUser.FirstName @currentUser.LastName
-        </h3>
+        <div class="row" style="margin-left: 150px;margin-top: 10px">
+            <div class="col-auto center-items-inside" style="width: 40px!important; display:none" id="back-btn">
+                <img src="~/img/icons/arrow.png" width="33px" height="21px" style="cursor: pointer" />
+            </div>
+            <div class="col-auto" >
+                <h3 style="font-weight: 500;font-size: 40px;line-height: 40px;color: #FFFFFF;margin-top: 10px;"
+                    id="mainText">
+                    Профіль користувача @currentUser.FirstName @currentUser.LastName
+                </h3>
+            </div>
+        </div>
 
         <div style="border-radius: 19px; background-color: white; width: 1242px; height: 534px; margin-left: auto;
-                 margin-right: auto; margin-top: 30px; display:block;">
-            <div class="row" style="width: 100%; height: 100%; margin-left: 2px;">
+                 margin-right: auto; margin-top: 10px; display:block;">
+            <div class="row" style="width: 100%; height: 100%; margin-left: 2px;" >
                 <div class="col-6">
                     <div class="row" style="height: 250px">
-                        <div class="col-3" style="width: auto">
-                            <img src="~/img/img_users_icons/default_icon_user.png" class="img-profile" 
-                                    style="margin: 40px 10px 10px 15px"/>
+                        <div class="col-3 photo-container" style="width: auto;">
+                            <img src="~/img/img_users/@currentUser.PathToPhoto" class="img-profile" 
+                                    style="margin: 40px 10px 10px 15px;" id="img-profile" />
+
+                            <img src="~/img/icons/edit_photo_img.png" class="img-profile"
+                                    style="margin: 40px 10px 10px 15px; display:none" id="img-edit-profile" />
                         </div>
                         <div class="col-5">
                             <h3 style="font-weight: 400;font-size: 35px;line-height: 35px; color: #2C3447;
-                                margin-top: 31px; display: inline-block; position: relative; width: 215px">
+                                margin-top: 35px; display: inline-block; position: relative; width: 215px;">
                                     @currentUser.FirstName @currentUser.LastName
                                 <img src="~/img/icons/heka_plus_small.png" width="24" height="13px" 
                                         style="position: absolute; float: right; right: 0; top: 0;"/>
                             </h3>
                             
                             <h4 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #2C3447;
-                                margin-top: 3px">
-                                студент
+                                margin-top: 3px" id="current-role">
+                               @currentUserRoles[0]
                             </h4>
-                            @*<select asp-for="@roles" asp-items="@roles" class="form-control"></select>*@
 
+                            <input type="hidden" id="userId" value="@currentUser.Id" />
+                            <select asp-items="roles" class="drop-down-menu" id="roles-list" style="display:none"></select>
+                            
+                            
                             <div style="display: inline-block">
                                 <h4 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #2C3447;
                                     margin-top: 10px">
@@ -110,17 +129,24 @@
                             
                         </div>
                         <div class="col-3">
-                            <button class="btn-profile-settings" style="margin-top: 25px">
+                            <button class="btn-profile-settings" style="margin-top: 30px" id="setting">
                                 <img src="~/img/icons/small_icon_setting.png" width="18px" height="18px"/>
                             </button>
-                            <button class="btn-profile-settings">
-                                <img src="~/img/icons/small_icon_pencil_.png" width="18px" height="18px"/>
+                            <button class="btn-profile-settings" id="edit-btn">
+                                <img src="~/img/icons/small_icon_pencil_.png" width="18px" height="18px" />
                             </button>
-                            <button class="btn-profile-settings">
+                            <button class="btn-profile-settings" id="calendar">
                                 <img src="~/img/icons/small_icon_calendar_.png" width="18px" height="18px"/>
                             </button>
-                            <button class="btn-profile-settings">
+                            <button class="btn-profile-settings" id="rating">
                                 <img src="~/img/icons/small_icon_rating.png" width="18px" height="18px"/>
+                            </button>
+
+                            <button class="btn-profile-settings none center-items-inside" id="saveBtn">
+                                <img src="~/img/icons/save.png" width="18px" height="18px" style="margin-bottom: 4px"/>
+                            </button>
+                            <button class="btn-profile-settings none center-items-inside" id="cancelBtn">
+                                <img src="~/img/icons/cancel.png" width="18px" height="18px" style="margin-bottom: 3px"/>
                             </button>
                         </div>
                     </div>
@@ -168,7 +194,7 @@
 
                     </div>
                 </div>
-                <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px">
+                <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px" id="row1">
                     <div style="background-image: url('../../../../../img/icons/cirlcle.png'); width: 153px; height: 153px;
                                 background-repeat: no-repeat;background-size: cover; overflow: hidden;
                                 margin-left:auto; margin-right: auto;">
@@ -215,7 +241,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px">
+                <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px" id="row2">
 
                     <img src="~/img/icons/graphic2.png" width="245px" height="150px" 
                          style="margin-left: 20px"/>
@@ -269,11 +295,11 @@
         </div>
 </div>
 
-<div class="container" style="margin-bottom: 10%">
-    <div>
+<div class="container" style="margin-bottom: 10%" id="navigation-container">
+    <div class="navigation-main">
         <div class="row">
             <div class="col-md-3" style="margin-top: 20px">
-                <partial name="_ManageNav" />
+                <partial name="_ManageNav"/>
             </div>
             <div class="col-md-9" style="margin-top: 60px">
                 @RenderBody()
@@ -285,4 +311,5 @@
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
+    <script src="~/js/profile.js"></script>
 }

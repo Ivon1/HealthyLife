@@ -1,0 +1,313 @@
+﻿body {
+    background: linear-gradient(270deg, #218F7A 0%, #296060 48.44%, #313648 100%);
+}
+
+#navigation-container {
+    width: 1242px;
+    height: 534px;
+    background: white;
+    margin-bottom: 10% !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 19px;
+    padding-left: 20px;
+}
+
+.nav-item {
+    width: 183px;
+    height: 78px;
+    transition: 0.1s;
+    margin-top: 10px;
+}
+
+.nav-item:hover {
+    border: 1px solid #349c84;
+    border-radius: 7px;
+    color: #349c84;
+    transition: 0.1s;
+}
+
+.nav-item-setting {
+    text-decoration: none;
+    text-decoration: inherit;
+    color: #2C3447;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    float: left;
+    padding: 15px 0px 15px 5px;
+    transition: 0.5s;
+}
+
+.nav-item-setting:hover {
+    color: #349c84;
+    transition: 0.1s;
+}
+
+.nav-item-setting-active {
+    text-decoration: none;
+    text-decoration: inherit;
+    width: 183px;
+    height: 78px;
+    color: #FFFFFF;
+    background: #1A9F83;
+    border-radius: 7px;
+    pointer-events: none;
+}
+
+.text-title-exlogins {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    color: #808080;
+}
+
+.text-added-auth {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    color: #1A9F83;
+}
+
+.active-ex-auth {
+    width: 443px;
+    height: 43px;
+    border-radius: 9px;
+}
+
+.delete-ex-auth-btn {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    color: #2C3447;
+    background-color: transparent;
+    outline: none;
+    border: 0px;
+}
+
+.delete-ex-auth-btn:hover {
+    color: brown;
+}
+
+.add-ex-auth {
+    background: #FFFFFF;
+    border: 1px solid #808080;
+    border-radius: 9px;
+    width: 443px;
+    height: 43px;
+}
+.add-ex-auth:hover {
+    background: #6cbcac;
+}
+
+.input-setting {
+    width: 350px;
+    height: 51px;
+    border: 3px solid #808080;
+    border-radius: 7px;
+    text-indent: 10px;
+    outline: none;
+}
+
+.label-setting {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    color: #808080;
+}
+
+.save-btn {
+    width: 200px;
+    height: 52px;
+    background: #1A9F83;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    box-shadow: 3px 3px #808080;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    transition:0.5s;
+}
+
+.save-btn:hover {
+    transition: 0.5s;
+    box-shadow: 0px 0px #808080;
+}
+.save-btn-disabled {
+    width: 200px;
+    height: 52px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    box-shadow: 0px 0px #808080;
+    border: 3px solid grey;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    color: gray;
+    pointer-events: none;
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+}
+
+.edditional-text {
+    font-family: 'Yanone Kaffeesatz';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    color: #808080;
+}
+
+#nav-settings {
+    border-right: 3px solid #808080 !important;
+}
+
+
+#birthDate {
+    margin-top: 15px;
+    background: #DBDBDB;
+    border: 1px solid #808080;
+    border-radius: 8px;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 32px;
+    color: #808080;
+    padding: 20px;
+    width: 505px;
+    height: 50px;
+}
+
+.save-button-tr {
+    width: 153px;
+    height: 43px;
+    font-family: 'Yanone Kaffeesatz';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #1A9F83;
+    box-shadow: 3px 3px #808080;
+    background: #FFFFFF;
+    border: 1px solid #808080;
+    border-radius: 7px;
+    transition: 0.5s;
+}
+
+.save-button-tr:hover {
+    transition: 0.5s;
+    box-shadow: 0px 0px #808080;
+    background: #1A9F83;
+    color: white;
+}
+
+.cancel-button-tr {
+    width: 153px;
+    height: 43px;
+    font-family: 'Yanone Kaffeesatz';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #F25564;
+    box-shadow: 3px 3px #808080;
+    background: #FFFFFF;
+    border: 1px solid #808080;
+    border-radius: 7px;
+    transition: 0.5s;
+}
+
+.cancel-button-tr:hover {
+    transition: 0.5s;
+    box-shadow: 0px 0px #808080;
+    background: #F25564;
+    color: white;
+}
+
+.drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 589px;
+    height: 140px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+    background: #eee;
+    border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+    color: #222;
+}
+
+.drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+input[type=file] {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    color: #2C3447;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+    padding: 7px;
+}
+
+input[type=file]::file-selector-button:hover {
+    background: #1A9F83;
+    color: white;
+}
+
+.df-photo {
+    transition: 0.2s;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.df-photo:hover {
+    border: 3px solid green;
+    transition: 0.2s;
+}

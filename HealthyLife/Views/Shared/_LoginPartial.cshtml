@@ -3,47 +3,47 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Favorites"
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Favorites"
             style="width:54px; height: 57px; display:flex; align-items:center; justify-content: center; margin-left: 20px">
-        <img src="~/img/icons/heart.png" height="28px" width="28px"/>
-    </a>
+            <img src="~/img/icons/heart.png" height="28px" width="28px"/>
+        </a>
 
-    <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Manage/Index"
+        <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Manage/Index"
             style="width:54px; height: 57px; display:flex; align-items:center; justify-content: center">
-        <img src="~/img/icons/person_label.png" height="28px" width="28px"/>
-    </a>
+            <img src="~/img/icons/person_label.png" height="28px" width="28px"/>
+        </a>
 
-        <a id="cart" class="nav-link text-dark account-partial-bordered" asp-controller="UserOrders" asp-action="Index">
-            <p id="cartItemsCount" style="display: none">0</p>
-            <p id="cost" style="display: none">0</p>
-        <img src="~/img/icons/cart.png" height="28px" width="28px" />
-    </a>
+            <a id="cart" class="nav-link text-dark account-partial-bordered" asp-controller="UserOrders" asp-action="Index">
+                <p id="cartItemsCount" style="display: none">0</p>
+                <p id="cost" style="display: none">0</p>
+            <img src="~/img/icons/cart.png" height="28px" width="28px" />
+        </a>
 
-    <a sp-area="Identity" asp-page="/Account/Login" style="width:54px; height: 57px;">
-        <form asp-area="Identity" asp-page="/Account/Logout" 
+        <a sp-area="Identity" asp-page="/Account/Login" style="width:54px; height: 57px;">
+            <form asp-area="Identity" asp-page="/Account/Logout" 
               asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
               class="account-partial-bordered center-items-inside" style="width:100%; height: 57px;padding:0">       
-            <button type="submit" style="width:100%; height: 57px; border:none; background: none; padding: 0;
+                <button type="submit" style="width:100%; height: 57px; border:none; background: none; padding: 0;
                     margin-right: 2px">
-                  <img src="~/img/icons/log_out.png" height="28px" width="28px" />
-            </button>
-        </form>
-    </a>
-}
-else
-{
-    <a class="nav-link text-dark nav-item-bordered"
+                      <img src="~/img/icons/log_out.png" height="28px" width="28px" />
+                </button>
+            </form>
+        </a>
+    }
+    else
+    {
+        <a class="nav-link text-dark nav-item-bordered"
             style="width: 141px; height: 57px; display:flex; align-items:center; justify-content: center;
             background-color:#1A9F83; color: #FFFFFF!important"
             asp-area="Identity" asp-page="/Account/Login">ВХІД
-    </a>
+        </a>
 
-    <a id="cart" class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-controller="UserOrders" asp-action="Index">
-            <p id="cartItemsCount" style="display: none">0</p>
-            <p id="cost" style="display: none">0</p>
-        <img src="~/img/icons/cart.png" height="28px" width="28px" />
-    </a>
-}
+        <a id="cart" class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-controller="UserOrders" asp-action="Index">
+                <p id="cartItemsCount" style="display: none">0</p>
+                <p id="cost" style="display: none">0</p>
+            <img src="~/img/icons/cart.png" height="28px" width="28px" />
+        </a>
+    }
 </ul>

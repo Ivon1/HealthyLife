@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using HealthyLife.Models;
 using HealthyLife.Data;
+using System.Security.Claims;
 
 namespace HealthyLife.Controllers
 {
@@ -104,6 +105,13 @@ namespace HealthyLife.Controllers
         public JsonResult CheckEmail(string email)
         {
             bool exists = _db.Users.Any(u => u.Email == email);
+            return Json(new { exists });
+        }
+
+        [AllowAnonymous]
+        public JsonResult CheckEmailInEditing(string email)
+        {
+            bool exists = _db.Users.Any(u => u.Email == email && User.FindFirstValue(ClaimTypes.Email) != email);
             return Json(new { exists });
         }
     }

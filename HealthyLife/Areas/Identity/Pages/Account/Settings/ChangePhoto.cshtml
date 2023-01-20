@@ -1,0 +1,116 @@
+﻿@page
+@model ChangePhoto
+@{
+    ViewData["Title"] = "Фото профілю";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/settings_profile.css" asp-append-version="true" />
+<style>
+    /**{
+        border: 1px solid red;
+    }*/
+</style>
+
+<div style="width: 100%; height: 665px; display:block; overflow: hidden;
+        background: linear-gradient(270deg, #218F7A 0%, #296060 48.44%, #313648 100%);">
+        <div class="row" style="margin-left: 150px;margin-top: 10px">
+            <div class="row" style="margin-left: 10px; margin-top: 5px; width: 600px">
+                <div class="col-auto text">
+                    <h3 class="text" style="color: white; font-weight: 500;font-size: 40px; line-height: 40px;margin-left: 10px ">
+                        Зміна фото профілю
+                    </h3>
+                </div>
+            </div>
+        </div>
+       
+        <div style="border-radius: 19px; background-color: white; width: 1242px; height: 534px; margin-left: auto;
+                 margin-right: auto; margin-top: 5px; display:block;">
+            <form method="post" enctype="multipart/form-data" style="width: 100%; height: 100%; padding: 25px">
+                <div class="row">
+                    <div class="col-auto">
+                        <img src="~/img/img_users/@Model.Input.CurrentPathToPhoto" class="img-profile" 
+                             id="img-profile"/>
+                        <br />
+                        <button type="submit" class="save-button-tr mt-4 center-items-inside">Зберегти</button>
+                        <a class="cancel-button-tr mt-4 center-items-inside" id="cancel-btn-photo" 
+                            style="cursor:pointer; text-decoration: none;" asp-page="/Account/Manage/CurrentCourses">Скасувати зміни</a>
+                        <div class="mt-4" style="width: 150px!important; height:100px!important ">
+                            <partial name="_StatusMessage" for="StatusMessage"/>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <h3 class="text" style="color: #2C3447; font-weight: 500;font-size: 30px;line-height: 30px; width:350px; margin-left:58px">
+                            Оберіть із запропонованих
+                        </h3>
+                        <div class="row mt-4" style="margin-left:58px">
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile1.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile2.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile3.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile4.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile5.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile6.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile7.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile8.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile9.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile10.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile11.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile12.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile13.png" width="98px" height="98px" class="df-photo"> 
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile14.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile15.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                            <div class="col-auto" style="width: 105px; height:105px">
+                                <img src="~/img/img_users/default_image_profile16.png" width="98px" height="98px" class="df-photo">
+                            </div>
+                        </div>
+                        
+                        <div class="center-items-inside mt-4" 
+                        style="color: #2C3447; font-weight: 500;font-size: 30px;
+                            line-height: 30px; width:85%; margin-left:58px">або Можете завантажити власне фото</div> 
+                        
+                        <div class="center-items-inside mt-4">
+                            <label for="images" class="drop-container">
+                                  <span class="drop-title">Завантажити фото</span>
+                                  <input type="file" id="images" accept="image/*" asp-for="Input.NewPathToPhoto">
+                                  <input style="display:none" name="photo-gal" id="photo-gal"/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/change_photo.js"></script>
+}

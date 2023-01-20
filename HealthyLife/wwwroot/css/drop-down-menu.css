@@ -1,0 +1,16 @@
+﻿.drop-down-menu {
+    width: 230px;
+    padding: 5px;
+    border: 1px solid gray;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px #808080;
+    transition: 0.5s;
+}
+
+.drop-down-menu:hover{
+    box-shadow: 0px 0px #808080;
+    transition: 0.5s;
+}
+
+

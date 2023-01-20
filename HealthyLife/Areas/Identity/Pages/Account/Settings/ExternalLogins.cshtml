@@ -1,0 +1,117 @@
+﻿@page
+@using HealthyLife.Areas.Identity.Pages.Account.Settings;
+@model ExternalLoginsModel
+@{
+    ViewData["Title"] = "Manage your external logins";
+    ViewData["ActivePage"] = SettingsNavPages.ExternalLogins;
+    Layout = "/Areas/Identity/Pages/Account/Settings/_Layout.cshtml";
+}
+
+<style>
+    /**{
+        border: 1px solid green;
+    }*/
+</style>
+<partial name="_StatusMessage" for="StatusMessage" />
+@if (Model.CurrentLogins?.Count > 0)
+{
+    <table class="table">
+        <tbody >
+            @foreach (var login in Model.CurrentLogins)
+            {
+                <tr style="display: block;margin-top: 10px!important">
+                    <td id="@($"login-provider-{login.LoginProvider}")" >
+                        <h3 class="text-title-exlogins">Під’єднаний акаунт @login.ProviderDisplayName</h3>
+
+                            @if(login.ProviderDisplayName == "Google")
+                            {
+                                <div class="active-ex-auth center-items-inside" style="background: #f4a434">
+                                    <img src="~/img/icons/google_icon.png" width="24px" height="24px"/>
+                                </div>
+                            } 
+                            else if (login.ProviderDisplayName == "Facebook")
+                            {
+                                <div class="active-ex-auth center-items-inside" style="background:#44a4dc">
+                                    <img src="~/img/icons/facebook_icon.png" width="24px" height="24px"/>
+                                </div>
+                            }
+                            else if (login.ProviderDisplayName == "Twitter")
+                            {
+                                <div class="active-ex-auth center-items-inside" style="background:#f4acb4">
+                                    <img src="~/img/icons/twitter_icon.png" width="24px" height="24px"/>
+                                </div>
+                            }
+                            else if (login.ProviderDisplayName == "Microsoft")
+                            {
+                                <div class="active-ex-auth center-items-inside" style="background:#4c5464">
+                                    <img src="~/img/icons/microsoft_logo.png" width="24px" height="24px"/>
+                                </div>
+                            }
+                        
+                    </td>
+                    <td class="text-added-auth">
+                        <br>
+                        <div class="row">
+                            <div class="col-auto text-added-auth">Під’єднано</div>
+                            <div class="col-auto"><img src="~/img/icons/success.png" width="18px" height="18px"/></div>
+                        </div>
+                    </td>
+                    <td>
+                        <img src="~/img/icons/stick.png" height="43px" style="margin-top: 18px"/>
+                    </td> 
+                    <td style="margin-left: 30px">
+                        @if (Model.ShowRemoveButton)
+                        {
+                            <form id="@($"remove-login-{login.LoginProvider}")" asp-page-handler="RemoveLogin" method="post">
+                                <div style="margin-top:25px">
+                                    <input asp-for="@login.LoginProvider" name="LoginProvider" type="hidden" />
+                                    <input asp-for="@login.ProviderKey" name="ProviderKey" type="hidden" />
+                                    <div class="row">
+                                        <button type="submit" class="delete-ex-auth-btn col-auto" title="Remove this @login.ProviderDisplayName login from your account">Видалити прив’язку до @login.ProviderDisplayName</button>
+                                        <img src="~/img/icons/cancel_red.png" width="18px" height="18px" class="col-auto" style="margin-top:5px"/>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@if (Model.OtherLogins?.Count > 0)
+{
+    <form id="link-login-form" asp-page-handler="LinkLogin" method="post" class="form-horizontal">
+        <div id="socialLoginList">
+            <p>
+                @foreach (var provider in Model.OtherLogins)
+                {
+                    <h3 class="text-title-exlogins" style="margin-top: 25px">Під’єднати акаунт @provider.DisplayName</h3>
+                    <button id="@($"link-login-button-{provider.Name}")" type="submit" class="add-ex-auth" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                        @if(provider.DisplayName == "Goolge")
+                        {
+                            <img src="~/img/icons/google_icon.png" width="24px" height="24px"/>
+                        }
+                        else if (provider.DisplayName == "Facebook")
+                        {
+                            <img src="~/img/icons/facebook_icon.png" width="24px" height="24px"/>
+                        }
+                        else if (provider.DisplayName == "Twitter")
+                        {
+                            <img src="~/img/icons/twitter_icon.png" width="24px" height="24px"/>
+                        }
+                        else if (provider.DisplayName == "Microsoft")
+                        {
+                            <img src="~/img/icons/microsoft_logo.png" width="24px" height="24px"/>
+                        }
+                    </button>
+                    <br />
+                }
+            </p>
+        </div>
+    </form>
+}

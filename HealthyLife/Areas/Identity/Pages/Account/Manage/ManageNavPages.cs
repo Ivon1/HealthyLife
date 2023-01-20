@@ -4,7 +4,7 @@ using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using HealthyLife.Models;
 
-namespace  HealthyLife.Areas.Identity.Pages.Account.Manage
+namespace HealthyLife.Areas.Identity.Pages.Account.Manage
 {
     public static class ManageNavPages
     {
