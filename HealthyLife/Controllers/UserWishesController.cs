@@ -13,7 +13,8 @@ namespace HealthyLife.Controllers
 {
     public class StatInfo2
     {
-        public int Count { get; set; }        
+        public int Count { get; set; }
+        public List<int> CourseId { get; set; }
     }
 
     [AllowAnonymous]
@@ -33,25 +34,27 @@ namespace HealthyLife.Controllers
             var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (currentUser == null)
             {
-                return new StatInfo2() { Count = 0 };
+                return new StatInfo2() { Count = 0, CourseId = new List<int>() };
             }
             else
             {
-                int count = 0;                
+                int count = 0;
+                List<int> courseId = new List<int>();
 
                 var currentUserWishes = _context.UserWishes.Include(u => u.ApplicationUser).Include(u => u.Course).Where(u => u.ApplicationUser.UserName == User.Identity.Name).ToList();
                 foreach (var userWish in currentUserWishes)
                 {
-                    count++;                    
+                    count++;
+                    courseId.Add(userWish.CourseId);
                 }
-                return new StatInfo2() { Count = count };
+                return new StatInfo2() { Count = count, CourseId = courseId };
             }
         }
 
         [HttpPost]
         public StatInfo2 AddCourseToWishlist(int courseId)
-        {
-            var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).First();
+        {            
+            var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).First();            
             _context.UserWishes.Add(new UserWish()
             {
                 UserId = currentUser.Id,
@@ -63,7 +66,7 @@ namespace HealthyLife.Controllers
 
         [HttpPost]
         public StatInfo2 DeleteCourseToWishList(int courseId)
-        {
+        {            
             var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).First();
             var userWish = _context.UserWishes
                 .Include(u => u.ApplicationUser)
