@@ -1,0 +1,68 @@
+﻿@using HealthyLife.Data
+@using HealthyLife.Models
+@using HealthyLife.Areas.Identity.Pages.Account.Settings;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore
+@inject ApplicationDbContext _context
+@inject RoleManager<IdentityRole> RoleManager
+
+<link rel="stylesheet" href="~/css/drop-down-menu.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/settings_profile.css" asp-append-version="true" />
+
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+
+    var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+    var roles = new SelectList(RoleManager.Roles.ToList(), "Name", "Name");
+    var currentUserRoles = await UserManager.GetRolesAsync(currentUser);
+}
+<style>
+    .none {
+        display: none;
+    }
+    /**{
+        border: 1px solid red;
+    }*/
+    body {
+
+    }
+</style>
+
+<div class="row" style="margin-left: 150px; margin-top: 25px; width: 600px">
+    <div class="col-auto">
+        <img src="~/img/icons/arrow.png" width="33px" height="23px" id="back-btn"/>
+    </div>
+
+    <div class="col-auto text">
+        <h3 class="text" style="color: white; font-weight: 500;font-size: 40px; line-height: 40px;">Налаштування</h3>
+    </div>
+</div>
+
+<div class="container" id="navigation-container">
+    <div class="navigation-main">
+        <div class="row" style="height: 400px; margin-top: 20px; padding: 10px">
+            <div class="col-2" style="margin-top: 20px; width: 230px" id="nav-settings">
+                <partial name="_SettingsNav"/>
+            </div>
+            <div class="col-10" style="margin-top: 20px; width: 970px" id="render-settings">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+    <script src="~/js/profile.js"></script>
+}

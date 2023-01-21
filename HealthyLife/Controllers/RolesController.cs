@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthyLife.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
@@ -86,6 +86,8 @@ namespace HealthyLife.Controllers
                 ViewData["RoleId"] = new SelectList(_roleManager.Roles.ToList(), "Name", "Name");
                 return View();
             }
+            var currentRoles = await _userManager.GetRolesAsync(user);
+            await _userManager.RemoveFromRolesAsync(user, currentRoles);
 
             var role = await _userManager.AddToRoleAsync(user, roleUser.RoleId); // БАГ !!!
             // (ПРИ ДОБАВЛЕНИИ РОЛИ К ЮЗЕРУ , У ЮЗЕРА ОСТАЕТЬСЯ СТАРАЯ РОЛЬ)
@@ -93,22 +95,48 @@ namespace HealthyLife.Controllers
 
             if (role.Succeeded)
             {
-                //foreach(var r in _db.UserRoles.ToList())
-                //{
-                //    if(r.UserId == roleUser.UserId)
-                //    {
-                //        if(roleUser.RoleId != r.RoleId)
-                //        {
-                //            _db.UserRoles.Remove(r);
-                //        }
-                        
-                //    }
-                //}
-                //_db.SaveChangesAsync();
                 return RedirectToAction(nameof(AssignUserRole));
             }
             return View();
         }
+
+        ///
+        [HttpPost]
+        public IActionResult AssignAjax (string userId, string roleName)
+        {
+            try
+            {
+                var user = _db.ApplicationUsers.FirstOrDefault(u => u.Id == userId);
+                var role = _db.Roles.FirstOrDefault(r => r.Name == roleName);
+                var isCheckRoleAssign = _userManager.IsInRoleAsync(user, role.Id);
+
+                if (isCheckRoleAssign.IsCompleted)
+                {
+                    return Json(new { success = false, message = "У вас уже есть данная роль" });
+                }
+                //var currentRoles = _userManager.GetRolesAsync(user);
+                //_userManager.RemoveFromRolesAsync(user, currentRoles); // (IEnumerable<string>)
+                //_userManager.RemoveFromRoleAsync(user, currentRoles);
+
+                var roleSuccess = _userManager.AddToRoleAsync(user, roleName);
+
+                if (roleSuccess.IsCompleted)
+                {
+                    _db.SaveChangesAsync();
+                    return Json(new { success = true, message = "Роль изменена" });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Ошибка" });
+                }
+
+            } 
+            catch(Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
 
         public IActionResult AssignUserRole()
         {
@@ -125,5 +153,7 @@ namespace HealthyLife.Controllers
             ViewBag.UserRoles = result;
             return View();
         }
+
+
     }
 }

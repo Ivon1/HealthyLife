@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using HealthyLife.Areas.Identity.Pages.Account.Settings;
 using HealthyLife.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,15 +19,18 @@ namespace HealthyLife.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
+        private readonly IWebHostEnvironment _host;
 
         public CurrentCourses(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<DeletePersonalDataModel> logger)
+            ILogger<DeletePersonalDataModel> logger,
+            IWebHostEnvironment host)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _host = host;
         }
 
         public async Task<IActionResult> OnGet()
