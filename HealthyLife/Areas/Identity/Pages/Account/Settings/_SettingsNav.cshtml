@@ -1,0 +1,31 @@
+﻿@inject SignInManager<HealthyLife.Models.ApplicationUser> SignInManager
+@using HealthyLife.Areas.Identity.Pages.Account.Settings;
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+        <a class="nav-item-setting @SettingsNavPages.IndexNavClass(ViewContext)" 
+            id="profile" asp-page="./Index">Основна інформація профілю:</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-item-setting @SettingsNavPages.EditionalDataClass(ViewContext)" 
+            id="email" asp-page="./EditionalData">Додаткова інформація:</a>
+    </li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item">
+            <a id="external-login" class="nav-item-setting @SettingsNavPages.ExternalLoginsNavClass(ViewContext)" 
+                asp-page="./ExternalLogins">Під’єднати облікові записи:</a>
+        </li>
+    }
+    <li class="nav-item">
+        <a class="nav-item-setting @SettingsNavPages.TwoFactorAuthenticationNavClass(ViewContext)" 
+            id="two-factor" asp-page="./TwoFactorAuthentication">Двух-факторна аунтентифікація</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-item-setting @SettingsNavPages.DeletePersonalDataNavClass(ViewContext)" 
+            id="personal-data" asp-page="./DeletePersonalData">Видалити обліковий запис:</a>
+    </li>
+</ul>
