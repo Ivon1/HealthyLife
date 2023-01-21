@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Html;
+@using HealthyLife.Data;
 @*model IEnumerable<HealthyLife.Models.Course>*@
 @model HealthyLife.ViewModels.FilterViewModel
 
@@ -24,15 +25,15 @@
                     </h4>
                 </div>
                 @*<div class="col-md-2" style="display:flex; align-items:center; justify-content: center; margin: 0; padding: 0">
-                    <a class="nav-link nav-item-bordered"
-                       style="width: 100%; height: 57px; display:flex; align-items:center; justify-content: center; margin-right: 0px;
-                       background-color: #FFFFFF; color:#2C3447"
-                       href="#">
-                        <h3 style="font-weight: 500;font-size: 30px;line-height: 30px;
-                            text-align: center;text-transform: uppercase;color: #2C3447">
-                            ХЕКА+
-                        </h3>
-                    </a>
+                <a class="nav-link nav-item-bordered"
+                style="width: 100%; height: 57px; display:flex; align-items:center; justify-content: center; margin-right: 0px;
+                background-color: #FFFFFF; color:#2C3447"
+                href="#">
+                <h3 style="font-weight: 500;font-size: 30px;line-height: 30px;
+                text-align: center;text-transform: uppercase;color: #2C3447">
+                ХЕКА+
+                </h3>
+                </a>
                 </div>*@
             </div>
         </div>
@@ -40,7 +41,7 @@
     <div style="width: 100%; height: 130px; background: rgb(44,52,71);
             background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);">
         <div class="container">
-            <div class="row">                
+            <div class="row">
                 <div class="col-md-10" style="text-align: right; display:flex; align-items:center; justify-content: center; padding: 5px 5px 5px 0">
                     <h3 style="font-weight: 500;font-size: calc((100vw - 480px)/(1920 - 480) * (37 - 27) + 27px);line-height: calc((100vw - 480px)/(1920 - 480) * (37 - 25) + 25px);text-align: center;color: #FFFFFF;">
                         Якщо людина сама стежить за своїм здоров’ям, то важко знайти лікаря, який знав би краще корисне для її здоров’я, ніж вона сама. (Сократ)
@@ -50,17 +51,17 @@
                     </h4>
                 </div>
                 <div class="col-md-2">
-                    <img src="~/img/icons/logo_catalog1.png" width="112px" height="130px" style="float: right;"/>
+                    <img src="~/img/icons/logo_catalog1.png" width="112px" height="130px" style="float: right;" />
                 </div>
             </div>
-        </div>    
+        </div>
     </div>
     <div style="width: 100%; height: 145px; background: rgb(205,112,121);
         background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%); display: flex;">
-        <div class="container">        
-                <div class="row" style="height: 145px; display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <div class="row" style="height: 145px; display: flex; justify-content: center; align-items: center;">
                 <form method="get" style="display: flex">
-                    <div class="col-md-3" style="padding: 0px 5px;">                
+                    <div class="col-md-3" style="padding: 0px 5px;">
                         <button type="button" id="choiceSubject" class="nav-link nav-item-bordered" style="width: 100%; position: sticky; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: calc((100vw - 480px)/(1920 - 480) * (29 - 10) + 10px); text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
                             ОБЕРІТЬ ТЕМАТИКУ<i class="fa fa-arrow-circle-down arrow" style="float: right; font-size: 40px; padding-right: 10px"></i>
                         </button>
@@ -69,7 +70,7 @@
                             <hr style="margin-left: 20px; padding-top: 0; margin-bottom: 5px; width: 50%; border: none; height: 2px; border-top: 2px solid black; background-color: black">
                             @foreach (var s in Model.Subjects)
                             {
-                                <div class="col-md-6" style="display: flex">  
+                                <div class="col-md-6" style="display: flex">
                                     <label>
                                         <input name="sid" id="@s.Id" type="checkbox" style="border-radius: 10px; margin-left: 10px; padding: 10px" value="@s.Id" />
                                         <label for="sid" style="font-weight: 400; font-size: 20px; margin: 7px; padding: 5px;">
@@ -92,7 +93,7 @@
                             @foreach (var a in Model.Authors)
                             {
                                 <div class="col-md-6" style="display: flex">
-                                    <label>                                        
+                                    <label>
                                         <input name="aid" id="@a.Id" type="checkbox" style="border-radius: 10px; margin-left: 10px; padding: 10px" value="@a.Id" />
                                         <label for="sid" style="font-weight: 400; font-size: 20px; margin: 7px; padding: 5px;">
                                             @{
@@ -108,20 +109,20 @@
                         <button type="button" class="nav-link nav-item-bordered" style="width: 100%; height: 70px; border-radius: 15px; border: 3px solid #808080; color: #808080; font-size: calc((100vw - 480px)/(1920 - 480) * (29 - 13) + 13px); text-align: left; margin-left: 0px; padding-left: 15px; padding-bottom: 10px">
                             ОБЕРІТЬ ТРИВАЛІСТЬ<i class="fa fa-arrow-circle-down" style="float: right; font-size: 40px; padding-right: 10px"></i>
                         </button>
-                    </div>                    
+                    </div>
                     <div class="col-md-3 justify-content-center align-items-center" style="padding: 0px 5px; display: flex">
                         <button type="submit" class="nav-link nav-item-bordered" style="width: 80%; height: 70px; margin-left: 0px; margin-right: 10%; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564; color: white; font-size: calc((100vw - 480px)/(1920 - 480) * (29 - 13) + 13px); text-align: center; padding-bottom: 10px">
                             ЗНАЙТИ
                         </button>
                     </div>
                     @*<div class="col-md-1" style="padding: 0px 5px">
-                        <button type="button" class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-left: 0px; padding-bottom: 15px; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564;">
-                            <img src="~/img/icons/filter.png" style="width: 55%; height: 40px" />
-                        </button>
+                    <button type="button" class="nav-link nav-item-bordered" style="width: 90%; height: 70px; margin-left: 0px; padding-bottom: 15px; border-radius: 15px; border: 2px solid #F25564; background-color: #F25564;">
+                    <img src="~/img/icons/filter.png" style="width: 55%; height: 40px" />
+                    </button>
                     </div>*@
                 </form>
             </div>
-        
+
         </div>
     </div>
 
@@ -154,7 +155,7 @@
                     </button>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div class="container" style="width: 100%;">
@@ -162,7 +163,7 @@
             @foreach (var course in Model.Courses)
             {
                 <div class="col-md-4 course" style="margin-top: 20px;">
-                    <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto');">                    
+                    <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto');">
                         @if (course.Price.Equals(-1))
                         {
                             <a style="background-color: #F7A121;
@@ -226,7 +227,7 @@
                                     @price ₴
                                 </h3>
                             </a>
-                        } 
+                        }
                         <div style="margin-top: 148px; height: 145px; width: 100%; position: relative;">
                             <img src="~/img/icons/white.png" width="100%" height="145px" style="position: absolute;
                                     filter: alpha(Opacity=90);opacity: 0.90;
@@ -242,10 +243,13 @@
                                 </div>
                                 <div class="col-md-2" style="max-height: 110px; display: flex; justify-content: flex-end; align-items: center;">
                                     <p class="hidden itemCourseId" id="@course.Id">@course.Id</p>
-                                    <img src="~/img/icons/hear_ico.png" class="add-wishlist" width="23px" height="20px" id="like-item"
+                                    <input type="hidden" class="courseId" value="@course.Id"/>
+                                    <img src="~/img/icons/hear_ico.png" id="add-wishlist" width="23px" height="20px" 
                                      onmouseover="hover(this);" onmouseout="unhover(this);" />
-                                    <img src="~/img/icons/heart_purpur.png" class="del-wishlist" width="23px" height="20px" style="display: none;" id="like-item"
+
+                                    <img src="~/img/icons/heart_purpur.png" id="del-wishlist" width="23px" height="20px" style="display: none;" 
                                      onmouseover="hover(this);" onmouseout="unhover(this);" />
+
                                 </div>
                             </div>
                         </div>
@@ -395,7 +399,7 @@
                                             / 5
                                         </h5>
                                     </div>
-                                    <div style="display: flex; margin-top: 4%">                                    
+                                    <div style="display: flex; margin-top: 4%">
                                         <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px; margin-left: 17%" />
                                         <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
                                             @{
@@ -431,7 +435,7 @@
                                         <button style="border: none" class="add-wishlist">
                                             <input type="hidden" class="courseId" value="@course.Id" />
                                             <img src="~/img/icons/hear_ico.png" style="width: 23px; height: 20px;" />
-                                        </button>                                   
+                                        </button>
                                         <button style="margin-right: 5%; border: none" class="add-cart">
                                             <input type="hidden" class="courseId" value="@course.Id" />
                                             <img src="~/img/icons/cart-gray.png" style="width: 23px; height: 20px;" />
@@ -522,24 +526,12 @@
                     </div>
                 </div>
             }
-        </div>        
+        </div>
     </div>
     <div class="container mt-5" style="text-align: center;">
         <page-link page-model="Model.PageViewModel" page-action="Index" page-url-sortOrder="@ViewData["sortOrder"]" page-url-sid="@ViewData["sid"]" page-url-aid="@ViewData["aid"]" style="display: flex; justify-content: center;"></page-link>
-        </div> 
+    </div>
     <div class="mt-5" style="width: 100%;  height: 60px; margin: 0 auto; background: rgb(205,112,121);
          background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%);">
     </div>
 </div>
-
-@section scripts
-{
-    <script>
-        let courses = document.querySelectorAll('.itemCourseId');
-        for (let c of courses) {
-            console.log(c.innerHTML);
-        }
-        let wishes = document.getElementById('#courseIdList');
-        console.log(wishes.val());
-    </script>
-}

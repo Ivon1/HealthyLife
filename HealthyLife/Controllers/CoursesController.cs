@@ -39,7 +39,7 @@ namespace HealthyLife.Controllers
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
             ViewData["PriceDescSortParm"] = sortOrder == "price_desc" ? "Price" : "price_desc";            
 
-            int pageSize = 9;
+            int pageSize = 5;
             IQueryable<Course> courses = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
             
 
@@ -90,7 +90,7 @@ namespace HealthyLife.Controllers
             {
                 Courses = items,
                 Authors = authors,
-                Subjects = subjects,
+                Subjects = subjects,                
                 PageViewModel = pageViewModel
             };
 

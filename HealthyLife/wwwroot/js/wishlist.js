@@ -41,24 +41,27 @@
                     if (c.innerHTML == intersection) {
                         $('.add-wishlist').css('display', 'none');
                         $('.del-wishlist').css('display', 'flex');
-                    }                    
+                    }
+                    else {
+                        $('.add-wishlist').css('display', 'flex');
+                        $('.del-wishlist').css('display', 'none');
+                    }
                 }
                 
                 $('#wishlistCount').html(result.count);
-                $('#courseIdList').html(result.courseId + "");
+                $('#courseIdList').html(result.courseId);
                 $('#wishlistCount').css('display', 'block');
                 $('#courseIdList').css('display', 'block');
             }
         }
     });
-
-    let flag = "empty";
+   
     $('#add-wishlist').click((event) => {
         let target = $(event.target);
         let parent = target.parent();
         let hidden1 = parent.find('.courseId');        
         let _courseId = parseInt(hidden1.val());                
-        alert(`Товар із ID ${_courseId} був успішно доданий до списку бажань`);
+        alert(`Курс із ID ${_courseId} був успішно доданий до списку бажань`);
         $.ajax({
             type: 'POST',
             url: '/UserWishes/AddCourseToWishlist',
@@ -67,7 +70,7 @@
             success: function (result) {
                 console.log(result);
                 $('#wishlistCount').html(result.count);
-                $('#courseIdList').html(result.courseId + "");
+                $('#courseIdList').html(result.courseId);
                 $('#add-wishlist').css('display', 'none');
                 $('#del-wishlist').css('display', 'flex');
             }
@@ -83,7 +86,7 @@
         let parent = target.parent();
         let hidden1 = parent.find('.courseId');        
         let _courseId = parseInt(hidden1.val());        
-        alert(`Товар із ID ${_courseId} був успішно видалений із списку бажань`);
+        alert(`Курс із ID ${_courseId} був успішно видалений із списку бажань`);
         $.ajax({
             type: 'POST',
             url: '/UserWishes/DeleteCourseToWishlist',
@@ -92,7 +95,7 @@
             success: function (result) {
                 console.log(result);
                 $('#wishlistCount').html(result.count);
-                $('#courseIdList').html(result.courseId + "");
+                $('#courseIdList').html(result.courseId);
                 $('#del-wishlist').css('display', 'none');
                 $('#add-wishlist').css('display', 'flex');
                 if (result.count > 0) {
@@ -106,14 +109,4 @@
             }
         });
     });
-
-    Array.prototype.diff = function (arr2) {
-        var ret = [];
-        for (var i in this) {
-            if (arr2.indexOf(this[i]) > -1) {
-                ret.push(this[i]);
-            }
-        }
-        return ret;
-    };
 });
