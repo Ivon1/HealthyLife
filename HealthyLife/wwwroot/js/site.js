@@ -7,6 +7,8 @@ function unhover(element) {
 }
 
 $(document).ready(function () {
+    getLocalDisplay();
+
     $('#media').carousel({
         pause: true,
         interval: false,
@@ -61,60 +63,161 @@ $(document).ready(function () {
     });
 
     $('#list').click(function () {
+        list();
+        saveLocalDisplay('list');
+    });
+
+    $('#grid3').click(function () {
+        grid3();
+        saveLocalDisplay('grid3');
+    });
+
+    $('#grid4').click(function () {
+        grid4();
+        saveLocalDisplay('grid4');
+    });
+
+    $('#grid5').click(function () {
+        grid5();
+        saveLocalDisplay('grid5');
+    });
+
+    function list() {
         $('.list-image').attr('src', '/img/icons/list-active.png');
         $('.grid3-image').attr('src', '/img/icons/grid3.png');
         $('.grid4-image').attr('src', '/img/icons/grid4.png');
         $('.grid5-image').attr('src', '/img/icons/grid5.png');
         $('.list-div').css('display', 'inline');
         $('.grid-div').css('display', 'none');
-    });
+    }
 
-    $('#grid3').click(function () {
+    function grid3() {
         $('.list-image').attr('src', '/img/icons/list.png');
         $('.grid3-image').attr('src', '/img/icons/grid3-active.png');
         $('.grid4-image').attr('src', '/img/icons/grid4.png');
         $('.grid5-image').attr('src', '/img/icons/grid5.png');
         $('.list-div').css('display', 'none');
         $('.grid-div').css('display', 'flex');
+        $('.courseDescriptionShortFont').css('font-size', '30px');
+        $('.priceItem').css('width', '112px');
+        $('.detailPrice').css('font-size', '25px');
+        $('.detailPrice').css('top', '5px');
+        $('.detailItem').css('width', '112px');
+        $('.detailFont').css('font-size', '25px');
+        $('.detailFont').css('top', '5px');
         $('.course').each(function () {
             $(this).removeClass('grid4');
             $(this).removeClass('grid5');
             $(this).addClass('grid3');
         });
-    });
+    }
 
-    $('#grid4').click(function () {
+    function grid4() {
         $('.list-image').attr('src', '/img/icons/list.png');
         $('.grid3-image').attr('src', '/img/icons/grid3.png');
         $('.grid4-image').attr('src', '/img/icons/grid4-active.png');
         $('.grid5-image').attr('src', '/img/icons/grid5.png');
         $('.list-div').css('display', 'none');
         $('.grid-div').css('display', 'flex');
+        $('.courseDescriptionShortFont').css('font-size', '26px');
+        $('.priceItem').css('width', '97px');
+        $('.detailPrice').css('font-size', '21px');
+        $('.detailPrice').css('top', '8px');
+        $('.detailItem').css('width', '97px');
+        $('.detailFont').css('font-size', '21px');
+        $('.detailFont').css('top', '8px');
         $('.course').each(function () {
             $(this).removeClass('grid3');
             $(this).removeClass('grid5');
             $(this).addClass('grid4');
         });
-    });
+    }
 
-    $('#grid5').click(function () {
+    function grid5() {
         $('.list-image').attr('src', '/img/icons/list.png');
         $('.grid3-image').attr('src', '/img/icons/grid3.png');
         $('.grid4-image').attr('src', '/img/icons/grid4.png');
         $('.grid5-image').attr('src', '/img/icons/grid5-active.png');
         $('.list-div').css('display', 'none');
         $('.grid-div').css('display', 'flex');
+        $('.courseDescriptionShortFont').css('font-size', '22px');
+        $('.courseDescriptionShortFont').css('padding-top', '10%');
+        $('.priceItem').css('width', '82px');
+        $('.detailPrice').css('font-size', '18px');
+        $('.detailPrice').css('top', '10px');
+        $('.detailItem').css('width', '82px');
+        $('.detailFont').css('font-size', '18px');
+        $('.detailFont').css('top', '10px');
         $('.course').each(function () {
             $(this).removeClass('grid3');
             $(this).removeClass('grid4');
             $(this).addClass('grid5');
         });
-    });
+    }
 
-    $('.filter').click(function () {
-        $('.subject-list').css('display', 'flex');
-        $('.arrow').css('color', '#F25564');
+    function saveLocalDisplay(display) {
+        let displays;
+        if (localStorage.getItem('displays') === null) {
+            displays = ['grid3'];
+        } else {
+            displays = JSON.parse(localStorage.getItem('displays'));
+        }
+        displays.push(display);
+        localStorage.setItem('displays', JSON.stringify(displays));
+    }
+
+    function getLocalDisplay() {
+        let displays;
+        if (localStorage.getItem('displays') === null) {
+            displays = ['grid3'];
+        } else {
+            displays = JSON.parse(localStorage.getItem('displays'));
+        }
+        if (displays[displays.length - 1] == 'grid3') {
+            grid3();
+        }
+        if (displays[displays.length - 1] == 'grid4') {
+            grid4();
+        }
+        if (displays[displays.length - 1] == 'grid5') {
+            grid5();
+        }
+        if (displays[displays.length - 1] == 'list') {
+            list();
+        }
+    }
+
+    let flag = 1;
+    $(document).mouseup(function (e) {
+        var container = $(".subject-list");
+        var container3 = $(".author-list");
+        if (container.has(e.target).length === 0) {
+            container.hide();
+            flag = 1;
+            $('.arrow').css('color', '#808080');
+        }
+        if (container3.has(e.target).length === 0) {
+            container3.hide();
+            flag = 1;
+            $('.arrow3').css('color', '#808080');
+        }
     });
+    
+    $('#choiceSubject').click(function () {
+        if (flag == 1) {            
+            $('.subject-list').css('display', 'flex');
+            $('.arrow').css('color', '#F25564');
+            flag = 2;
+        }        
+    }); 
+
+    $('#choiceAuthor').click(function () {
+        if (flag == 1) {
+            $('.author-list').css('display', 'flex');
+            $('.arrow3').css('color', '#F25564');
+            flag = 2;
+        }
+    }); 
 
     // auth functions
     var nameCheck = false;

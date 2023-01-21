@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 using HealthyLife.ViewModels;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Net.Sockets;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace HealthyLife.Controllers
 {
@@ -24,21 +26,22 @@ namespace HealthyLife.Controllers
         {
             _context = context;
             _host = host;
-        }
+        }        
 
         // GET: Courses
         [AllowAnonymous]
-        public async Task<IActionResult> Index(string sortOrder, int? aid, int? sid, int page = 1)
+        public async Task<IActionResult> Index(string sortOrder, List<int>? sid, List<int>? aid, int page = 1)
         {
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
-            ViewData["NameDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name" : "name_desc";
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name" : "name_desc";
+            ViewData["NameDescSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
             ViewData["RatingSortParm"] = sortOrder == "Rate" ? "rate_desc" : "Rate";
             ViewData["RatingDescSortParm"] = sortOrder == "rate_desc" ? "Rate" : "rate_desc";
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
             ViewData["PriceDescSortParm"] = sortOrder == "price_desc" ? "Price" : "price_desc";            
 
-            int pageSize = 5;
+            int pageSize = 9;
             IQueryable<Course> courses = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
+            
 
             courses = from c in _context.Courses select c;            
             switch (sortOrder)
@@ -63,10 +66,16 @@ namespace HealthyLife.Controllers
                     break;
             }
 
-            if (aid != null && aid != 0)
-                courses = courses.Where(c => c.AuthorId == aid);
-            if (sid != null && sid != 0)
-                courses = courses.Where(c => c.SubjectId == sid);
+            if (aid != null && aid.Any())
+            {
+                courses = courses.Where(c => aid.Contains(c.AuthorId));
+                ViewData["aid"] = courses.Where(c => aid.Contains(c.AuthorId));
+            }
+            if (sid != null && sid.Any())
+            {
+                courses = courses.Where(c => sid.Contains(c.SubjectId));
+                ViewData["sid"] = courses.Where(c => sid.Contains(c.SubjectId));
+            }
 
             List<Author> authors = _context.Authors.ToList();
             List<Subject> subjects = _context.Subjects.ToList();            
@@ -85,6 +94,10 @@ namespace HealthyLife.Controllers
                 PageViewModel = pageViewModel
             };
 
+            ViewData["sid"] = sid;
+            ViewData["aid"] = aid;
+            ViewData["page"] = page;
+            ViewData["sortOrder"] = sortOrder;
             //var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
             return View(viewModel);
         }
@@ -101,7 +114,7 @@ namespace HealthyLife.Controllers
             var course = await _context.Courses
                 .Include(c => c.Aurhor)
                 .Include(c => c.Subject)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);            
             if (course == null)
             {
                 return NotFound();

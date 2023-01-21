@@ -29,6 +29,17 @@ namespace HealthyLife.Controllers
             return View();
         }
 
+        public async Task<IActionResult> TopTwenty()
+        {
+            var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject).OrderByDescending(c => c.Rating);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

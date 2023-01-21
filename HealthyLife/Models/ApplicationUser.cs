@@ -15,5 +15,6 @@ namespace HealthyLife.Models
         public string Genger { get; set; } = string.Empty;
 
         public List<UserOrder> UserOrders { get; set; } = new List<UserOrder>();
+        public List<UserWish> UserWishes { get; set; } = new List<UserWish>();
     }
 }

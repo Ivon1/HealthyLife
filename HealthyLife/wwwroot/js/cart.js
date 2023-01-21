@@ -1,6 +1,4 @@
 ﻿$(document).ready(() => {
-    $('#cartItemsCount').css('display', 'block');
-    $('#cost').css('display', 'block');
     $.ajax({
         type: 'POST',
         url: '/UserOrders/GetStatInfo',
@@ -8,8 +6,11 @@
         dataType: 'json',
         success: function (result) {
             console.log(result);
-            $('#cartItemsCount').html(result.count);
-            $('#cost').html(result.cost);
+            if (result.count > 0) {
+                $('#cartItemsCount').html(result.count);
+                $('#cost').html(result.cost);
+                $('#cartItemsCount').css('display', 'block');                
+            }            
         }
     });
 
@@ -18,9 +19,7 @@
         let parent = target.parent();
         let hidden = parent.find('.courseId');
         let _courseId = parseInt(hidden.val());
-        alert(`Товар із ID ${_courseId} був успішно доданий`);
-        $('#cartItemsCount').css('display', 'block');
-        $('#cost').css('display', 'block');
+        alert(`Товар із ID ${_courseId} був успішно доданий`);        
         $.ajax({
             type: 'POST',
             url: '/UserOrders/AddCourseToCart',
@@ -32,5 +31,6 @@
                 $('#cost').html(result.cost);
             }
         });
+        $('#cartItemsCount').css('display', 'block');        
     });
 });
