@@ -50,8 +50,7 @@
                 
                 $('#wishlistCount').html(result.count);
                 $('#courseIdList').html(result.courseId);
-                $('#wishlistCount').css('display', 'block');
-                $('#courseIdList').css('display', 'block');
+                $('#wishlistCount').css('display', 'block');                
             }
         }
     });
@@ -76,8 +75,7 @@
             }
         });        
         console.log(_courseId);
-        $('#wishlistCount').css('display', 'block');
-        $('#courseIdList').css('display', 'block');
+        $('#wishlistCount').css('display', 'block');        
         
     });
 
@@ -99,12 +97,10 @@
                 $('#del-wishlist').css('display', 'none');
                 $('#add-wishlist').css('display', 'flex');
                 if (result.count > 0) {
-                    $('#wishlistCount').css('display', 'block');
-                    $('#courseIdList').css('display', 'block');
+                    $('#wishlistCount').css('display', 'block');                    
                 }
                 else {
-                    $('#wishlistCount').css('display', 'none');
-                    $('#courseIdList').css('display', 'none');
+                    $('#wishlistCount').css('display', 'none');                    
                 }
             }
         });
