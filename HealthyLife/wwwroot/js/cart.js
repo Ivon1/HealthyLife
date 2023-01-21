@@ -33,4 +33,10 @@
         });
         $('#cartItemsCount').css('display', 'block');        
     });
+
+    $('.del-item-in-cart').hover(function () {
+        $(this).attr("src", "/img/icons/del-item-cart-active.png");        
+    }, function () {
+        $(this).attr("src", "/img/icons/del-item-cart.png");
+    });
 });
