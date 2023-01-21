@@ -189,13 +189,13 @@ namespace HealthyLife.Controllers
             {
                 return NotFound();
             }
-
-            return View(userOrder);
+            _context.UserOrders.Remove(userOrder);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: UserOrders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete")]        
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.UserOrders == null)

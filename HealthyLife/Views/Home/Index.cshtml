@@ -99,7 +99,7 @@
                 <div class="swiper-slide">
                     <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto'); width: 391px">
 
-                        @if (course.Price.Equals(-1))
+                            @if (course.Price > 1500)
                         {
                             <a  style="background-color: #F7A121;
                                     height: 36px; width: 37px; border-bottom-right-radius: 20px; 
@@ -130,14 +130,19 @@
                             </a>
                         }
 
-                        @if (course.Price.Equals(-1))
+                        @if (course.Price > 1500)
                         {
                             <a  style="background-color: #F7A121; position: absolute; 
                                     height: 36px; width: 112px; border-bottom-left-radius: 20px; 
                                     border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
                                     text-decoration:none" asp-controller="Courses"
                                     asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ХЕКА+</h3>
+                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">
+                                    @{
+                                        var price = Convert.ToInt16(course.Price).ToString();
+                                    }
+                                    @price ₴ 
+                                </h3>
                             </a>
 
                         }
@@ -188,7 +193,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if (course.Price.Equals(-1))
+                            @if (course.Price > 1500)
                         {
                             <a style="background-color: #F7A121; position: absolute; 
                                     height: 36px; width: 112px; border-bottom-right-radius: 20px; 
@@ -273,7 +278,7 @@
               <div class="swiper-slide">
                     <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto'); width: 391px">
 
-                        @if (course.Price.Equals(-1))
+                        @if (course.Price > 1500)
                         {
                             <a  style="background-color: #F7A121;
                                     height: 36px; width: 37px; border-bottom-right-radius: 20px; 
@@ -304,14 +309,19 @@
                             </a>
                         }
 
-                        @if (course.Price.Equals(-1))
+                            @if (course.Price > 1500)
                         {
                             <a  style="background-color: #F7A121; position: absolute; 
                                     height: 36px; width: 112px; border-bottom-left-radius: 20px; 
                                     border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
                                     text-decoration:none" asp-controller="Courses"
                                     asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ХЕКА+</h3>
+                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">
+                                    @{
+                                        var price = Convert.ToInt16(course.Price).ToString();
+                                    }
+                                    @price ₴ 
+                                </h3>
                             </a>
                         }
                         else if (course.Price.Equals(0))
@@ -361,7 +371,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if (course.Price.Equals(-1))
+                            @if (course.Price > 1500)
                         {
                             <a style="background-color: #F7A121; position: absolute; 
                                     height: 36px; width: 112px; border-bottom-right-radius: 20px; 
