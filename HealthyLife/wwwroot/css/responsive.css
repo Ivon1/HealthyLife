@@ -1,0 +1,257 @@
+﻿@media (max-width: 1920px) {
+    #main-img-container {
+        height: 845px;
+    }
+
+    #h1-heka {
+        font-size: 80px !important;
+    }
+
+    #h2-heka {
+        font-size: 40px !important;
+    }
+
+    #h3-heka {
+        font-size: 30px !important;
+    }
+
+    #logo-a {
+        width: 111px !important;
+        height: 75px !important;
+    }
+
+    .nav-a-active, .nav-a {
+        width: 140px !important;
+        height: 57px !important;
+    }
+
+    .account-partial-bordered {
+        width: 54px;
+        height: 57px;
+    }
+
+    .btn-info-main {
+        width: 75px;
+        height: 76px;
+    }
+
+    .btn-info-main img {
+        width:34.82px;
+        height:32.35px;
+    }
+
+    #to-courses {
+        font-weight: 400;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #main-img-container {
+        height: 732px;
+    }
+
+    #h1-heka {
+        font-size: 70px !important;
+    }
+
+    #h2-heka {
+        font-size: 35px !important;
+    }
+
+    #h3-heka {
+        font-size: 27px !important;
+    }
+
+    #logo-a {
+        width: 100px !important;
+        height: 60px !important;
+    }
+
+    .nav-a-active, .nav-a {
+        width: 130px !important;
+        height: 51px !important;
+    }
+
+    .account-partial-bordered {
+        width: 47px;
+        height: 57px;
+    }
+}
+
+@media (max-width: 992px) {
+    #main-img-container {
+        height: 619px;
+    }
+
+    #h1-heka {
+        font-size: 60px !important;
+    }
+
+    #h2-heka {
+        font-size: 30px !important;
+    }
+
+    #h3-heka {
+        font-size: 24px !important;
+    }
+
+    #logo-a {
+        width: 90px !important;
+        height: 55px !important;
+    }
+
+    .nav-a-active, .nav-a {
+        width: 120px !important;
+        height: 47px !important;
+    }
+
+    .account-partial-bordered {
+        width: 40px;
+        height: 57px;
+    }
+}
+
+@media (max-width: 768px) {
+    #main-img-container {
+        height: 506px;
+    }
+
+    #h1-heka {
+        font-size: 50px !important;
+    }
+
+    #h2-heka {
+        font-size: 30px !important;
+    }
+
+    #h3-heka {
+        font-size: 21px !important;
+    }
+
+    #logo-a {
+        width: 80px !important;
+        height: 50px !important;
+    }
+
+    .nav-a-active, .nav-a {
+        width: 110px !important;
+        height: 41px !important;
+    }
+
+    .account-partial-bordered {
+        width: 33px;
+        height: 57px;
+    }
+
+    .btn-info-main {
+        width: 50px !important;
+        height: 48px !important;
+    }
+
+    .btn-info-main img {
+        width: 25.57px !important;
+        height: 26.33px !important;
+    }
+
+    #to-courses {
+        font-size: 17px !important;
+        height: 46px !important;
+        width: 87px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #main-img-container {
+        height: 393px;
+    }
+
+    #h1-heka {
+        font-size: 40px !important;
+    }
+
+    #h2-heka {
+        font-size: 25px !important;
+    }
+
+    #h3-heka {
+        font-size: 15px !important;
+    }
+
+    #logo-a {
+        width: 58px !important;
+        height: 39px !important;
+    }
+
+    .nav-a, .nav-a-active {
+        width: 80px;
+        height: 28px;
+        font-size: 13px;
+    }
+
+    .btn-info-main {
+        width: 45px !important;
+        height: 43px !important;
+    }
+
+    .btn-info-main img {
+        width: 22.57px !important;
+        height: 23.33px !important;
+    }
+
+    #to-courses {
+        font-size: 15px !important;
+        height: 43px !important;
+        width: 83px !important;
+    }
+}
+
+@media (max-width: 390px) {
+    #main-img-container {
+        height: 345px;
+    }
+
+    #h1-heka {
+        font-size: 40px !important;
+    }
+
+    #h2-heka {
+        font-size: 25px !important;
+    }
+
+    #h3-heka {
+        font-size: 15px !important;
+    }
+
+    #logo-a {
+        width: 58px !important;
+        height: 39px !important;
+    }
+
+    .nav-a, .nav-a-active {
+        width: 80px;
+        height: 28px;
+        font-size: 13px;
+    }
+
+    .account-partial-bordered {
+        width: 26px;
+        height: 26px;
+    }
+
+    .btn-info-main {
+        width: 40px !important;
+        height: 38px !important;
+    }
+
+    .btn-info-main img {
+        width: 18.57px !important;
+        height: 17.33px !important;
+    }
+
+    #to-courses {
+        font-size: 13px !important;
+        height: 39px !important;
+        width: 78px !important;
+    }
+}

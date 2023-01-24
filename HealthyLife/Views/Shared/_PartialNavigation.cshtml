@@ -1,0 +1,116 @@
+﻿<nav class="navbar navbar-expand-lg navbar-light" aria-label="Offcanvas navbar large">
+
+    <div class="container">
+
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index" id="logo-a">
+            <img src="~/img/icons/logo.png" width="111" height="75" id="logo-a"/>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end text-bg-light" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+            
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <div class="d-flex">
+                            <a class="me-3 ms-3 nav-link text-dark px-2 shadow @(ViewData["Title"].Equals("Каталог") ? "nav-a-active" : "nav-a")"
+                                asp-controller="Courses" asp-action="Index">
+                                КУРСИ
+                            </a>
+
+                            <a class="me-3 ms-3 nav-link text-dark px-2 shadow @(ViewData["Title"].Equals("Топ-20") ? "nav-a-active" : "nav-a")"
+                                asp-controller="Home" asp-action="TopTwenty">
+                                Топ-20
+                            </a>
+
+                            <a class="me-3 ms-3 nav-link text-dark px-2 shadow @(ViewData["Title"].Equals("Про нас") ? "nav-a-active" : "nav-a")"
+                                asp-controller="Home" asp-action="AboutUs">
+                                Про нас
+                            </a>
+                        </div>                    
+                    </li>
+
+                    <li class="col">
+                        
+                    </li>
+
+                    <li>
+                        <form class="d-flex mt-3 mt-lg-0 search-item-bordered me-3" 
+                            asp-controller="Courses" asp-action="SearchedCourses" method="get">
+                            <input class="form-control-plaintext me-2" placeholder="Пошук..." style="text-indent: 10px;" value="@ViewData["CurrentSearch"]">
+                            <button type="submit" style="border: none;background: none;">
+                                <img src="~/img/icons/glass_search_zoom_icon.png" style="height:40px; width:40px;" />
+                            </button>
+                        </form>
+                    </li>
+
+                    <li class="nav-item">
+                        <div class="d-flex mt-3 mt-lg-0">
+                            <partial name="_LoginPartial"/>
+                        </div>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+@*
+<header>
+
+    <div id="pre-header" style="padding-top: 10px;color:#FFFFFF">
+        <h4>Інвестуй у себе, інвестуй у здоров'я</h4>
+    </div>
+
+    <div class="container mt-2 mb-1">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a class="d-flex align-items-center mb-3 mb-lg-0 text-decoration-none me-5" asp-controller="Home" asp-action="Index" id="logo-a">
+                <img src="~/img/icons/logo.png" width="111" height="75" id="logo-a"/>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li class="me-4 mb-1 mt-1">
+                    <a class="nav-link text-dark px-2 shadow @(ViewData["Title"].Equals("Каталог") ? "nav-a-active" : "nav-a")"
+                            asp-controller="Courses" asp-action="Index">
+                            КУРСИ
+                    </a>
+                </li>
+                <li class="me-4 mb-1 mt-1">
+                    <a class="nav-link text-dark px-2 shadow @(ViewData["Title"].Equals("Топ-20") ? "nav-a-active" : "nav-a")"
+                            asp-controller="Home" asp-action="TopTwenty">
+                            Топ-20
+                    </a>
+                </li>
+                <li class="me-4 mb-1 mt-1">
+                    <a class="nav-link text-dark px-2 shadow @(ViewData["Title"].Equals("Про нас") ? "nav-a-active" : "nav-a")"
+                            asp-controller="Home" asp-action="AboutUs">
+                            Про нас
+                    </a>
+                </li>
+            </ul>
+
+            <form class="col-auto col-lg-3 mb-1 mb-lg-0 me-lg-3 d-inline-flex search-item-bordered mt-1 me-3" 
+                    asp-controller="Courses" asp-action="SearchedCourses" method="get" style="margin-right:3%!important">
+                <input type="text" class="form-control-plaintext" placeholder="Пошук..." aria-label="Search" id="searchString"
+                    style="outline:none; border:none; text-indent: 10px; height: 57px" value="@ViewData["CurrentSearch"]">
+                <button type="submit" style="border: none;background: none;">
+                    <img src="~/img/icons/glass_search_zoom_icon.png" style="height:40px; width:40px;" />
+                </button>
+            </form>
+            <div class="text-end mt-1">
+                <div class="row">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+    </div>
+</header>*@
