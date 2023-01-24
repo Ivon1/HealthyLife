@@ -98,7 +98,7 @@ namespace HealthyLife.Areas.Identity.Pages.Account
                 user.LastName = Input.LastName;
                 user.CreationTime = DateTime.Now;
                 user.Genger = "Бажаю не вказувати";
-                user.PathToPhoto = "default_icon_user.png";
+                user.PathToPhoto = "default_image_profile1.png";
                 //
                 if (user.FirstName.Equals("") && user.LastName.Equals(""))
                     user.FirstName = user.Email;

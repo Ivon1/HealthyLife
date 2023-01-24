@@ -2,20 +2,22 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
         @if (ViewData["Title"].Equals("Список бажань"))
         {
-            <a id="wishlist" class="nav-link text-dark account-partial-bordered" style="margin-left: 20px; box-sizing: border-box; border: 1px solid #808080; background-color: #F25564; box-shadow: none" asp-controller="UserWishes" asp-action="Index">
-                <p id="wishlistCount" style="display: none">0</p>
-                <p id="courseIdList" style="display: none">0</p>
-                <img src="~/img/icons/heart_white.png" height="28px" width="28px"/>
+            <a id="wishlist" class="text-dark account-partial-bordered me-lg-2 ms-lg-2 me-3 ms-3" 
+                    style="box-sizing: border-box; border: 1px solid #808080; background-color: #F25564; box-shadow: none;"
+                    asp-controller="UserWishes" asp-action="Index">
+                    <p id="wishlistCount" style="display: none">0</p>
+                    <p id="courseIdList" style="display: none">0</p>
+                    <img src="~/img/icons/heart_white.png" height="28px" width="28px"/>
             </a>
         }
         else
         {
-            <a id="wishlist" class="nav-link text-dark account-partial-bordered" style="margin-left: 20px" asp-controller="UserWishes" asp-action="Index">
+            <a id="wishlist" class="text-dark account-partial-bordered me-lg-2 ms-lg-2 me-3 ms-3" 
+                style="" asp-controller="UserWishes" asp-action="Index">
                 <p id="wishlistCount" style="display: none">0</p>
                 <p id="courseIdList" style="display: none">0</p>
                 <img src="~/img/icons/heart.png" height="28px" width="28px"/>
@@ -23,21 +25,23 @@
         }
         @if (ViewData["Title"].Equals("Профіль"))
         {
-            <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Manage/Index"
+            <a class="text-dark account-partial-bordered me-lg-2 ms-lg-2 me-3 ms-3" asp-area="Identity" asp-page="/Account/Manage/Index"
                 style="width:54px; height: 57px; display:flex; align-items:center; justify-content: center; box-sizing: border-box; border: 1px solid #808080; background-color: #1A9F83; box-shadow: none">
                 <img src="~/img/icons/person_white.png" height="28px" width="28px"/>
             </a>
         }
         else
         {
-            <a class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-page="/Account/Manage/Index"
+            <a class="text-dark account-partial-bordered me-lg-2 ms-lg-2 me-3 ms-3" asp-area="Identity" asp-page="/Account/Manage/Index"
                 style="width:54px; height: 57px; display:flex; align-items:center; justify-content: center">
                 <img src="~/img/icons/person_label.png" height="28px" width="28px"/>
             </a>
         }
         @if (ViewData["Title"].Equals("Кошик"))
         {
-            <a id="cart" style="box-sizing: border-box; border: 1px solid #808080; background-color: #F47C50; box-shadow: none" class="nav-link text-dark account-partial-bordered disabled" asp-controller="UserOrders" asp-action="Index">
+            <a id="cart" style="box-sizing: border-box; border: 1px solid #808080; 
+                background-color: #F47C50; box-shadow: none" class="me-lg-2 ms-lg-2 me-3 ms-3 text-dark account-partial-bordered 
+                disabled" asp-controller="UserOrders" asp-action="Index">
                 <p id="cartItemsCount" style="display: none">0</p>
                 <p id="cost" style="display: none">0</p>
                 <img src="~/img/icons/cart-white.png" height="28px" width="28px" />
@@ -45,36 +49,32 @@
         }
         else
         {
-            <a id="cart" class="nav-link text-dark account-partial-bordered" asp-controller="UserOrders" asp-action="Index">
+            <a id="cart" class="me-lg-2 ms-lg-2 me-3 ms-3 text-dark account-partial-bordered" asp-controller="UserOrders" asp-action="Index">
                     <p id="cartItemsCount" style="display: none">0</p>
                     <p id="cost" style="display: none">0</p>
                 <img src="~/img/icons/cart.png" height="28px" width="28px" />
             </a>
         }
 
-    <a sp-area="Identity" asp-page="/Account/Login" style="width:54px; height: 57px;">
-        <form asp-area="Identity" asp-page="/Account/Logout" 
-              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
-              class="account-partial-bordered center-items-inside" style="width:100%; height: 57px;padding:0">       
-            <button type="submit" style="width:100%; height: 57px; border:none; background: none; padding: 0;
-                    margin-right: 2px">
-                  <img src="~/img/icons/log_out.png" height="28px" width="28px" />
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
+            class="me-lg-2 ms-lg-2 me-3 ms-3 account-partial-bordered center-items-inside" style="width: 55px">     
+            
+            <button type="submit" class="center-items-inside" style="height: 100%!important; width: 100%!important; background:none;border:none">
+                    <img src="~/img/icons/log_out.png" height="28px" width="28px" />
             </button>
         </form>
-    </a>
 }
 else
 {
-    <a class="nav-link text-dark nav-item-bordered"
+    <a class="me-lg-2 ms-lg-2 me-3 ms-3 text-dark nav-item-bordered me-3"
             style="width: 141px; height: 57px; display:flex; align-items:center; justify-content: center;
-            background-color:#1A9F83; color: #FFFFFF!important"
+            background-color:#1A9F83; color: #FFFFFF!important; border: 0px solid; text-decoration: none;"
             asp-area="Identity" asp-page="/Account/Login">ВХІД
     </a>
 
-    <a id="cart" class="nav-link text-dark account-partial-bordered" asp-area="Identity" asp-controller="UserOrders" asp-action="Index">
+    <a id="cart" class="me-lg-2 ms-lg-2 me-3 ms-3 text-dark account-partial-bordered" asp-area="Identity" asp-controller="UserOrders" asp-action="Index">
             <p id="cartItemsCount" style="display: none"></p>
             <p id="cost" style="display: none"></p>
         <img src="~/img/icons/cart.png" height="28px" width="28px" />
     </a>
 }
-</ul>

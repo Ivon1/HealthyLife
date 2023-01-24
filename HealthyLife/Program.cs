@@ -29,26 +29,52 @@ builder.Services.AddAuthentication()
 {
     IConfigurationSection googleAuthNSection =
     config.GetSection("Authentication:Google");
-    options.ClientId = googleAuthNSection["ClientId"];
-    options.ClientSecret = googleAuthNSection["ClientSecret"];
+    options.ClientId = "706851683066-ul9ufj5arpsfilq6j0i8ofuj45giof0o.apps.googleusercontent.com";
+    options.ClientSecret = "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";
 })
 .AddFacebook(options =>
 {
     IConfigurationSection FBAuthNSection =
     config.GetSection("Authentication:Facebook");
-    options.ClientId = FBAuthNSection["AppId"];
-    options.ClientSecret = FBAuthNSection["AppSecret"];
+    options.ClientId = "501247168552925";
+    options.ClientSecret = "61269738195cfedaf1011573430bec63";
 })
 .AddMicrosoftAccount(microsoftOptions =>
 {
-    microsoftOptions.ClientId = config["Authentication:Microsoft:ClientId"];
-    microsoftOptions.ClientSecret = config["Authentication:Microsoft:ClientSecret"];
+    microsoftOptions.ClientId = "efcc30ed-c75d-4c3b-a1a8-ed7c9c44e498";
+    microsoftOptions.ClientSecret = "DH58Q~98v78k~kcz.zJNA641DPBNjC3aW312~aR6";
 })
-.AddTwitter(twitterOptions => 
+.AddTwitter(twitterOptions =>
 {
-    twitterOptions.ConsumerKey = builder.Configuration["Authentication:Twitter:ConsumerAPIKey"];
-    twitterOptions.ConsumerSecret = builder.Configuration["Authentication:Twitter:ConsumerSecret"];
+    twitterOptions.ConsumerKey = "Hp4IImTZmrg57ajyLg7gVYHaN";
+    twitterOptions.ConsumerSecret = "QY4UjTddQHfsQ7Eh7zBhhPcMR2jcXvoWK8ZRkyCzmRxKbFAocd";
 });
+
+//builder.Services.AddAuthentication()
+//.AddGoogle("Microsoft.AspNetCore.Authentication.AuthenticationScheme", options =>
+//{
+//    IConfigurationSection googleAuthNSection =
+//    config.GetSection("Authentication:Google");
+//    options.ClientId = googleAuthNSection["ClientId"];
+//    options.ClientSecret = googleAuthNSection["ClientSecret"];
+//})
+//.AddFacebook(options =>
+//{
+//    IConfigurationSection FBAuthNSection =
+//    config.GetSection("Authentication:Facebook");
+//    options.ClientId = FBAuthNSection["AppId"];
+//    options.ClientSecret = FBAuthNSection["AppSecret"];
+//})
+//.AddMicrosoftAccount(microsoftOptions =>
+//{
+//    microsoftOptions.ClientId = config["Authentication:Microsoft:ClientId"];
+//    microsoftOptions.ClientSecret = config["Authentication:Microsoft:ClientSecret"];
+//})
+//.AddTwitter(twitterOptions => 
+//{
+//    twitterOptions.ConsumerKey = builder.Configuration["Authentication:Twitter:ConsumerAPIKey"];
+//    twitterOptions.ConsumerSecret = builder.Configuration["Authentication:Twitter:ConsumerSecret"];
+//});
 
 var app = builder.Build();
 
