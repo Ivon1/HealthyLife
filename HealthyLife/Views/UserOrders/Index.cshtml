@@ -15,7 +15,7 @@
     <div style="width: 100%; height: auto; margin-top: 24px; margin-bottom: 69px; border: 2px solid #808080; border-radius: 20px; box-shadow: 3px 3px #808080">
         <div class="container" style="width: 100%">
             <div class="mt-4" style="width: 90%; margin: 0 auto">
-                <img src="~/img/icons/courses-in-cart.png" style="width: 100%; height: 49px" />
+                <img src="~/img/icons/courses-in-cart.png" style="width: 100%; height: auto" />
             </div>
             <div class="container" style="width: 95%;">
                 <div id="list-divv" class="list-divv mt-4">
@@ -24,10 +24,10 @@
                     {                        
                         k++;                    
                         <div class="col-md-12">
-                            <div style="width: 99%; padding-left: 0px; margin: 30px auto; height: 362px; border: 1px solid #808080; border-radius: 20px">
-                                <div style="width: 100.1%; height: 295px; margin: -8px auto; background-color: #FFFFFF; border: 2px solid #808080; box-shadow: none" class="row product-card-list">
+                            <div style="width: 99%; padding-left: 0px; margin: 30px auto; height: auto; border: 1px solid #808080; border-radius: 20px">
+                                <div style="width: 100.1%; height: auto; margin: -8px auto; background-color: #FFFFFF; border: 2px solid #808080; box-shadow: none" class="row product-card-list">
                                     <div class="col-4" style="position:sticky; left: 0; margin: 0; padding: 0">
-                                        <img style="border-radius: 10px; width: 100%; position:absolute; height: 295px; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.Course.PathToPhoto" />
+                                        <img style="border-radius: 10px; width: 100%; position:absolute; height: 100%; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.Course.PathToPhoto" />
                                         @if (course.Course.Price > 1500)
                                         {
                                             <a style="background-color: #F7A121;
@@ -59,10 +59,10 @@
                                             </a>
                                         }
                                     </div>
-                                    <div class="col-8" style="position:sticky; display: block; left: 0; margin: 0; padding: 0">
+                                    <div class="col-8 pt-5 pb-5" style="position:sticky; display: block; left: 0; margin: 0;">
                                         <div class="row">
                                             <div class="col-md-12" style="position: sticky">
-                                                <h4 id="courseDescriptionShort" style="font-weight: 500; font-size: 35px; position: absolute; margin-left: 5%; margin-top: 4%">
+                                                <h4 id="courseDescriptionShort" style="font-weight: 500; font-size: 35px; margin-left: 5%; margin-top: 4%">
                                                     @{
                                                         HtmlString str = new HtmlString(course.Course.CourseDescriptionShort.Replace("<br>", ""));
                                                         @str
@@ -70,7 +70,7 @@
                                                 </h4>
                                             </div>
                                             <div class="row" style="margin-top: 10%">
-                                                <div class="col-md-4" style="position: sticky; text-align: justify">
+                                                <div class="col-md-3" style="position: sticky; text-align: justify">
                                                     <div style="display: flex; margin-top: 3%">
                                                         @if (course.Course.Rating >= 0 && course.Course.Rating < 0.5)
                                                         {
@@ -145,7 +145,7 @@
                                                         </h5>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-7" style="position: relative;  text-align: justify; border-left: 1px solid #808080; height: 170px">
+                                                <div class="col-md-8" style="position: relative;  text-align: justify; border-left: 1px solid #808080; height: auto">
                                                     <h4 id="courseDescription" style="font-weight: 400; font-size:23px; margin-left: 5%">
                                                         @{
                                                             HtmlString str3 = new HtmlString(course.Course.CourseDescription);
@@ -194,7 +194,7 @@
                                         }
                                     </div>
                                 </div>
-                                <table style="width: 100%; color: #808080">
+                                <table style="width: 100%; height: auto; color: #808080">
                                     <tr>
                                         <th width="45px">№</th>
                                         <th>НАЗВА</th>
