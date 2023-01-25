@@ -187,8 +187,7 @@ body {
     transition: 0.5s;
 }
 
-.product-card-list {    
-    height: 295px;
+.product-card-list {
     border: 1px solid #808080;
     box-shadow: 3px 3px #808080;
     transition: 0.5s;

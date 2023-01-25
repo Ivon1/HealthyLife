@@ -47,6 +47,21 @@
                         $('.del-wishlist').css('display', 'none');
                     }
                 }
+                $('.add-wishlist').each((event) => {
+                    let target = $(event.target);
+                    let parent = target.parent();
+                    let hidden1 = parent.find('.itemCourseId');
+                    let _courseId = parseInt(hidden1.val());
+                    if (_courseId == intersection) {
+                        console.log(_courseId);
+                        $('.add-wishlist').css('display', 'none');
+                        $('.del-wishlist').css('display', 'flex');
+                    }
+                    else {
+                        $('.add-wishlist').css('display', 'flex');
+                        $('.del-wishlist').css('display', 'none');
+                    }
+                });
                 
                 $('#wishlistCount').html(result.count);
                 $('#courseIdList').html(result.courseId);

@@ -52,8 +52,16 @@
     background-color: #e9ecef;
 }
 
+
+.pagination {
+    --bs-link-color: #1A9F83;
+    --bs-link-hover-color: #1A9F83;
+    --bs-pagination-active-bg: #1A9F83;
+    --bs-pagination-active-border-color: #1A9F83;
+}
+
 .page-link {
-    border: 2px solid royalblue;
+    border: 2px solid var(--bs-link-color);
     font-size: 30px;
 }
 

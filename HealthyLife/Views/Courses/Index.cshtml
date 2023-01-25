@@ -248,10 +248,10 @@
                                 <div class="col-md-2" style="max-height: 110px; display: flex; justify-content: flex-end; align-items: center;">
                                     <p class="hidden itemCourseId" id="@course.Id">@course.Id</p>
                                     <input type="hidden" class="courseId" value="@course.Id"/>
-                                    <img src="~/img/icons/hear_ico.png" id="add-wishlist" width="23px" height="20px" 
+                                    <img src="~/img/icons/hear_ico.png" class="add-wishlist" id="add-wishlist" width="23px" height="20px" 
                                      onmouseover="hover(this);" onmouseout="unhover(this);" />
 
-                                    <img src="~/img/icons/heart_purpur.png" id="del-wishlist" width="23px" height="20px" style="display: none;" 
+                                    <img src="~/img/icons/heart_purpur.png" class="del-wishlist" id="del-wishlist" width="23px" height="20px" style="display: none;"
                                      onmouseover="hover(this);" onmouseout="unhover(this);" />
 
                                 </div>
@@ -300,9 +300,9 @@
         <div class="list-div" style="display: none">
             @foreach (var course in Model.Courses)
             {
-                <div style="margin-top: 35px; margin-bottom: 20px; height: 295px" class="row product-card-list">
+                <div style="height: auto" class="row product-card-list mt-5">
                     <div class="col-4" style="position:sticky; left: 0; margin: 0; padding: 0">
-                        <img style="border-radius: 10px; width: 100%; position:absolute; height: 295px; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.PathToPhoto" />
+                        <img style="border-radius: 10px; width: 100%; position:absolute; height: 100%; left: 0; top: 0; right: 0; bottom: 0" src="~/img/img_courses/@course.PathToPhoto" />
                         @if (course.Price > 1500)
                         {
                             <a style="background-color: #F7A121;
@@ -334,22 +334,22 @@
                             </a>
                         }
                     </div>
-                    <div class="col-8" style="position:sticky; display: block; left: 0; margin: 0; padding: 0">
+                    <div class="col-8 pt-5 pb-5" style="position:sticky; display: block; left: 0; margin: 0;">
                         <div class="row">
                             <div class="col-md-12" style="position: sticky">
-                                <h4 style="font-weight: 500; font-size: 35px; position: absolute; margin-left: 5%; margin-top: 4%">
+                                <h4 style="font-weight: 500; font-size: 35px; margin-left: 5%;">
                                     @{
                                         HtmlString str = new HtmlString(course.CourseDescriptionShort.Replace("<br>", ""));
                                         @str
                                     }
                                 </h4>
                             </div>
-                            <div class="row" style="margin-top: 10%">
-                                <div class="col-md-4" style="position: sticky; text-align: justify">
-                                    <div style="display: flex; margin-top: 3%">
+                            <div class="row mt-2">
+                                <div class="col-md-3" style="position: sticky; text-align: justify; margin-left: 5%">
+                                    <div style="display: flex; margin-top: 3%;">
                                         @if (course.Rating >= 0 && course.Rating < 0.5)
                                         {
-                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate.png" style="width: 16px; height: 19px;" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
@@ -357,7 +357,7 @@
                                         }
                                         @if (course.Rating >= 0.5 && course.Rating < 1.5)
                                         {
-                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px;" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
@@ -365,7 +365,7 @@
                                         }
                                         @if (course.Rating >= 1.5 && course.Rating < 2.5)
                                         {
-                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px;" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
@@ -373,7 +373,7 @@
                                         }
                                         @if (course.Rating >= 2.5 && course.Rating < 3.5)
                                         {
-                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px;" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px; margin-left: 1%" />
@@ -381,7 +381,7 @@
                                         }
                                         @if (course.Rating >= 3.5 && course.Rating < 4.5)
                                         {
-                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px;" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
@@ -389,7 +389,7 @@
                                         }
                                         @if (course.Rating >= 4.5 && course.Rating <= 5)
                                         {
-                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 17%" />
+                                            <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px;" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
@@ -404,7 +404,7 @@
                                         </h5>
                                     </div>
                                     <div style="display: flex; margin-top: 4%">
-                                        <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px; margin-left: 17%" />
+                                        <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px;" />
                                         <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
                                             @{
                                                 var timesSelected = Convert.ToInt32(course.TimesSelected).ToString();
@@ -420,7 +420,7 @@
                                         </h5>
                                     </div>
                                     <div style="display: flex; margin-top: 1%; margin-bottom: 1%">
-                                        <img src="~/img/icons/duration.png" style="width: 19px; height: 19px; margin-left: 17%" />
+                                        <img src="~/img/icons/duration.png" style="width: 19px; height: 19px;" />
                                         <h5 style="font-weight: 400; font-size: 17px; margin-left: 3%; color: #808080">
                                             @{
                                                 HtmlString duration = new HtmlString(course.Duration);
@@ -428,25 +428,25 @@
                                             }
                                         </h5>
                                     </div>
-                                    <h6 style="font-weight: 400; font-size: 16px; margin-left: 17%;">
+                                    <h6 style="font-weight: 400; font-size: 16px;">
                                         АВТОР КУРСУ/СПІКЕР:<br>
                                         @{
                                             HtmlString author = new HtmlString(course.Aurhor.AuthorName);
                                             @author
                                         }
                                     </h6>
-                                    <div style="display: flex; float: right; margin-right: 18%">
+                                    <div style="display: flex; float: right; margin-right: 20%">
                                         <button style="border: none" class="add-wishlist">
                                             <input type="hidden" class="courseId" value="@course.Id" />
                                             <img src="~/img/icons/hear_ico.png" style="width: 23px; height: 20px;" />
                                         </button>
                                         <button style="margin-right: 5%; border: none" class="add-cart">
                                             <input type="hidden" class="courseId" value="@course.Id" />
-                                            <img src="~/img/icons/cart-gray.png" style="width: 23px; height: 20px;" />
+                                            <img src="~/img/icons/cart-gray.png" style="width: 23px; height: 23px; padding-bottom: 5px" />
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-md-7" style="position: relative;  text-align: justify; border-left: 1px solid #808080; height: 170px">
+                                <div class="col-md-8" style="position: relative;  text-align: justify; border-left: 1px solid #808080; height: auto">
                                     <h4 style="font-weight: 400; font-size:23px; margin-left: 5%">
                                         @{
                                             HtmlString str3 = new HtmlString(course.CourseDescription);
