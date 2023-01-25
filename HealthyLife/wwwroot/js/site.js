@@ -14,6 +14,10 @@ $(document).ready(function () {
         interval: false,
     });
 
+    $('.btn').on('mousedown', function () {
+        $(this).removeClass('hover');
+    });
+
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: 3,
         spaceBetween: 20,
