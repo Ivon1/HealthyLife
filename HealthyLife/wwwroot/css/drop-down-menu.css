@@ -13,4 +13,27 @@
     transition: 0.5s;
 }
 
+.btn-administration {
+    transition: 0.5s;
+    text-decoration: none;
+    width: 99%;
+    height: 15%;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #2C3447;
+    border: 3px solid #808080;
+    border-radius: 10px;
+    box-shadow: 3px 3px #808080;
+    cursor:pointer;
+}
+
+.btn-administration:hover{
+    transition: 0.5s;
+    box-shadow: 0px 0px #808080;
+}
+
 

@@ -3,6 +3,8 @@
 #nullable disable
 
 using System;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using HealthyLife.Models;
@@ -12,6 +14,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using HealthyLife.Services;
+using SendInBlue;
+using MimeKit;
 
 namespace HealthyLife.Areas.Identity.Pages.Account
 {
@@ -61,6 +66,38 @@ namespace HealthyLife.Areas.Identity.Pages.Account
                     values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                     protocol: Request.Scheme);
             }
+            //else
+            //{
+            //    var userId = await _userManager.GetUserIdAsync(user);
+            //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            //    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            //    EmailConfirmationUrl = Url.Page(
+            //        "/Account/ConfirmEmail",
+            //        pageHandler: null,
+            //        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+            //        protocol: Request.Scheme);
+
+            //    var message = new MimeMessage();
+            //    message.From.Add(new MailboxAddress("HealthyLife", "healthylife@autorambler.ru"));
+            //    message.To.Add(new MailboxAddress("User", Email));
+            //    message.Subject = "Підтвердження пошти";
+            //    message.Body = new TextPart("plain")
+            //    {
+            //        Text = $"{EmailConfirmationUrl}"
+            //    };
+
+            //    using (var client = new MailKit.Net.Smtp.SmtpClient())
+            //    {
+            //        // настройки соединения с сервером
+            //        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+            //        client.Connect("smtp.rambler.ru", 465, true);
+            //        client.Authenticate("healthylife@autorambler.ru", "Healthylife123");
+
+            //        // отправка сообщения
+            //        client.Send(message);
+            //        client.Disconnect(true);
+            //    }
+            //}
 
             return Page();
         }

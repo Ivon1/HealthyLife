@@ -103,8 +103,7 @@ namespace HealthyLife.Areas.Identity.Pages.Account
                 if (user.FirstName.Equals("") && user.LastName.Equals(""))
                     user.FirstName = user.Email;
 
-                await _userManager.AddToRoleAsync(user, "User");
-                //
+                //await _userManager.AddToRoleAsync(user, "User");
 
                 await _userStore.SetUserNameAsync((ApplicationUser)user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync((ApplicationUser)user, Input.Email, CancellationToken.None);
@@ -112,6 +111,7 @@ namespace HealthyLife.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "User");
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync((ApplicationUser)user);
