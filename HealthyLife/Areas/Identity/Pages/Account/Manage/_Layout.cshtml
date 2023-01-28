@@ -40,6 +40,25 @@
     date += currentUser.CreationTime.Date.Year.ToString();
     var roles = new SelectList(RoleManager.Roles.ToList(), "Name", "Name");
     var currentUserRoles = await UserManager.GetRolesAsync(currentUser);
+    try{
+        if(currentUserRoles[0] == null)
+            await UserManager.AddToRoleAsync(currentUser, "User");
+    } 
+    catch(Exception ex)
+    {
+        await UserManager.AddToRoleAsync(currentUser, "User");
+    }
+
+    if (currentUser.PathToPhoto == "") {
+        
+    }
+    //currentUser.PathToPhoto = "default_image_profile2.png";
+    //await UserManager.UpdateAsync(currentUser);
+    if (currentUser.CreationTime == DateTime.MinValue)
+    {
+        currentUser.CreationTime = DateTime.Now;
+        await UserManager.UpdateAsync(currentUser);
+    }
 }
 <style>
     .none {
@@ -57,10 +76,27 @@
                 <img src="~/img/icons/arrow.png" width="33px" height="21px" style="cursor: pointer" />
             </div>
             <div class="col-auto" >
+            @if(currentUserRoles[0] == "User")
+            {
                 <h3 style="font-weight: 500;font-size: 40px;line-height: 40px;color: #FFFFFF;margin-top: 10px;"
                     id="mainText">
                     Профіль користувача @currentUser.FirstName @currentUser.LastName
                 </h3>
+            }
+            else if (currentUserRoles[0] == "Admin")
+            {
+                <h3 style="font-weight: 500;font-size: 40px;line-height: 40px;color: #FFFFFF;margin-top: 10px;"
+                    id="mainText">
+                        Профіль Адміністратора
+                </h3>
+            }
+            else if (currentUserRoles[0] == "Moderator")
+            {
+                <h3 style="font-weight: 500;font-size: 40px;line-height: 40px;color: #FFFFFF;margin-top: 10px;"
+                    id="mainText">
+                            Профіль Модератора
+                </h3>
+            }
             </div>
         </div>
 
@@ -77,16 +113,26 @@
                                     style="margin: 40px 10px 10px 15px; display:none" id="img-edit-profile" />
                         </div>
                         <div class="col-5">
-                            <h3 style="font-weight: 400;font-size: 35px;line-height: 35px; color: #2C3447;
-                                margin-top: 35px; display: inline-block; position: relative; width: 215px;">
+
+                            @if (@currentUser.FirstName.Equals(string.Empty) && @currentUser.LastName.Equals(string.Empty))
+                            {
+                                <p></p>
+                                <a asp-area="Identity" asp-page="/Account/Settings/Index" class="link">Заповнити свої данні</a>
+                            }
+                            else
+                            {
+                                <h3 style="font-weight: 400;font-size: 35px;line-height: 35px; color: #2C3447;
+                                    margin-top: 35px; display: inline-block; position: relative; width: 215px;">
                                     @currentUser.FirstName @currentUser.LastName
-                                <img src="~/img/icons/heka_plus_small.png" width="24" height="13px" 
-                                        style="position: absolute; float: right; right: 0; top: 0;"/>
-                            </h3>
+                                        <img src="~/img/icons/heka_plus_small.png" width="24" height="13px" 
+                                            style="position: absolute; float: right; right: 0; top: 0;"/>
+                                </h3>
+                            }
+                            
                             
                             <h4 style="font-weight: 400;font-size: 20px;line-height: 20px; color: #2C3447;
                                 margin-top: 3px" id="current-role">
-                               @currentUserRoles[0]
+                                @currentUserRoles[0]
                             </h4>
 
                             <input type="hidden" id="userId" value="@currentUser.Id" />
@@ -195,39 +241,41 @@
                     </div>
                 </div>
                 <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px" id="row1">
+                @if (@currentUserRoles[0] == "User")
+                {
                     <div style="background-image: url('../../../../../img/icons/cirlcle.png'); width: 153px; height: 153px;
-                                background-repeat: no-repeat;background-size: cover; overflow: hidden;
-                                margin-left:auto; margin-right: auto;">
+                                    background-repeat: no-repeat;background-size: cover; overflow: hidden;
+                                    margin-left:auto; margin-right: auto;">
                         <p style="text-align: center; margin-top:40%; font-weight: 400;font-size: 25px;
-                                  line-height: 37px;text-align: center;color: #2C3447;">
+                                      line-height: 37px;text-align: center;color: #2C3447;">
                             75%
                         </p>
                     </div>
-                    
+
                     <div class="row" style="margin-right:auto; margin-left:auto;">
                         <div class="col">
                             <img src="~/img/icons/kvadrat_orange.png" width="15px" height="15px" 
-                                 style="margin-left: 40%"/>
+                                     style="margin-left: 40%"/>
                             <br />
                             <img src="~/img/icons/kvadrat_grey.png" width="15px" height="15px"
-                                 style="margin-left: 40%"/>
+                                     style="margin-left: 40%"/>
                         </div>
                         <div class="col">
                             <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
-                                    text-align: center;color: #2C3447; margin-right: 40px; margin-top: 7px">
+                                        text-align: center;color: #2C3447; margin-right: 40px; margin-top: 7px">
                                 Sit ante
                             </h4>
                             <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
-                                    text-align: center;color: #2C3447; margin-right: 40px;">
+                                        text-align: center;color: #2C3447; margin-right: 40px;">
                                 Sit ante
                             </h4>
                         </div>
                     </div>
                     <hr style="width: 70%; margin-right:auto;margin-left:auto; 
-                        border: 2px solid rgba(128, 128, 128, 0.6);"/>
+                            border: 2px solid rgba(128, 128, 128, 0.6);"/>
 
                     <img src="~/img/icons/graphic.png" width="245px" height="150px" 
-                         style="margin-left: 20px"/>
+                             style="margin-left: 20px"/>
 
                     <div class="row" style="margin-top: 20px">
                         <div class="col">
@@ -235,14 +283,47 @@
                         </div>
                         <div class="col">
                             <h4 style="font-weight: 400;font-size: 20px;line-height: 20px;
-                                    text-align: center;color: #2C3447; margin-top: 5px; margin-right: 40px">
+                                        text-align: center;color: #2C3447; margin-top: 5px; margin-right: 40px">
                                 Sit ante
                             </h4>
                         </div>
                     </div>
-                </div>
-                <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px" id="row2">
 
+                }
+                else if (@currentUserRoles[0] == "Admin")
+                {
+                    <a class="btn-administration center-items-inside" asp-controller="Users" asp-action="Index">
+                        Список користувачів
+                    </a>
+                    <a class="btn-administration center-items-inside mt-3" asp-controller="Users" asp-action="Create">
+                        Додати користувача
+                    </a>
+                    <a class="btn-administration center-items-inside mt-3" asp-controller="Roles" asp-action="Index">
+                        Список ролей
+                    </a>
+                    <a class="btn-administration center-items-inside mt-3" asp-controller="Roles" asp-action="Create">
+                        Додати роль
+                    </a>
+                    <a class="btn-administration center-items-inside mt-3" asp-controller="Subjects" asp-action="Index">
+                        Список тематик
+                    </a>
+                }
+                else if (@currentUserRoles[0] == "Moderator")
+                {
+                    <a class="btn-administration center-items-inside mt-3" asp-controller="Authors" asp-action="Index">
+                        Список авторів
+                    </a>
+                    <a class="btn-administration center-items-inside mt-3" asp-controller="Authors" asp-action="Create">
+                        Додати автора
+                    </a>
+                    <a class="btn-administration center-items-inside mt-3" asp-controller="Subjects" asp-action="Index">
+                        Список тематик
+                    </a>
+                }
+            </div>
+            <div class="col-3" style="border-left: 3px solid #808080; margin-top: 31px; margin-bottom: 31px" id="row2">
+            @if (@currentUserRoles[0] == "User")
+            {
                     <img src="~/img/icons/graphic2.png" width="245px" height="150px" 
                          style="margin-left: 20px"/>
 
@@ -290,6 +371,39 @@
                             </h4>
                         </div>
                     </div>
+                
+            }
+            else if (@currentUserRoles[0] == "Admin")
+            {
+                <a class="btn-administration center-items-inside" asp-controller="Courses" asp-action="AdminIndex">
+                    Список курсів
+                </a>
+                <a class="btn-administration center-items-inside mt-3" 
+                    asp-controller="Courses" asp-action="Create">
+                    Додати курс
+                </a>
+                <a class="btn-administration center-items-inside mt-3" asp-controller="Authors" asp-action="Index">
+                    Список авторів
+                </a>
+                <a class="btn-administration center-items-inside mt-3" asp-controller="Authors" asp-action="Create"> 
+                    Додати автора
+                </a>
+                <a class="btn-administration center-items-inside mt-3" asp-controller="Subjects" asp-action="Create">
+                    Додати тематику
+                </a>
+            }
+            else if (@currentUserRoles[0] == "Moderator")
+            {
+                <a class="btn-administration center-items-inside" asp-controller="Courses" asp-action="Index">
+                    Список курсів
+                </a>
+                <a class="btn-administration center-items-inside mt-3" asp-controller="Courses" asp-action="Create">
+                    Додати курс
+                </a>
+                <a class="btn-administration center-items-inside mt-3" asp-controller="Subjects" asp-action="Create">
+                    Додати тематику
+                </a>
+            }
                 </div>
             </div>
         </div>

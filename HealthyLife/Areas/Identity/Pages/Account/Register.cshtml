@@ -13,32 +13,28 @@
 
 <div style="width: 100%; height: 60px; background: rgb(44,52,71);
         background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);"
-        class="position-relative">
+        class="position-relative center-items-inside">
     <h4 style="font-weight: 500; font-size: 25px; line-height: 25px;display: flex; 
             align-items: center;text-transform: uppercase;color: #FFFFFF;"
-            class="position-absolute top-50 start-50 translate-middle">
+            class="position-absolute">
         Форма реєстрації користувача
     </h4>
 </div>
 
-<div class="position-relative" style="width: 100%; margin-top: 15px">
-    <div style="border: 2px solid rgba(128, 128, 128, 0.5);width: 30%;" 
-         class="position-absolute top-50 start-50 translate-middle"></div>
+<div class="container-fluid mt-3 center-items-inside">
+    <h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;
+        display: flex;align-items: center;color: #2C3447;">
+        Зареєструватись за допомогою соціальних мереж
+    </h3>
 </div>
-
-<h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;
-    display: flex;align-items: center;color: #2C3447; margin-top: 30px; margin-left: 124px;">
-    Зареєструватись за допомогою соціальних мереж
-</h3>
-
 <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl"
         method="post" class="form-horizontal">
     <div style="display:flex; align-items:center; justify-content: center; margin-top: 28px; ">
         <table style="width: 60%; border-spacing:10px; border-collapse: separate;">
             <tr>
-                <th>
+                <th style="text-align: end;">
                     <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.DisplayName == "Google")?.Name"
-                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        style="border: 2px solid #808080; border-radius: 10px; width: 450px; height: 50px" class="btn-ex-auth">
                         <img src="~/img/icons/google_icon.png" height="24px" width="24px"/>
                     </button>
                 </th>
@@ -50,7 +46,7 @@
 
                 <th>
                     <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.Name == "Facebook")?.Name"
-                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        style="border: 2px solid #808080; border-radius: 10px;width: 450px; height: 50px" class="btn-ex-auth">
                         <img src="~/img/icons/facebook_icon.png" height="24px" width="24px"/>
                     </button>
                 </th>
@@ -65,9 +61,9 @@
                 </td>
             </tr>
             <tr>
-                <th>
+                <th style="text-align: end;">
                     <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.DisplayName == "Twitter")?.Name"
-                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        style="border: 2px solid #808080; border-radius: 10px;width: 450px; height: 50px" class="btn-ex-auth">
                         <img src="~/img/icons/twitter_icon.png" height="24px" width="24px"/>
                     </button>
                 </th>
@@ -79,7 +75,7 @@
 
                 <td>
                     <button type="submit" name="provider" value="@Model.ExternalLogins.FirstOrDefault(p => p.Name == "Microsoft")?.Name"
-                        style="border: 2px solid #808080; border-radius: 10px; padding: 10px 221px 10px 221px;">
+                        style="border: 2px solid #808080; border-radius: 10px;width: 450px; height: 50px" class="btn-ex-auth">
                         <img src="~/img/icons/microsoft_logo.png" height="24px" width="24px"/>
                     </button>
                 </td>
@@ -92,17 +88,17 @@
     <div style="border: 2px solid rgba(128, 128, 128, 0.5);width: 30%;" 
          class="position-absolute top-50 start-50 translate-middle"></div>
 </div>
-
-<div class="row" style="margin-top: 20px; margin-left: 100px; margin-right: 100px; margin-bottom: 15%" >
-    <div class="col-4">
-        <h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;
-                display: flex;align-items: center; color: #2C3447;">
-            Для реєстрації заповніть анкету нижче
-        </h3>
-
-        <div class="row">
+<div class="container">
+    <div class="row reg-block" style="margin-top: 20px;margin-bottom: 15%" >
+    <div class="col-4 col-md-auto">
+        <div style="width: 350px;">
+            <h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;color: #2C3447;">
+                Для реєстрації заповніть анкету нижче
+            </h3>
+        </div>
+        <div class="row" style="width: 350px;">
            <h3 style="color:#F47C50;" class="col-1">*</h3>
-           <h3 class="col-8 label" style="margin-left:-15px">- обов’язкові поля для заповнення</h3>
+           <h3 class="col-8 label">- обов’язкові поля для заповнення</h3>
         </div>
 
         <form id="account" method="post" style="margin-top: 20px">
@@ -204,7 +200,7 @@
         </form>
     </div>
 
-    <div class="col-4">
+    <div class="col-4 text-info-pocily">
         <h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;
             display: flex;align-items: center; color: #2C3447; text-align:center;justify-content: center;">
             Політика конфіденційності
@@ -254,7 +250,7 @@
 
     </div>
 
-    <div class="col-4">
+    <div class="col-4 text-info-pocily">
         <h3 style="font-style: normal;font-weight: 500;font-size: 30px;line-height: 30px;
             display: flex;align-items: center; color: #2C3447; text-align:center;justify-content: center;">
             Правила спільноти
@@ -288,64 +284,8 @@
         </div>
     </div>
 </div>
-
-
-@*<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
 </div>
-*@
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

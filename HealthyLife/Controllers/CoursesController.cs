@@ -102,6 +102,14 @@ namespace HealthyLife.Controllers
             return View(viewModel);
         }
 
+
+        //Get: Courses FOR Admin
+        public async Task<IActionResult> AdminIndex()
+        {
+            var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Courses/Details/5
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)

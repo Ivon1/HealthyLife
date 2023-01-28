@@ -13,19 +13,22 @@
     padding-left: 20px;
 }
 
-.nav-item {
-    width: 183px;
-    height: 78px;
+.nav-tem-sett {
+    width: 80%;
+    height: 10%;
+    /*width: 183px;
+    height: 78px;*/
     transition: 0.1s;
     margin-top: 10px;
 }
 
-.nav-item:hover {
+.nav-tem-sett:hover {
     border: 1px solid #349c84;
     border-radius: 7px;
     color: #349c84;
     transition: 0.1s;
 }
+
 
 .nav-item-setting {
     text-decoration: none;
