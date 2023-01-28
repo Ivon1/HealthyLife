@@ -138,6 +138,22 @@ body {
     transition: 0.5s;
 }
 
+#courseIdCartList {
+    width: 23px;
+    height: 23px;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    bottom: -35%;
+    right: -15%;
+    background-color: #F7A121;
+    color: #FFFFFF;
+    z-index: -2;
+    border-radius: 10px;
+    font-size: 17px;
+    transition: 0.5s;
+}
+
 #courseIdList {
     width: 23px;
     height: 23px;
@@ -171,7 +187,6 @@ body {
 }
 
 .product-card {
-    height: 295px;
     border: 1px solid #808080;
     box-shadow: 3px 3px #808080;
     transition: 0.5s;
@@ -187,13 +202,11 @@ body {
     transition: 0.5s;
 }
 
-.product-card-list {    
-    height: 295px;
+.product-card-list {
     border: 1px solid #808080;
     box-shadow: 3px 3px #808080;
     transition: 0.5s;
     border-radius: 20px;
-    position: sticky;
 }
 
 .product-card-list:hover {

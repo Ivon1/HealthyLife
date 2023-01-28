@@ -1,12 +1,12 @@
 ﻿@model HealthyLife.Models.Course
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редагування курсу";
 }
-
-<h1 style="text-align:center"> Редагування курсу</h1>
+<div class="container">
+    <h1 style="text-align:center"> Редагування курсу</h1>
 <hr />
-<div class="row" style="width: 100%;">
+<div class="text-center" style="width: 100%">
 
     <style>
         .row {
@@ -39,9 +39,8 @@
             margin-left:50px;
         }
 </style>
-
-    <div class="col-md-4" style="margin-left:30%">
-        <form asp-action="Edit" style="width: 600px;" class="form-shadow" method="post" enctype="multipart/form-data">
+    <div>
+        <form asp-action="Edit" style="width: 600px; margin: 20px auto" class="form-shadow" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group" style="margin-top:20px">
@@ -66,7 +65,7 @@
             </div>
             <div class="form-group" style="margin-top:20px">
                 <label asp-for="Price" class="control-label">Ціна</label>
-                <input asp-for="Price" class="search-item-bordered input-this-file"/>
+                <input asp-for="Price" class="search-item-bordered input-this-file" value="@Convert.ToInt32(Model.Price)"/>
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group" style="margin-top:20px">
@@ -106,11 +105,14 @@
         </form>
     </div>
 </div>
-
-<div style="margin-bottom: 10%; margin-top: 50px; margin-left: 150px">
+<div style="margin-top: 50px;" class="text-center">
     <a asp-action="Index" class="my-btn" style="text-decoration: inherit;color: inherit;padding: 20px">
         Повернутися до списку
     </a>
+</div>
+</div>
+<div class="mt-5" style="width: 100%;  height: 60px; margin: 0 auto; background: rgb(205,112,121);
+         background: linear-gradient(90deg, rgba(238,84,99,1) 0%, rgba(239,102,91,1) 50%, rgba(239,119,84,1) 100%);">
 </div>
 
 @section Scripts {

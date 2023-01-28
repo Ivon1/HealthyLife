@@ -5,114 +5,118 @@
 }
 
 
+<div class="container">
+    <h1 style="text-align:center">Створення курсу</h1>
+    <hr />
 
-<h1 style="text-align:center">Створення курсу</h1>
-<hr />
+    <div class="row" style="width: 100%;">
 
-<div class="row" style="width: 100%;">
+        <style>
+            .row {
+                font-family: 'Yanone Kaffeesatz';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 22px;
+                color: #2C3447;
+            }
 
-    <style>
-        .row {
-            font-family: 'Yanone Kaffeesatz';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 22px;
-            color: #2C3447;   
-        }
+            .form-group {
+                margin-top: 20px;
+            }
 
-        .form-group{
-            margin-top:20px;
-        }
+            label {
+                margin-left: 50px;
+                width: 150px
+            }
 
-        label{
-            margin-left: 50px; 
-            width:150px
-        }
+            .input-this-file {
+                width: 322px;
+                height: 47px;
+                margin-left: 50px;
+            }
 
-        .input-this-file {
-            width:322px; 
-            height: 47px;
-            margin-left:50px;
-        }
+            select {
+                width: 322px;
+                height: 47px;
+                margin-left: 50px;
+            }
+        </style>
 
-        select {
-            width:322px; 
-            height: 47px;
-            margin-left:50px;
-        }        
-</style>
+        <div>
+            <form asp-action="Create" style="width: 600px; margin: 20px auto" class="form-shadow" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group" style="margin-top:20px">
+                    <label asp-for="CourseName" class="control-label">Назва курсу</label>
+                    <input asp-for="CourseName" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="CourseName" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-top:20px">
+                    <label asp-for="CourseDescription" class="control-label">Опис курсу</label>
+                    <input asp-for="CourseDescription" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="CourseDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-top:20px">
+                    <label asp-for="CourseDescriptionShort" class="control-label">Короткий опис</label>
+                    <input asp-for="CourseDescriptionShort" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="CourseDescriptionShort" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="margin-top:20px">
+                    <label asp-for="PathToPhoto" class="control-label">Шлях до фото</label>
+                    <input asp-for="PathToPhoto" type="file" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="PathToPhoto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label">Ціна</label>
+                    <input asp-for="Price" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label">Рейтинг</label>
+                    <input asp-for="Rating" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LikedNumber" class="control-label">Лайків</label>
+                    <input asp-for="LikedNumber" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="LikedNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Duration" class="control-label">Тривалість</label>
+                    <input asp-for="Duration" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TimesSelected" class="control-label">Пройшло курс</label>
+                    <input asp-for="TimesSelected" class="search-item-bordered input-this-file" />
+                    <span asp-validation-for="TimesSelected" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubjectId" class="control-label">Тема</label>
+                    <select asp-for="SubjectId" class="search-item-bordered input-this-file"
+                            asp-items="ViewBag.SubjectId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AuthorId" class="control-label">Автор</label>
+                    <select asp-for="AuthorId" class="search-item-bordered input-this-file"
+                            asp-items="ViewBag.AuthorId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Створити" class="my-btn" style="margin-bottom: 20px; margin-top: 20px;
+                    width: 140px; height: 57px;" />
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <div class="col-md-4" style="margin-left:30%">
-        <form asp-action="Create" style="width: 600px;" class="form-shadow" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group" style="margin-top:20px">
-                <label asp-for="CourseName" class="control-label">Назва курсу</label>
-                <input asp-for="CourseName" class="search-item-bordered input-this-file"/>
-                <span asp-validation-for="CourseName" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="margin-top:20px">
-                <label asp-for="CourseDescription" class="control-label">Опис курсу</label>
-                <input asp-for="CourseDescription" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="CourseDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="margin-top:20px">
-                <label asp-for="CourseDescriptionShort" class="control-label">Короткий опис</label>
-                <input asp-for="CourseDescriptionShort" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="CourseDescriptionShort" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="margin-top:20px">
-                <label asp-for="PathToPhoto" class="control-label">Шлях до фото</label>
-                <input asp-for="PathToPhoto" type="file" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="PathToPhoto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label">Ціна</label>
-                <input asp-for="Price" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rating" class="control-label">Рейтинг</label>
-                <input asp-for="Rating" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LikedNumber" class="control-label">Лайків</label>
-                <input asp-for="LikedNumber" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="LikedNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label">Тривалість</label>
-                <input asp-for="Duration" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TimesSelected" class="control-label">Пройшло курс</label>
-                <input asp-for="TimesSelected" class="search-item-bordered input-this-file" />
-                <span asp-validation-for="TimesSelected" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SubjectId" class="control-label">Тема</label>
-                <select asp-for="SubjectId" class ="search-item-bordered input-this-file" 
-                        asp-items="ViewBag.SubjectId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="AuthorId" class="control-label">Автор</label>
-                <select asp-for="AuthorId" class ="search-item-bordered input-this-file"
-                        asp-items="ViewBag.AuthorId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Створити" class="my-btn" style="margin-bottom: 20px; margin-top: 20px;
-                    width: 140px; height: 57px;"/>
-            </div>
-        </form>
+    <div style="margin-bottom: 10%; margin-top: 50px;" class="text-center">
+        <a asp-action="Index" class="my-btn" style="text-decoration: inherit;color: inherit;padding: 20px">
+            Повернутися до списку
+        </a>
     </div>
 </div>
-
-<div style="margin-bottom: 10%; margin-top: 50px; margin-left: 150px">
-    <a asp-action="Index" class="my-btn" style="text-decoration: inherit;color: inherit;padding: 20px">
-        Повернутися до списку
-    </a>
+<div class="mt-5" style="width: 100%;  height: 60px; margin: 0 auto; background: rgb(205,112,121);
+         background: linear-gradient(90deg, rgba(238,84,99,1) 0%, rgba(239,102,91,1) 50%, rgba(239,119,84,1) 100%);">
 </div>
 
 @section Scripts {

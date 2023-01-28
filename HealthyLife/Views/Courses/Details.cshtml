@@ -5,16 +5,16 @@
     ViewData["Title"] = "Сторінка курсу";
 }
 
-<div class="pt-70px pb-70px" style="min-height: 60vh">
+<div class="mt-3 pt-70px pb-70px" style="min-height: 60vh">
     <div class="container">
         <div class="row">
             <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
-            <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
-                <img class="m-auto course-image" style="width: 100%; height: 375px; border-radius: 8px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)" />
+            <div class="col-lg-5 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px" style="display: flex; justify-content: center; align-items: center;">
+                <img class="m-auto course-image" style="width: 100%; height: 375px; border: 2px solid #808080; border-radius: 20px" src="~/img/img_courses/@Html.DisplayFor(model => model.PathToPhoto)" />
             </div>
             <div class="col-lg-7 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="product-details-content quickview-content ml-25px">
-                    <h2 style="text-align: left">@Html.DisplayFor(model => model.CourseName)</h2>
+                    <h2 style="text-align: left; color: #2C3477">@Html.DisplayFor(model => model.CourseName)</h2>
                     <div style="display: flex;">
                         <div style="display: flex; justify-content: flex-start; width: 50%">
                             <div class="pricing-meta">
@@ -115,8 +115,16 @@
                     </div>
                     <div class="pro-details-quality">
                         <div class="pro-details-cart">
-                            <input type="hidden" class="courseId" value="@Html.DisplayFor(model => model.Id)" />
-                            <button class="add-cart">ДОДАТИ ДО КОШИКА</button>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <p class="hidden itemCartCourseId" id="@Model.Id">@Model.Id</p>
+                                <button id="add-cart" class="add-cart"><input type="hidden" class="courseId" value="@Model.Id" />ДОДАТИ ДО КОШИКА</button>
+                                <button id="del-cart" class="del-cart" style="display: none"><input type="hidden" class="courseId" value="@Model.Id" />ВИДАЛИТИ ІЗ КОШИКА</button>
+                            }
+                            else
+                            {
+                                <a class="add-cart" asp-area="Identity" asp-page="/Account/Login">ДОДАТИ ДО КОШИКА</a>
+                            }
                         </div>
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
                             @if (User.Identity.IsAuthenticated)
@@ -146,7 +154,7 @@
                         <div class="tab-content description-review-bottom">
                             <div id="des-details1" class="tab-pane active">
                                 <div class="product-description-wrapper" style="margin-top: 5px; margin-bottom: 50px;">
-                                    <p style="font-weight: 400">@Html.DisplayFor(model => model.CourseDescription)</p>
+                                    <p style="font-weight: 400; color: #2C3477">@Html.DisplayFor(model => model.CourseDescription)</p>
                                 </div>
                             </div>
                         </div>
