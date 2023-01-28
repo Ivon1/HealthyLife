@@ -4,38 +4,52 @@
 @{
     ViewData["Title"] = "Топ-20";
 }
-<div style="width: 100%; height: 164px; background: rgb(44,52,71);
+<div class="mt-3" style="width: 100%; height: auto; background: rgb(44,52,71);
             background: linear-gradient(90deg, rgba(44,52,71,1) 0%, rgba(26,159,131,1) 100%, rgba(26,159,131,1) 100%);">
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <img src="~/img/icons/logo_catalog.png" width="192px" height="164px" />
+                <img src="~/img/icons/logo_catalog.png" width="100%" height="164px" />
             </div>
-            <div class="col-md-10" style="display:flex; align-items:center; justify-content: center;">
-                <h3 style="font-weight: 500;font-size: calc((100vw - 320px)/(1920 - 320) * (45 - 30) + 30px);color: #FFFFFF;line-height: calc((100vw - 320px)/(1920 - 320) * (45 - 33) + 33px); text-align: center;">
-                    Вмирає лише кволе і слабке, здорове і сильне завжди виходить переможцем.<br /> (Ч.Дарвін)
-                </h3>
-                <h4 style="font-style: normal;font-weight: 500;font-size: calc((100vw - 320px)/(1920 - 320) * (30 - 22) + 22px); line-height: calc((100vw - 320px)/(1920 - 320) * (30 - 18) + 18px);color: #FFFFFF; text-align: center">
-                    Ніщо так не виснажує і не руйнує людину, як тривала фізична бездіяльність.<br /> (Арістотель)
+            <div class="col-md-8" style="display:flex; align-items: flex-start; justify-content: center; flex-direction: column; text-align: left">
+                <h3 style="font-weight: 500;font-size: 50px;color: #FFFFFF;line-height: 50px;">
+                    Оформіть підписку ХЕКА+
+                </h3><br />
+                <h4 style="font-style: normal;font-weight: 500;font-size: 30px; line-height: 30px;color: #FFFFFF;">
+                    З нею Вам відкриються нові можливості на шляху до здорового способу життя.
                 </h4>
-            </div>            
+            </div>
+            <div class="col-md-2" style="display:flex; align-items:center; justify-content: center; margin: 0; padding: 0">
+                <a class="nav-link nav-item-bordered disabled"
+                   style="width: 90%; margin: 15px auto; height: auto; padding: 15px; display:flex; align-items:center; justify-content: center;
+                        background-color: #FFFFFF; font-weight: 500;font-size: 30px;line-height: 30px;
+                        text-align: center;text-transform: uppercase;color: #2C3447"
+                   href="#">ХЕКА+</a>
+            </div>
         </div>
     </div>
 </div>
-<div style="width: 100%; height: 130px; background: rgb(198,62,62);
+<div style="width: 100%; height: auto; background: rgb(198,62,62);
          background: linear-gradient(90deg, rgba(198,62,62,1) 0%, rgba(244,124,80,1) 54%, rgba(244,124,80,1) 100%);">
     <div class="container">
         <div class="row">
-            <div class="col-md-10" style="text-align: right; display:flex; align-items:center; justify-content: center; padding: 5px 5px 5px 0">
-                <h3 style="font-weight: 500;font-size: calc((100vw - 480px)/(1920 - 480) * (37 - 27) + 27px);line-height: calc((100vw - 480px)/(1920 - 480) * (37 - 25) + 25px);text-align: center;color: #FFFFFF;">
-                    Якщо в тебе все в нормі зі шлунком, грудьми, ногами, жодні царські скарби не зможуть нічого додати. <br /> (Горацій)
+            <div class="col-md-3" style="display:flex; align-items:center; justify-content: center; margin: 0; padding: 0">
+                <a class="nav-link nav-item-bordered disabled"
+                   style="width: 90%; margin: 15px auto; height: auto; padding: 15px; display:flex; align-items:center; justify-content: center;
+                        background-color: #FFFFFF; font-weight: 500;font-size: 30px;line-height: 30px;
+                        text-align: center;text-transform: uppercase;color: #2C3447"
+                   href="#">ОБМІНЯТИ СЕРТИФІКАТ</a>
+            </div>
+            <div class="col-md-7" style="display:block; margin: 20px auto; text-align: left">
+                <h3 style="font-weight: 500;font-size: 37px;line-height: 37px;color: #FFFFFF;">
+                    Скористайтеся послугою обміну сертифіката
                 </h3>
-                <h4 style="font-style: normal;font-weight: 500;font-size: calc((100vw - 480px)/(1920 - 480) * (25 - 15) + 15px);line-height: calc((100vw - 480px)/(1920 - 480) * (25 - 13) + 13px); margin-left: 10%; text-align: center;color: #FFFFFF;">
-                    Щоб зберегти бадьорість духу, потрібно підтримувати бадьорість тіла.<br /> (Л.Вовенарг)
+                <h4 style="font-style: normal;font-weight: 500;font-size: 25px;line-height: 25px; color: #FFFFFF;">
+                    Ми з розумінням обміняємо Ваш сертифікат у разі виявлення недостовірності курсу наданим характеристикам.
                 </h4>
             </div>
             <div class="col-md-2">
-                <img src="~/img/icons/logo_catalog1.png" width="112px" height="130px" style="float: right;" />
+                <img src="~/img/icons/logo_catalog1.png" width="100%" height="130px" style="float: right;" />
             </div>
         </div>
     </div>
@@ -128,8 +142,8 @@
                         </h3>
                     </div>
                     <p style="font-weight: 400; margin-left: 2%; margin-bottom: 7px; text-align: justify">@course.CourseDescription</p>
-                    <a class="nav-link text-dark nav-item-bordered" style="width: 200px; height: 50px; font-weight: 400; font-size: 19px; margin-left: 2%" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
-                        <h3>ПЕРЕЙТИ ДО КУРСУ</h3>
+                    <a class="nav-link text-dark nav-item-bordered" style="width: 200px; padding: 10px; font-weight: 400; font-size: 22px; margin-left: 2%" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                        ПЕРЕЙТИ ДО КУРСУ
                     </a>
                 </div>                
             </div>

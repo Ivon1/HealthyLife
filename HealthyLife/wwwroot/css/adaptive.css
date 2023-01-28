@@ -1,0 +1,119 @@
+﻿@media (max-width: 1600px) {
+    .founder-info {
+        width: 75% !important;
+    }
+    .contact-font {
+        font-size: 20px !important;
+    }
+
+    .photo-contact {
+        width: 85px !important;
+        height: 85px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .contact-font {
+        font-size: 20px !important;
+    }
+    .photo-contact {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    .founder-info {
+        width: 95% !important;
+    }
+    .map-office {
+        margin-top: 11% !important;
+    }
+    .total-price {
+        font-size: 25px !important;
+    }    
+}
+
+@media (max-width: 992px) {
+    .founder-info {
+        width: 100% !important;
+    }
+    .contact-font {
+        font-size: 13px !important;
+    }
+    .photo-contact {
+        width: 65px !important;
+        height: 65px !important;
+    }
+    .map-office {
+        margin-top: 12% !important;
+    }
+    .cart-operations {
+        display: block !important;
+        margin: 0 auto;
+    }
+    .cart-operations a {
+        margin-left: 2%;
+        margin-top: 2%;
+        width: 100% !important;
+    }
+    .total-price {
+        font-size: 20px !important;
+    }
+    #coursesLink {
+        width: 80% !important;
+    }    
+}
+
+@media (max-width: 768px) {
+    .founder-info {
+        width: 80% !important;
+    }
+    .hr-vertical {
+        display: none;
+    }
+    .contact-photo, .email-photo {
+        text-align: left !important;
+    }
+    .email-photo, .email-info {
+        margin-top: 5%;
+    }
+    .contact-font {
+        font-size: 14px !important;
+    }
+    .photo-contact {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    .map-office {
+        width: 100% !important;
+    }
+    .hear-div {
+        padding-top: 0px !important;
+        padding-bottom: 10px !important;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .founder-info {
+        width: 85% !important;
+    }
+    .contact-font {
+        font-size: 14px !important;
+    }
+    .photo-contact {
+        width: 75px !important;
+        height: 75px !important;
+    }
+}
+
+@media (max-width: 390px) {
+    .founder-info {
+        width: 100% !important;
+    }
+    .contact-font {
+        font-size: 13px !important;
+    }
+    .photo-contact {
+        width: 70px !important;
+        height: 70px !important;
+    }
+}
