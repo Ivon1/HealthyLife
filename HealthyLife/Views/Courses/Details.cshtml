@@ -33,61 +33,12 @@
                             </div>
                         </div>
                         <div style="display: flex; justify-content: flex-end; width: 50%">
-                            @if (Model.Rating >= 0 && Model.Rating < 0.5)
-                            {
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 2%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                            }
-                            @if (Model.Rating >= 0.5 && Model.Rating < 1.5)
-                            {
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                            }
-                            @if (Model.Rating >= 1.5 && Model.Rating < 2.5)
-                            {
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                            }
-                            @if (Model.Rating >= 2.5 && Model.Rating < 3.5)
-                            {
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                            }
-                            @if (Model.Rating >= 3.5 && Model.Rating < 4.5)
-                            {
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                            }
-                            @if (Model.Rating >= 4.5 && Model.Rating <= 5)
-                            {
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 2%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                                <img src="~/img/icons/rate-orange.png" style="width: 20px; height: 30px; margin-left: 1%" />
-                            }
-                            <h3 style="font-weight: 400; margin-left: 2%; font-size: 25px; color: #F47C50">
-                                @{
-                                    var rating = Math.Round(Model.Rating, 1);
-                                    @rating
-                                }
-                                / 5
-                            </h3>
+                            <img class="rate_course_one" src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 2%" />
+                            <img class="rate_course_two" src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img class="rate_course_three" src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img class="rate_course_four" src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <img class="rate_course_five" src="~/img/icons/rate.png" style="width: 20px; height: 30px; margin-left: 1%" />
+                            <h3 id="aver-rate" style="font-weight: 400; margin-left: 2%; font-size: 25px; color: #F47C50"></h3>
                         </div>
                     </div>
                     <hr />
@@ -149,12 +100,39 @@
                     </div>
                     <div class="description-review-wrapper">
                         <div class="description-review-topbar nav">
-                            <button class="active" style="border: none; text-align: center; border-bottom: 3px solid #1A9F83; color: #1A9F83; font-weight: 500; font-size: 25px" data-bs-toggle="tab" data-bs-target="#des-details1">Опис курсу</button>
-                        </div>
+                            <button class="active" style="text-align: center; font-weight: 500; font-size: 25px" data-bs-toggle="tab" data-bs-target="#des-details1">Опис курсу</button>
+                            <button style="text-align: center; font-weight: 500; font-size: 25px" data-bs-toggle="tab" data-bs-target="#des-details2">Оцінка курсу</button>
+                        </div>                       
                         <div class="tab-content description-review-bottom">
                             <div id="des-details1" class="tab-pane active">
                                 <div class="product-description-wrapper" style="margin-top: 5px; margin-bottom: 50px;">
-                                    <p style="font-weight: 400; color: #2C3477">@Html.DisplayFor(model => model.CourseDescription)</p>
+                                    <p style="font-weight: 400; text-align: justify; color: #2C3477">@Html.DisplayFor(model => model.CourseDescription)</p>
+                                </div>
+                            </div>
+                            <div id="des-details2" class="tab-pane">
+                                <div class="product-description-wrapper" style="margin-top: 5px; margin-bottom: 50px; margin-left: 5px">
+                                    <h4 style="font-weight: 400; color: #2C3477; padding-top: 7px">Додайте Вашу оцінку</h4>
+                                    <div style="display: flex">
+                                        <h4 style="font-weight: 400; color: #2C3477; padding-top: 10px">Ваша оцінка:</h4>
+                                        <button id="rate_one" style="border: none; margin-left: 1%">
+                                            <img id="rate_one_img" src="~/img/icons/rate.png" style="width: 20px; height: 30px;" />
+                                        </button>
+                                        <button id="rate_two" style="border: none; margin-left: 1%">
+                                            <img id="rate_two_img" src="~/img/icons/rate.png" style="width: 20px; height: 30px" />
+                                        </button>
+                                        <button id="rate_three" style="border: none; margin-left: 1%">
+                                            <img id="rate_three_img" src="~/img/icons/rate.png" style="width: 20px; height: 30px" />
+                                        </button>
+                                        <button id="rate_four" style="border: none; margin-left: 1%">
+                                            <img id="rate_four_img" src="~/img/icons/rate.png" style="width: 20px; height: 30px" />
+                                        </button>
+                                        <button id="rate_five" style="border: none; margin-left: 1%">
+                                            <img id="rate_five_img" src="~/img/icons/rate.png" style="width: 20px; height: 30px" />
+                                        </button>
+                                    </div>
+                                    <input type="hidden" class="courseId" value="@Model.Id" />
+                                    <input type="hidden" class="rate_count" value="0" />
+                                    <button id="add-rate" class="add-rate" style="margin-top: 5px"><input type="hidden" class="courseId" value="@Model.Id" />ВІДПРАВИТИ ОЦІНКУ</button>
                                 </div>
                             </div>
                         </div>
@@ -167,6 +145,18 @@
 <div style="width: 100%; height: 50px; margin-bottom: auto; margin-top: 15px; background: rgb(205,112,121);
      background: linear-gradient(90deg, rgba(205,112,121,1) 0%, rgba(200,140,140,1) 100%, rgba(200,140,140,1) 100%);">
 </div>
+
+<style>
+    .description-review-topbar .active {
+        border: none;
+        border-bottom: 3px solid #1A9F83;
+        color: #1A9F83;
+    }
+    .description-review-topbar button{
+        border: none;
+        color: #2C3477;
+    }
+</style>
 @*
 <h1>Details</h1>
 <div>

@@ -55,5 +55,6 @@ namespace HealthyLife.Models
         public List<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
         public List<UserOrder> UserOrders { get; set; } = new List<UserOrder> ();
         public List<UserWish> UserWishes { get; set; } = new List<UserWish>();
+        public List<CourseRate> CourseRates { get; set; } = new List<CourseRate>();
     }
 }
