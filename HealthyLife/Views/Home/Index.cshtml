@@ -12,12 +12,12 @@
         class="container-fluid mt-3" id="main-img-container">
     
     <h1 style="font-weight: 400; font-size:80px; color:#2C3447; width:auto; margin-top:10%; margin-left:20%;"
-        id="h1-heka">
+        class="h1-heka">
         Вас вітає <br />команда ХЕКА
     </h1>
     
     <h2 style="font-weight: 300; font-size:40px; color:#2C3447; width:auto; margin-top: 0%; margin-left:20%"
-        id="h2-heka">
+        class="h2-heka">
         Тут ви можете покращити своє здоров'я
         <br /> За допомогою новітніх технологій та методів.<br />
         Про які ви сможете дізнатися більше на сайті
@@ -53,776 +53,750 @@
     
 
 @*Блок статистики*@
-<div class="container-fluid text-center" style="background-image: url('../img/icons/bg-img-main-page.png'); width: 100%;
-    background-repeat: no-repeat;background-size: 100% 100%; padding-top: 1px; height: 475px">
+<partial name="IndexPage/_StatBlock"/>
 
-    <div class="row" style="margin-left:13%; margin-top: 3%">
-        <div class="col-md-auto" style="text-align: center; margin-top: 35px">
-            <h3 style="color: #FFFFFF; font-weight: 500; font-size: 64px;">100</h3>
-            <h4 style="color: #FFFFFF; font-weight: 500; font-size: 25px;">
-                ТРЕНІНГІВ ТА КУРСІВ</h4>
+@*Блок популярні курси*@
+<div style="width: 100%; display:flex; align-items:center; 
+    justify-content: center; margin-top: 3%; margin-bottom: 2%"> 
 
-            <img src="~/img/icons/dash.png" width="324px"/>
-            <h3 style="color: #FFFFFF; font-weight: 500; font-size: 64px;">2</h3>
-            <h4 style="color: #FFFFFF; font-weight: 500; font-size: 25px;">
-                Років на ринку</h4>
-        </div>
-        <div class="col-md-auto">
-            <img src="~/img/icons/vertical_dash.png" height = "300" width = "2px" style="margin: 25px"/>
-        </div>
-        <div class="col-md-auto" style="margin-top: 35px">
-            <h3 style="color: #FFFFFF; font-weight: 500; font-size: 64px;">200 000</h3>
-            <h4 style="color: #FFFFFF; font-weight: 500; font-size: 25px;">
-                ЗАДОВОЛЕНИХ КЛІЄНТІВ</h4>
+    <img src="~/img/icons/pop_course.png" width="40.47px" height="66.85px" style="margin-right:21.02px; 
+        margin-bottom: 30px" class="img-courses-info"/>
+    <h3 style="font-weight:400; font-size: 65px; color: #2C3447" class="h1-heka">Популярні курси</h3>
+    <img src="~/img/icons/pop_course.png" width="40.47px" height="66.85px" style="margin-left:21.02px; 
+        margin-bottom: 30px; transform: scaleX(-1);" class="img-courses-info"/>
 
-            <img src="~/img/icons/dash.png" width="324px"/>
-            <h3 style="color: #FFFFFF; font-weight: 500; font-size: 64px;">50</h3>
-            <h4 style="color: #FFFFFF; font-weight: 500; font-size: 25px;">
-                ПАРТНЕРІВ</h4>
-        </div>
+</div>
+
+<div class="swiper mySwiper1" style="width: 95%">
+
+    <div class="swiper-wrapper mb-2">
+    @{int k=0;}
+    @foreach (var course in Model)
+    {
+        if (k == 6) break;
+        if (course.LikedNumber >= 1300)
+        {
+            k++;
+
+            <div class="swiper-slide center-items-inside">
+                <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto'); width: 391px">
+
+                    @if (course.Price > 1500)
+                    {
+                        <a  style="background-color: #F7A121;
+                                height: 36px; width: 37px; border-bottom-right-radius: 20px; 
+                                position: absolute; border-top-left-radius: 20px; padding: 20px"
+                                asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                            <img src="~/img/icons/I.png" width="20px" height="20px" 
+                                style="position: absolute; left: 10px; top: 10px"/>
+                        </a>
+                    }
+                    else if (course.Price.Equals(0))
+                    {
+                        <a  style="background-color: #1A9F83; 
+                                height: 36px; width: 37px; border-bottom-right-radius: 20px; 
+                                position: absolute; border-top-left-radius: 20px; padding: 20px"
+                                asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                              <img src="~/img/icons/I.png" width="20px" height="20px" 
+                                    style="position: absolute; left: 10px; top: 10px"/>
+                        </a>
+                    }
+                    else
+                    {
+                        <a  style="background-color: #F47C50; 
+                                height: 36px; width: 37px; border-bottom-right-radius: 20px; 
+                                position: absolute; border-top-left-radius: 20px; padding: 20px"
+                                    asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                            <img src="~/img/icons/I.png" width="20px" height="20px" 
+                                style="position: absolute; left: 10px; top: 10px"/>
+                        </a>
+                    }
+
+                    @if (course.Price > 1500)
+                    {
+                        <a class="priceItem"  style="background-color: #F7A121; position: absolute; 
+                                height: 36px; width: 112px; border-bottom-left-radius: 20px; 
+                                border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                text-decoration:none" asp-controller="Courses"
+                                asp-action="Details" asp-route-id="@course.Id">
+                            <h3 class="detailPrice" style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">
+                                @{
+                                    var price = Convert.ToInt16(course.Price).ToString();
+                                }
+                                @price ₴ 
+                            </h3>
+                        </a>
+
+                    }
+                    else if (course.Price.Equals(0))
+                    {
+                        <a class="priceItem"  style="background-color: #1A9F83; position: absolute; 
+                                height: 36px; width: 112px; border-bottom-left-radius: 20px; 
+                                border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                text-decoration:none" asp-controller="Courses"
+                                asp-action="Details" asp-route-id="@course.Id">
+                            <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="priceItem" style="background-color: #F47C50; position: absolute; 
+                                height: 36px; width: 112px; border-bottom-left-radius: 20px; 
+                                border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                text-decoration:none" asp-controller="Courses"
+                                asp-action="Details" asp-route-id="@course.Id">
+                            <h3 style="position: absolute; left: 25%; top: 5px;color: #FFFFFF">
+                                @{
+                                    var price = Convert.ToInt16(course.Price).ToString();
+                                }
+                                @price ₴
+                            </h3>
+                        </a>
+                    }                       
+                    <div style="margin-top: 148px; height: 145px; width: 100%; position: relative;">
+                        <img src="~/img/icons/white.png" width="100%" height="145px" style="position: absolute;
+                                filter: alpha(Opacity=90);opacity: 0.90;
+                                border-radius: 0% 0% 20px 20px" />
+                        <div class="row" style="z-index: 100; width: 100%; height: 110px; position: absolute; display: flex; justify-content: center; align-items: center">
+                            <div class="col-md-10" style="max-height: 110px;">
+                                <h4 class="courseDescriptionShortFont" style="font-weight: 400; font-size:30px; text-align: center; padding-left: 5%; padding-top: 5%">
+                                    @{
+                                        HtmlString str = new HtmlString(course.CourseDescriptionShort);
+                                        @str
+                                    }
+                                </h4>
+                            </div>
+                            <div class="col-md-2" style="max-height: 110px; display: flex; justify-content: flex-end; align-items: center;">
+                                <p class="hidden itemCourseId" id="@course.Id">@course.Id</p>
+                                <img src="~/img/icons/hear_ico.png" class="add-wishlist" width="23px" height="20px" id="like-item"
+                                    onmouseover="hover(this);" onmouseout="unhover(this);" />
+                                <img src="~/img/icons/heart_purpur.png" class="del-wishlist" width="23px" height="20px" style="display: none;" id="like-item"
+                                    onmouseover="hover(this);" onmouseout="unhover(this);" />
+                            </div>
+                        </div>
+                    </div>
+                        @if (course.Price > 1500)
+                    {
+                        <a class="detailItem" style="background-color: #F7A121; position: absolute;
+                                    height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                    border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                    text-decoration:none; margin-top: -39px" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 class="detailFont" style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                            font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                        </a>
+                    }
+                    else if (course.Price.Equals(0))
+                    {
+                        <a class="detailItem" style="background-color: #1A9F83; position: absolute;
+                                        height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                        border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                        text-decoration:none; margin-top: -39px" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                            <h3 class="detailFont" style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                                    font-weight:400; font-size: 25px">
+                                детальніше
+                            </h3>
+                        </a>
+                    }
+                    else if (course.Price > 0)
+                    {
+                        <a class="detailItem" style="background-color: #F47C50; position: absolute;
+                                    height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                                    border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                                    text-decoration:none; margin-top: -39px" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 class="detailFont" style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                            font-weight:400; font-size: 25px">
+                                    детальніше
+                                </h3>
+                        </a>
+                    }                        
+            </div>
+            </div>
+        }
+    }
+
+    </div>
+
+    <div class="swiper-button-next1 center-items-inside" style="position: absolute;top: 35%; z-index: 5;left: auto;
+        right: 0px">
+            <img src="~/img/icons/next_product_icon.png" style="width: 28px; height: 75.44px;" />
+    </div>
+   
+</div>
+
+<div class="container-fluid center-items-inside">
+    <div class="mt-3" style="background: linear-gradient(270deg, #2C3447 0%, #1A9F83 29.41%, 
+            #F47C50 67.34%, #F25564 99.76%);border: 1px solid #808080;
+            box-shadow: inset -2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;height: 15px; width: 90%">
     </div>
 </div>
 
-    @*Блок популярні курси*@
-    <div style="width: 100%; display:flex; align-items:center; 
-        justify-content: center; margin-top: 36px; margin-bottom: 90px"> 
+<div class="container mt-4" style="justify-content: flex-end; direction: rtl;">
+    <a class="nav-link text-dark nav-item-bordered center-items-inside to-courses-btn"
+        style="width: 140px; height: 57px;width: 231px; height: 76px;
+        font-weight: 400; font-size: 30px;border:3px solid #808080!important"
+        asp-controller="Courses" asp-action="Index">
+        ДО КУРСІВ
+    </a>
+</div>
 
-       <img src="~/img/icons/pop_course.png" width="40.47px" height="66.85px" style="margin-right:21.02px; 
-            margin-bottom: 30px"/>
-       <h3 style="font-weight:400; font-size: 65px; color: #2C3447">Популярні курси</h3>
-       <img src="~/img/icons/pop_course.png" width="40.47px" height="66.85px" style="margin-left:21.02px; 
-            margin-bottom: 30px; transform: scaleX(-1);"/>
+@*Блок нові курси*@
+<div style="width: 100%; display:flex; align-items:center; 
+    justify-content: center; margin-top: 3%;"> 
 
-    </div>
+    <img src="~/img/icons/union.png" width="40.47px" height="66.85px" style="margin-right:21.02px; 
+        margin-bottom: 30px"/>
+    <h3 style="font-weight:400; font-size: 65px; color: #2C3447" class="h1-heka">НОВІ</h3>
+    <img src="~/img/icons/union.png" width="40.47px" height="66.85px" style="margin-left:21.02px; 
+        margin-bottom: 30px; transform: scaleX(-1);"/>
 
-    <div class="swiper mySwiper1 container" style="margin-bottom: 10%; margin-top: -5%">
+</div>
 
-        <div class="swiper-wrapper">
-        @{int k=0;}
-        @foreach (var course in Model)
+<div class="swiper mySwiper2" style="width: 95%">
+
+    <div class="swiper-wrapper mb-2">
+    @{k=0;}
+    @foreach (var course in Model.Reverse())
+    {
+        if (k == 6) break;
         {
-            if (k == 6) break;
-            if (course.LikedNumber >= 1300)
-            {
-                k++;
+            k++;
 
-                <div class="swiper-slide">
-                    <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto'); width: 391px">
+            <div class="swiper-slide center-items-inside">
+                <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto'); width: 391px">
 
-                            @if (course.Price > 1500)
-                        {
-                            <a  style="background-color: #F7A121;
-                                    height: 36px; width: 37px; border-bottom-right-radius: 20px; 
-                                    position: absolute; border-top-left-radius: 20px; padding: 20px"
-                                    asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                    @if (course.Price > 1500)
+                    {
+                        <a  style="background-color: #F7A121;
+                                height: 36px; width: 37px; border-bottom-right-radius: 20px; 
+                                position: absolute; border-top-left-radius: 20px; padding: 20px"
+                                asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                            <img src="~/img/icons/I.png" width="20px" height="20px" 
+                                style="position: absolute; left: 10px; top: 10px"/>
+                        </a>
+                    }
+                    else if (course.Price.Equals(0))
+                    {
+                        <a  style="background-color: #1A9F83; 
+                                height: 36px; width: 37px; border-bottom-right-radius: 20px; 
+                                position: absolute; border-top-left-radius: 20px; padding: 20px"
+                                asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
                                 <img src="~/img/icons/I.png" width="20px" height="20px" 
                                     style="position: absolute; left: 10px; top: 10px"/>
-                            </a>
-                        }
-                        else if (course.Price.Equals(0))
-                        {
-                            <a  style="background-color: #1A9F83; 
-                                    height: 36px; width: 37px; border-bottom-right-radius: 20px; 
-                                    position: absolute; border-top-left-radius: 20px; padding: 20px"
+                        </a>
+                    }
+                    else
+                    {
+                        <a  style="background-color: #F47C50; 
+                                height: 36px; width: 37px; border-bottom-right-radius: 20px; 
+                                position: absolute; border-top-left-radius: 20px; padding: 20px"
                                     asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
-                                 <img src="~/img/icons/I.png" width="20px" height="20px" 
-                                        style="position: absolute; left: 10px; top: 10px"/>
-                            </a>
-                        }
-                        else
-                        {
-                            <a  style="background-color: #F47C50; 
-                                    height: 36px; width: 37px; border-bottom-right-radius: 20px; 
-                                    position: absolute; border-top-left-radius: 20px; padding: 20px"
-                                     asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
-                                <img src="~/img/icons/I.png" width="20px" height="20px" 
-                                    style="position: absolute; left: 10px; top: 10px"/>
-                            </a>
-                        }
+                            <img src="~/img/icons/I.png" width="20px" height="20px" 
+                                style="position: absolute; left: 10px; top: 10px"/>
+                        </a>
+                    }
 
                         @if (course.Price > 1500)
-                        {
-                            <a  style="background-color: #F7A121; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-left-radius: 20px; 
-                                    border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                    text-decoration:none" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">
+                    {
+                        <a  style="background-color: #F7A121; position: absolute; 
+                                height: 36px; width: 112px; border-bottom-left-radius: 20px; 
+                                border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                text-decoration:none" asp-controller="Courses"
+                                asp-action="Details" asp-route-id="@course.Id">
+                            <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">
+                                @{
+                                    var price = Convert.ToInt16(course.Price).ToString();
+                                }
+                                @price ₴ 
+                            </h3>
+                        </a>
+                    }
+                    else if (course.Price.Equals(0))
+                    {
+                        <a  style="background-color: #1A9F83; position: absolute; 
+                                height: 36px; width: 112px; border-bottom-left-radius: 20px; 
+                                border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                text-decoration:none" asp-controller="Courses"
+                                asp-action="Details" asp-route-id="@course.Id">
+                            <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
+                        </a>
+                    }
+                    else
+                    {
+                        <a  style="background-color: #F47C50; position: absolute; 
+                                height: 36px; width: 112px; border-bottom-left-radius: 20px; 
+                                border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
+                                text-decoration:none" asp-controller="Courses"
+                                asp-action="Details" asp-route-id="@course.Id">
+                            <h3 style="position: absolute; left: 25%; top: 5px;color: #FFFFFF">
+                                @{
+                                    var price = Convert.ToInt16(course.Price).ToString();
+                                }
+                                @price ₴
+                            </h3>
+                        </a>
+                    }
+                    <div style="margin-top: 148px; height: 145px; width: 100%; position: relative;">
+                        <img src="~/img/icons/white.png" width="100%" height="145px" style="position: absolute;
+                                filter: alpha(Opacity=90);opacity: 0.90;
+                                border-radius: 0% 0% 20px 20px" />
+                        <div class="row" style="z-index: 100; width: 100%; height: 110px; position: absolute; display: flex; justify-content: center; align-items: center">
+                            <div class="col-md-10" style="max-height: 110px;">
+                                <h4 class="courseDescriptionShortFont" style="font-weight: 400; font-size: calc((100vw - 480px)/(1920 - 480) * (28 - 25) + 25px); text-align: center; padding-left: 5%; padding-top: 5%">
                                     @{
-                                        var price = Convert.ToInt16(course.Price).ToString();
+                                        HtmlString str = new HtmlString(course.CourseDescriptionShort);
+                                        @str
                                     }
-                                    @price ₴ 
-                                </h3>
-                            </a>
-
-                        }
-                        else if (course.Price.Equals(0))
-                        {
-                            <a  style="background-color: #1A9F83; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-left-radius: 20px; 
-                                    border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                    text-decoration:none" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
-                            </a>
-                        }
-                        else
-                        {
-                            <a  style="background-color: #F47C50; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-left-radius: 20px; 
-                                    border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                    text-decoration:none" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 25%; top: 5px;color: #FFFFFF">
-                                    @{
-                                        var price = Convert.ToInt16(course.Price).ToString();
-                                    }
-                                    @price ₴
-                                </h3>
-                            </a>
-                        }                       
-                        <div style="margin-top: 148px; height: 145px; width: 100%; position: relative;">
-                            <img src="~/img/icons/white.png" width="100%" height="145px" style="position: absolute;
-                                    filter: alpha(Opacity=90);opacity: 0.90;
-                                    border-radius: 0% 0% 20px 20px" />
-                            <div class="row" style="z-index: 100; width: 100%; height: 110px; position: absolute; display: flex; justify-content: center; align-items: center">
-                                <div class="col-md-10" style="max-height: 110px;">
-                                    <h4 class="courseDescriptionShortFont" style="font-weight: 400; font-size: calc((100vw - 480px)/(1920 - 480) * (28 - 25) + 25px); text-align: center; padding-left: 5%; padding-top: 5%">
-                                        @{
-                                            HtmlString str = new HtmlString(course.CourseDescriptionShort);
-                                            @str
-                                        }
-                                    </h4>
-                                </div>
-                                <div class="col-md-2" style="max-height: 110px; display: flex; justify-content: flex-end; align-items: center;">
-                                    <p class="hidden itemCourseId" id="@course.Id">@course.Id</p>
-                                    <img src="~/img/icons/hear_ico.png" class="add-wishlist" width="23px" height="20px" id="like-item"
-                                     onmouseover="hover(this);" onmouseout="unhover(this);" />
-                                    <img src="~/img/icons/heart_purpur.png" class="del-wishlist" width="23px" height="20px" style="display: none;" id="like-item"
-                                     onmouseover="hover(this);" onmouseout="unhover(this);" />
-                                </div>
+                                </h4>
+                            </div>
+                            <div class="col-md-2" style="max-height: 110px; display: flex; justify-content: flex-end; align-items: center;">
+                                <p class="hidden itemCourseId" id="@course.Id">@course.Id</p>
+                                <img src="~/img/icons/hear_ico.png" class="add-wishlist" width="23px" height="20px" id="like-item"
+                                    onmouseover="hover(this);" onmouseout="unhover(this);" />
+                                <img src="~/img/icons/heart_purpur.png" class="del-wishlist" width="23px" height="20px" style="display: none;" id="like-item"
+                                    onmouseover="hover(this);" onmouseout="unhover(this);" />
                             </div>
                         </div>
-                            @if (course.Price > 1500)
-                        {
-                            <a style="background-color: #F7A121; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-right-radius: 20px; 
-                                    border-top-left-radius: 20px; padding: 20px; margin-left: 278px;
-                                    text-decoration:none; margin-top: -39px" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                font-weight:400; font-size: 25px">детальніше</h3>
-                            </a>
-                        }
-                        else if (course.Price.Equals(0))
-                        {
-                            <a  style="background-color: #1A9F83; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-right-radius: 20px; 
-                                    border-top-left-radius: 20px; padding: 20px; margin-left: 278px;
-                                    text-decoration:none; margin-top: -39px" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                        font-weight:400; font-size: 25px">детальніше</h3>
-                            </a>
-                        }
-                        else if (course.Price > 0)
-                        {
-                            <a  style="background-color: #F47C50; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-right-radius: 20px; 
-                                    border-top-left-radius: 20px; padding: 20px; margin-left: 278px;
-                                    text-decoration:none; margin-top: -39px" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                        font-weight:400; font-size: 25px">детальніше</h3>
-                            </a>
-                        }                        
-              </div>
-            </div>
-            }
-        }
-        </div>
-        
-        <div style="background: linear-gradient(270deg, #2C3447 0%, #1A9F83 29.41%, 
-            #F47C50 67.34%, #F25564 99.76%);border: 1px solid #808080;
-            box-shadow: inset -2px 2px 4px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;height: 15px; margin-top: 20px; width: 98%; margin-bottom: 0">
-        </div>        
-    </div>
-
-    <img src="~/img/icons/next_product_icon.png" style="width: 28px; height: 75.44px; position:absolute;
-        left: 94%; margin-top: -24.5%"
-         class="swiper-button-next1" />
-    <div class="container" style="margin-top: -90px; padding-top: 0; display: flex; justify-content: flex-start; align-items: center; direction: rtl;">
-        <a class="nav-link text-dark nav-item-bordered" 
-           style="width: 140px; height: 57px display:flex; align-items:center; justify-content: flex-end;
-           margin-bottom: 10%; width: 231px; height: 76px;
-           font-weight: 400; font-size: 30px;"
-           asp-controller="Courses" asp-action="Index">
-           <h3 style="margin-top: 10px">ДО КУРСІВ</h3>
-       </a>
-    </div>
-   
-
-    @*Блок нові курси*@
-    <div style="width: 100%; display:flex; align-items:center; 
-        justify-content: center; margin-top: -100px; margin-bottom: 90px"> 
-
-       <img src="~/img/icons/union.png" width="40.47px" height="66.85px" style="margin-right:21.02px; 
-            margin-bottom: 30px"/>
-       <h3 style="font-weight:400; font-size: 65px; color: #2C3447">НОВІ</h3>
-       <img src="~/img/icons/union.png" width="40.47px" height="66.85px" style="margin-left:21.02px; 
-            margin-bottom: 30px; transform: scaleX(-1);"/>
-
-    </div>
-
-    <div class="swiper mySwiper2 container" style="margin-bottom: 10%; margin-top: -5%;">
-
-        <div class="swiper-wrapper">
-        @{k=0;}
-        @foreach (var course in Model.Reverse())
-        {
-            if (k == 6) break;
-            {
-              k++;
-
-              <div class="swiper-slide">
-                    <div class="product-card" style="background-image: url('../img/img_courses/@course.PathToPhoto'); width: 391px">
-
+                    </div>
                         @if (course.Price > 1500)
-                        {
-                            <a  style="background-color: #F7A121;
-                                    height: 36px; width: 37px; border-bottom-right-radius: 20px; 
-                                    position: absolute; border-top-left-radius: 20px; padding: 20px"
-                                    asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
-                                <img src="~/img/icons/I.png" width="20px" height="20px" 
-                                    style="position: absolute; left: 10px; top: 10px"/>
-                            </a>
-                        }
-                        else if (course.Price.Equals(0))
-                        {
-                            <a  style="background-color: #1A9F83; 
-                                    height: 36px; width: 37px; border-bottom-right-radius: 20px; 
-                                    position: absolute; border-top-left-radius: 20px; padding: 20px"
-                                    asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
-                                 <img src="~/img/icons/I.png" width="20px" height="20px" 
-                                        style="position: absolute; left: 10px; top: 10px"/>
-                            </a>
-                        }
-                        else
-                        {
-                            <a  style="background-color: #F47C50; 
-                                    height: 36px; width: 37px; border-bottom-right-radius: 20px; 
-                                    position: absolute; border-top-left-radius: 20px; padding: 20px"
-                                     asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
-                                <img src="~/img/icons/I.png" width="20px" height="20px" 
-                                    style="position: absolute; left: 10px; top: 10px"/>
-                            </a>
-                        }
-
-                            @if (course.Price > 1500)
-                        {
-                            <a  style="background-color: #F7A121; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-left-radius: 20px; 
-                                    border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                    text-decoration:none" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">
-                                    @{
-                                        var price = Convert.ToInt16(course.Price).ToString();
-                                    }
-                                    @price ₴ 
+                    {
+                        <a class="detailItem" style="background-color: #F7A121; position: absolute;
+                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                            text-decoration:none; margin-top: -39px" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 class="detailFont" style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                    font-weight:400; font-size: 25px">
+                                        детальніше
                                 </h3>
-                            </a>
-                        }
+                        </a>
+                    }
                         else if (course.Price.Equals(0))
-                        {
-                            <a  style="background-color: #1A9F83; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-left-radius: 20px; 
-                                    border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                    text-decoration:none" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 30%; top: 5px; color: #FFFFFF">ДАРОМ</h3>
-                            </a>
-                        }
-                        else
-                        {
-                            <a  style="background-color: #F47C50; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-left-radius: 20px; 
-                                    border-top-right-radius: 20px; padding: 20px; top: 0; right: 0;
-                                    text-decoration:none" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 25%; top: 5px;color: #FFFFFF">
-                                    @{
-                                        var price = Convert.ToInt16(course.Price).ToString();
-                                    }
-                                    @price ₴
+                    {
+                        
+                    }
+                    else if (course.Price > 0)
+                    {
+                        <a class="detailItem" style="background-color: #F47C50; position: absolute;
+                            height: 36px; width: 112px; border-bottom-right-radius: 20px;
+                            border-top-left-radius: 20px; padding: 20px; bottom: 0; right: 0;
+                            text-decoration:none; margin-top: -39px" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                                <h3 class="detailFont" style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
+                                    font-weight:400; font-size: 25px">
+                                        детальніше
                                 </h3>
-                            </a>
-                        }
-                        <div style="margin-top: 148px; height: 145px; width: 100%; position: relative;">
-                            <img src="~/img/icons/white.png" width="100%" height="145px" style="position: absolute;
-                                    filter: alpha(Opacity=90);opacity: 0.90;
-                                    border-radius: 0% 0% 20px 20px" />
-                            <div class="row" style="z-index: 100; width: 100%; height: 110px; position: absolute; display: flex; justify-content: center; align-items: center">
-                                <div class="col-md-10" style="max-height: 110px;">
-                                    <h4 class="courseDescriptionShortFont" style="font-weight: 400; font-size: calc((100vw - 480px)/(1920 - 480) * (28 - 25) + 25px); text-align: center; padding-left: 5%; padding-top: 5%">
-                                        @{
-                                            HtmlString str = new HtmlString(course.CourseDescriptionShort);
-                                            @str
-                                        }
-                                    </h4>
-                                </div>
-                                <div class="col-md-2" style="max-height: 110px; display: flex; justify-content: flex-end; align-items: center;">
-                                    <p class="hidden itemCourseId" id="@course.Id">@course.Id</p>
-                                    <img src="~/img/icons/hear_ico.png" class="add-wishlist" width="23px" height="20px" id="like-item"
-                                     onmouseover="hover(this);" onmouseout="unhover(this);" />
-                                    <img src="~/img/icons/heart_purpur.png" class="del-wishlist" width="23px" height="20px" style="display: none;" id="like-item"
-                                     onmouseover="hover(this);" onmouseout="unhover(this);" />
-                                </div>
-                            </div>
-                        </div>
-                            @if (course.Price > 1500)
-                        {
-                            <a style="background-color: #F7A121; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-right-radius: 20px; 
-                                    border-top-left-radius: 20px; padding: 20px; margin-left: 278px;
-                                    text-decoration:none; margin-top: -39px" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                font-weight:400; font-size: 25px">детальніше</h3>
-                            </a>
-                        }
-                        else if (course.Price.Equals(0))
-                        {
-                            <a  style="background-color: #1A9F83; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-right-radius: 20px; 
-                                    border-top-left-radius: 20px; padding: 20px; margin-left: 278px;
-                                    text-decoration:none; margin-top: -39px" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                        font-weight:400; font-size: 25px">детальніше</h3>
-                            </a>
-                        }
-                        else if (course.Price > 0)
-                        {
-                            <a  style="background-color: #F47C50; position: absolute; 
-                                    height: 36px; width: 112px; border-bottom-right-radius: 20px; 
-                                    border-top-left-radius: 20px; padding: 20px; margin-left: 278px;
-                                    text-decoration:none; margin-top: -39px" asp-controller="Courses"
-                                    asp-action="Details" asp-route-id="@course.Id">
-                                <h3 style="position: absolute; left: 10%; top: 5px; color: #FFFFFF;
-                                        font-weight:400; font-size: 25px">детальніше</h3>
-                            </a>
-                        }
-              </div>
+                        </a>
+                    }
+                </div>
             </div>
-            }
         }
-        </div>
+    }
+    </div>
 
-        <div style="background: linear-gradient(270deg, #2C3447 0%, #1A9F83 29.41%, 
+    <div class="swiper-button-next2 center-items-inside" style="position: absolute;top: 35%; z-index: 5;left: auto;
+        right: 0px">
+            <img src="~/img/icons/next_product_icon.png" style="width: 28px; height: 75.44px;" />
+    </div>
+
+</div>
+<div class="container-fluid center-items-inside">
+    <div class="mt-3" style="background: linear-gradient(270deg, #2C3447 0%, #1A9F83 29.41%, 
             #F47C50 67.34%, #F25564 99.76%);border: 1px solid #808080;
             box-shadow: inset -2px 2px 4px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;height: 15px; margin-top: 20px; width: 98%">
-        </div>
-
+            border-radius: 10px;height: 15px; width: 90%">
     </div>
+</div>
 
-    <img src="~/img/icons/next_product_icon.png" style="width: 28px; height: 75.44px; position:absolute; 
-        left: 94%; margin-top: -24.5%" class="swiper-button-next2"/>
-
-    <div class="container" style="margin-top: -90px; padding-top: 0; display: flex; justify-content: flex-start; align-items: center; direction: rtl;">
-        <a class="nav-link text-dark nav-item-bordered"
-           style="width: 140px; height: 57px display:flex; align-items:center; justify-content: flex-end;
-           margin-bottom: 13%; width: 231px; height: 76px;
-           font-weight: 400; font-size: 30px;"
-           asp-controller="Courses" asp-action="Index">
-            <h3 style="margin-top: 10px">ДО КУРСІВ</h3>
-        </a>
-    </div>
-
-
+<div class="container mt-4" style="justify-content: flex-end; direction: rtl;">
+    <a class="nav-link text-dark nav-item-bordered center-items-inside to-courses-btn"
+        style="width: 140px; height: 57px;width: 231px; height: 76px;
+        font-weight: 400; font-size: 30px;border:3px solid #808080!important"
+        asp-controller="Courses" asp-action="Index">
+        ДО КУРСІВ
+    </a>
+</div>
 
     @*Блок відгуків*@
-   <div style="width: 100%; height: 548px; background-image: url('../img/icons/bg_comment.png'); 
-        background-repeat: no-repeat;background-size: cover; margin-top: -100px">
-       <div class="container">
-           <div style="padding-top: 25px; display: flex; justify-content: center; align-items: center">
-               <h3 style="font-weight: 400; font-size: 45px; color: #FFFFFF; ">Відгуки наших клієнтів</h3>
-           </div>
+<div style="width: 100%; height: 548px; background-image: url('../img/icons/bg_comment.png'); 
+    background-repeat: no-repeat;background-size: cover;" class="mt-4">
+    <div class="container">
+        <div style="padding-top: 25px; display: flex; justify-content: center; align-items: center">
+            <h3 style="font-weight: 400; font-size: 45px; color: #FFFFFF; ">Відгуки наших клієнтів</h3>
+        </div>
            
-           <div class="swiper mySwiper container" style="margin-top: 20px; height: 425px;">
+        <div class="swiper mySwiper container" style="margin-top: 20px; height: 425px;">
 
-           <div class="swiper-wrapper">
+        <div class="swiper-wrapper">
 
-                <div class="swiper-slide" >
-                     <div class="comment-block">
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_1.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Natoque Sit</h3>
+            <div class="swiper-slide" >
+                    <div class="comment-block">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_1.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Natoque Sit</h3>
 
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
 
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
 
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
-                           </div>
-                </div>
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
+                        </div>
+            </div>
 
-                <div class="swiper-slide">
-                     <div class="comment-block">
+            <div class="swiper-slide">
+                    <div class="comment-block">
 
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_2.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Iaculis Yltrices</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_2.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Iaculis Yltrices</h3>
 
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
 
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
 
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
 
-                           </div>
-                </div>
+                        </div>
+            </div>
 
-                <div class="swiper-slide">
-                     <div class="comment-block">
+            <div class="swiper-slide">
+                    <div class="comment-block">
 
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_3.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Elit Eget</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_3.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Elit Eget</h3>
 
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
 
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
 
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
 
-                           </div>
-                </div>
-
-
-                <div class="swiper-slide">
-                     <div class="comment-block">
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_4.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Natoque Sit2</h3>
-
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
-
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
-
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
-                           </div>
-                </div>
-
-                <div class="swiper-slide">
-                     <div class="comment-block">
-
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_5.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Iaculis Yltrices2</h3>
-
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
-
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
-
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
-
-                           </div>
-                </div>
-
-                <div class="swiper-slide">
-                     <div class="comment-block">
-
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_6.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Elit Eget3</h3>
-
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
-
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
-
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
-
-                           </div>
-                </div>
+                        </div>
+            </div>
 
 
-                <div class="swiper-slide">
-                     <div class="comment-block">
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_7.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Natoque Sit2</h3>
+            <div class="swiper-slide">
+                    <div class="comment-block">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_4.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Natoque Sit2</h3>
 
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
 
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
 
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
-                           </div>
-                </div>
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
+                        </div>
+            </div>
 
-                <div class="swiper-slide">
-                     <div class="comment-block">
+            <div class="swiper-slide">
+                    <div class="comment-block">
 
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_8.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Iaculis Yltrices2</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_5.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Iaculis Yltrices2</h3>
 
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
 
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
 
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
 
-                           </div>
-                </div>
+                        </div>
+            </div>
 
-                <div class="swiper-slide">
-                     <div class="comment-block">
+            <div class="swiper-slide">
+                    <div class="comment-block">
 
-                               <div class="row">
-                                   <div class="col">
-                                       <img src="~/img/img_users/user_9.png" class="img_comment"/>
-                                   </div>
-                                   <div class="col">
-                                       <h3 style="font-weight: 400; font-size: 35px; 
-                                            margin-top: 25px; margin-left: -50px; color: #2C3447">Elit Eget3</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_6.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Elit Eget3</h3>
 
-                                       <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
-                                            margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
-                                            Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
-                                   </div>
-                               </div>
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
 
-                               <div class="row">
-                                   <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
-                                   <div class="col" style="margin-left: -70px">
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
-                                       <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
-                                   </div>
-                                   <div class="col">
-                                       <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
-                                           04.11.22
-                                       </h4>
-                                   </div>
-                               </div>
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
 
-                               <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
-                                    font-style: normal; text-align: justify;">
-                                    “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
-                               </h6>
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
 
-                           </div>
-                </div>
+                        </div>
+            </div>
 
-           </div>
 
-           <div class="swiper-pagination" style="padding-top: 10px; margin-bottom: 10px"></div>
-       </div>
-       </div>
-   </div>
+            <div class="swiper-slide">
+                    <div class="comment-block">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_7.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Natoque Sit2</h3>
+
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
+                        </div>
+            </div>
+
+            <div class="swiper-slide">
+                    <div class="comment-block">
+
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_8.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Iaculis Yltrices2</h3>
+
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
+
+                        </div>
+            </div>
+
+            <div class="swiper-slide">
+                    <div class="comment-block">
+
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/img/img_users/user_9.png" class="img_comment"/>
+                                </div>
+                                <div class="col">
+                                    <h3 style="font-weight: 400; font-size: 35px; 
+                                        margin-top: 25px; margin-left: -50px; color: #2C3447">Elit Eget3</h3>
+
+                                    <h4 style="font-weight: 300; font-size: 20px; text-align: justify;
+                                        margin-top: -5px; margin-left: -50px; margin-right: 25px; color: #2C3447">
+                                        Magna amet, ac habitant neque, nullam tortor pretium nulla.</h4>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col" style="font-weight: 400; font-size: 25px; margin-left:25px">Оцінка: </div>
+                                <div class="col" style="margin-left: -70px">
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_active.png" width="16px" height="19px"/>
+                                    <img src="~/img/icons/fire_non_active.png" width="16px" height="19px"/>
+                                </div>
+                                <div class="col">
+                                    <h4 style="color: #808080; font-weight: 300; font-size: 20px; margin-left: 50px">
+                                        04.11.22
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <h6 style="margin: 0px 25px; font-weight: lighter; font-size: 23px; color: #2C3447;
+                                font-style: normal; text-align: justify;">
+                                “Quis adipiscing hendrerit fermentum platea congue pellentesque viverra. Velit in mi sodales vitae quamadictum imperdiet. Consectetur faucibus egestas mattis porttitor mi, nunc eu quisque. Blandit pulvinar non consectetur lectus.”
+                            </h6>
+
+                        </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination" style="padding-top: 10px; margin-bottom: 10px"></div>
+    </div>
+    </div>
+</div>

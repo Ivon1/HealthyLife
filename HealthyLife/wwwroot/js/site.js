@@ -18,53 +18,301 @@ $(document).ready(function () {
         $(this).removeClass('hover');
     });
 
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        slidesPerGroup: 3,
-        loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
+    var innerWidth = $(document).width();
+    var swiper;
+    var swiper1;
+    var swiper2;
+
+    if (innerWidth <= 950) {
+
+        swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 3,
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        swiper1 = new Swiper(".mySwiper1", {
+            slidesPerView: 1,
+            spaceBetween: 3,
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination1",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next1",
+                prevEl: ".swiper-button-prev1",
+            },
+        });
+
+        swiper2 = new Swiper(".mySwiper2", {
+            slidesPerView: 1,
+            spaceBetween: 3,
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination2",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next2",
+                prevEl: ".swiper-button-prev2",
+            },
+        });
+
+        $('.product-card').css('width', '257.34px');
+        $('.courseDescriptionShortFont').css('font-size', '20px');
+        $('.priceItem').css('width', '112px');
+        $('.detailPrice').css('font-size', '25px');
+        $('.detailPrice').css('top', '5px');
+        $('.detailItem').css('width', '112px');
+        $('.detailFont').css('font-size', '25px');
+        $('.detailFont').css('top', '5px');
+    } else if (innerWidth <= 1399) {
+
+        swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            spaceBetween: 15,
+            slidesPerGroup: 2,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        swiper1 = new Swiper(".mySwiper1", {
+            slidesPerView: 2,
+            spaceBetween: 5,
+            slidesPerGroup: 2,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination1",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next1",
+                prevEl: ".swiper-button-prev1",
+            },
+        });
+
+        swiper2 = new Swiper(".mySwiper2", {
+            slidesPerView: 1,
+            spaceBetween: 5,
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination2",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next2",
+                prevEl: ".swiper-button-prev2",
+            },
+        });
+    }
+    else if (innerWidth >= 1420)
+    {
+
+        swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        swiper1 = new Swiper(".mySwiper1", {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination1",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next1",
+                prevEl: ".swiper-button-prev1",
+            },
+        });
+
+        swiper2 = new Swiper(".mySwiper2", {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: ".swiper-pagination2",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next2",
+                prevEl: ".swiper-button-prev2",
+            },
+        });
+    }
+
+    $(window).resize(function () {
+        innerWidth = $(document).width();
+
+
+        if (innerWidth <= 950) {
+
+            swiper.params.slidesPerView = 1;
+            swiper.params.spaceBetween = 3;
+            swiper.params.slidesPerGroup = 1;
+            swiper.update();
+
+            swiper1.params.slidesPerView = 1;
+            swiper1.params.spaceBetween = 3;
+            swiper1.params.slidesPerGroup = 1;
+            swiper1.update();
+
+            swiper2.params.slidesPerView = 1;
+            swiper2.params.spaceBetween = 3;
+            swiper2.params.slidesPerGroup = 1;
+            swiper2.update();
+
+            $('.product-card').css('width', '257.34px');
+            $('.courseDescriptionShortFont').css('font-size', '20px');
+            $('.priceItem').css('width', '112px');
+            $('.detailPrice').css('font-size', '25px');
+            $('.detailPrice').css('top', '5px');
+            $('.detailItem').css('width', '112px');
+            $('.detailFont').css('font-size', '25px');
+            $('.detailFont').css('top', '5px');
+        }
+        else if (innerWidth <= 1399) {
+            $('.product-card').css('width', '391px');
+            $('.courseDescriptionShortFont').css('font-size', '30px');
+            $('.priceItem').css('width', '112px');
+            $('.detailPrice').css('font-size', '25px');
+            $('.detailPrice').css('top', '5px');
+            $('.detailItem').css('width', '112px');
+            $('.detailFont').css('font-size', '25px');
+            $('.detailFont').css('top', '5px');
+
+            swiper.params.slidesPerView = 2;
+            swiper.params.spaceBetween = 3;
+            swiper.params.slidesPerGroup = 2;
+            swiper.update();
+
+            swiper1.params.slidesPerView = 2;
+            swiper1.params.spaceBetween = 5;
+            swiper1.params.slidesPerGroup = 2;
+            swiper1.update();
+
+            swiper2.params.slidesPerView = 2;
+            swiper2.params.spaceBetween = 5;
+            swiper2.params.slidesPerGroup = 2;
+            swiper2.update();
+        }
+        else if (innerWidth >= 1420) {
+
+            swiper.params.slidesPerView = 3;
+            swiper.params.spaceBetween = 3;
+            swiper.params.slidesPerGroup = 3;
+            swiper.update();
+
+            swiper1.params.slidesPerView = 3;
+            swiper1.params.spaceBetween = 10;
+            swiper1.params.slidesPerGroup = 3;
+            swiper1.update();
+
+            swiper2.params.slidesPerView = 3;
+            swiper2.params.spaceBetween = 10;
+            swiper2.params.slidesPerGroup = 3;
+            swiper2.update();
+
+            $('.product-card').css('width', '391px');
+            $('.courseDescriptionShortFont').css('font-size', '30px');
+            $('.priceItem').css('width', '112px');
+            $('.detailPrice').css('font-size', '25px');
+            $('.detailPrice').css('top', '5px');
+            $('.detailItem').css('width', '112px');
+            $('.detailFont').css('font-size', '25px');
+            $('.detailFont').css('top', '5px');
+        }
     });
 
-    var swiper1 = new Swiper(".mySwiper1", {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        slidesPerGroup: 3,
-        loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-            el: ".swiper-pagination1",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next1",
-            prevEl: ".swiper-button-prev1",
-        },
-    });
+    //swiper = new Swiper(".mySwiper", {
+    //    slidesPerView: 3,
+    //    spaceBetween: 20,
+    //    slidesPerGroup: 3,
+    //    loop: true,
+    //    loopFillGroupWithBlank: true,
+    //    pagination: {
+    //        el: ".swiper-pagination",
+    //        clickable: true,
+    //    },
+    //    navigation: {
+    //        nextEl: ".swiper-button-next",
+    //        prevEl: ".swiper-button-prev",
+    //    },
+    //});
 
-    var swiper2 = new Swiper(".mySwiper2", {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        slidesPerGroup: 3,
-        loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-            el: ".swiper-pagination2",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next2",
-            prevEl: ".swiper-button-prev2",
-        },
-    });
+    //swiper1 = new Swiper(".mySwiper1", {
+    //    slidesPerView: 3,
+    //    spaceBetween: 20,
+    //    slidesPerGroup: 3,
+    //    loop: true,
+    //    loopFillGroupWithBlank: true,
+    //    pagination: {
+    //        el: ".swiper-pagination1",
+    //        clickable: true,
+    //    },
+    //    navigation: {
+    //        nextEl: ".swiper-button-next1",
+    //        prevEl: ".swiper-button-prev1",
+    //    },
+    //});
+
+    //swiper2 = new Swiper(".mySwiper2", {
+    //    slidesPerView: 3,
+    //    spaceBetween: 20,
+    //    slidesPerGroup: 3,
+    //    loop: true,
+    //    loopFillGroupWithBlank: true,
+    //    pagination: {
+    //        el: ".swiper-pagination2",
+    //        clickable: true,
+    //    },
+    //    navigation: {
+    //        nextEl: ".swiper-button-next2",
+    //        prevEl: ".swiper-button-prev2",
+    //    },
+    //});
 
     $('#list').click(function () {
         list();
