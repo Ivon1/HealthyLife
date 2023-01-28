@@ -19,5 +19,6 @@ namespace HealthyLife.Data
         public DbSet<OrderDetail> OrderDetails { get; set; } = default!;
         public DbSet<ApplicationUser> ApplicationUsers { get; set; } = default!;
         public DbSet<UserWish> UserWishes { get; set; } = default!;
+        public DbSet<CourseRate> CourseRates { get; set; } = default!;
     }
 }
