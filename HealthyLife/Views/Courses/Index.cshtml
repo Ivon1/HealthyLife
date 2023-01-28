@@ -417,7 +417,7 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-4" style="position: sticky; text-align: justify; margin-left: 5%">
-                                    <div style="display: flex; margin-top: 3%;">
+                                    <div style="display: flex; margin-top: 3%;" class="rating_catalog">
                                         @if (course.Rating >= 0 && course.Rating < 0.5)
                                         {
                                             <img src="~/img/icons/rate.png" style="width: 16px; height: 19px;" />
@@ -466,13 +466,15 @@
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                             <img src="~/img/icons/rate-orange.png" style="width: 16px; height: 19px; margin-left: 1%" />
                                         }
-                                        <h5 style="font-weight: 400; font-size: 17px; margin-left: 7%; color: #F47C50">
+                                        @*<h5 style="font-weight: 400; font-size: 17px; margin-left: 7%; color: #F47C50">
                                             @{
                                                 var rating = Math.Round(course.Rating, 1);
                                                 @rating
                                             }
                                             / 5
-                                        </h5>
+                                        </h5>*@
+                                        <input type="hidden" class="courseCatalogId" value="@course.Id" />
+                                        <h3 id="aver-rate" style="font-weight: 400; margin-left: 2%; font-size: 25px; color: #F47C50"></h3>
                                     </div>
                                     <div style="display: flex; margin-top: 4%">
                                         <img src="~/img/icons/timesselected.png" style="width: 21px; height: 21px;" />
