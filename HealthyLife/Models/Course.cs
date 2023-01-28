@@ -25,6 +25,9 @@ namespace HealthyLife.Models
         [Required, Display(Name = "Price")] // -1 (ХЕКА+) , 0 (Безкоштовно)  
         public decimal Price { get; set; }
 
+        [Required, Display(Name = "Sale")]
+        public decimal Sale { get; set; }
+
         [Required, Display(Name = "Rating")]
         public double Rating { get; set; }
 

@@ -31,6 +31,7 @@ namespace HealthyLife.Controllers
 
         public async Task<IActionResult> TopTwenty()
         {
+            //var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject).Where(c => c.Sale > 0);
             var applicationDbContext = _context.Courses.Include(c => c.Aurhor).Include(c => c.Subject).OrderByDescending(c => c.Rating);
             return View(await applicationDbContext.ToListAsync());
         }

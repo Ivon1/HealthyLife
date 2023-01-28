@@ -44,7 +44,7 @@
                     <li>
                         <form class="d-flex mt-3 mt-lg-0 search-item-bordered me-3" 
                             asp-controller="Courses" asp-action="SearchedCourses" method="get">
-                            <input class="form-control-plaintext me-2" placeholder="Пошук..." style="text-indent: 10px;" value="@ViewData["CurrentSearch"]">
+                            <input type="text" class="form-control-plaintext me-2" id="searchString" name="searchString" placeholder="Пошук..." style="text-indent: 10px;" value="@ViewData["CurrentSearch"]">
                             <button type="submit" style="border: none;background: none;">
                                 <img src="~/img/icons/glass_search_zoom_icon.png" style="height:40px; width:40px;" />
                             </button>

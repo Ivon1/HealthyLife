@@ -47,7 +47,7 @@
                         $('.del-wishlist').css('display', 'none');
                     }
                 }
-                $('.add-wishlist').each((event) => {
+                /*$('.add-wishlist').each((event) => {
                     let target = $(event.target);
                     let parent = target.parent();
                     let hidden1 = parent.find('.itemCourseId');
@@ -61,7 +61,7 @@
                         $('.add-wishlist').css('display', 'flex');
                         $('.del-wishlist').css('display', 'none');
                     }
-                });
+                });*/
                 
                 $('#wishlistCount').html(result.count);
                 $('#courseIdList').html(result.courseId);

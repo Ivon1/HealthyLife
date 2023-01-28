@@ -15,7 +15,7 @@ namespace HealthyLife.Controllers
     public class StatInfo
     {
         public int Count { get; set; } 
-        public decimal Cost { get; set; }
+        public List<int> CourseId { get; set; }
     }
 
     [AllowAnonymous]
@@ -35,20 +35,20 @@ namespace HealthyLife.Controllers
             var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (currentUser == null)
             {
-                return new StatInfo() { Count = 0, Cost = 0 };
+                return new StatInfo() { Count = 0, CourseId = new List<int>() };
             }
             else
             {
                 int count = 0;
-                decimal cost = 0;
+                List<int> courseId = new List<int>();
 
                 var currentUserOrders = _context.UserOrders.Include(u => u.ApplicationUser).Include(u => u.Course).Where(u => u.ApplicationUser.UserName == User.Identity.Name).ToList();
                 foreach (var userOrder in currentUserOrders)
                 {
                     count++;
-                    cost += userOrder.Course.Price;
+                    courseId.Add(userOrder.CourseId);
                 }
-                return new StatInfo() { Count = count, Cost = cost };
+                return new StatInfo() { Count = count, CourseId = courseId };
             }
         }
 
@@ -61,6 +61,20 @@ namespace HealthyLife.Controllers
                 UserId = currentUser.Id,
                 CourseId = courseId
             });
+            _context.SaveChanges();
+            return GetStatInfo();
+        }
+
+        [HttpPost]
+        public StatInfo DeleteCourseToCart(int courseId)
+        {
+            var currentUser = _context.ApplicationUsers.Where(u => u.UserName == User.Identity.Name).First();
+            var userOrder = _context.UserOrders
+                .Include(u => u.ApplicationUser)
+                .Include(u => u.Course)
+                .Include(u => u.Course.Aurhor)
+                .Include(u => u.Course.Subject).Where(u => u.CourseId == courseId && u.ApplicationUser == currentUser).FirstOrDefault();
+            _context.UserOrders.Remove(userOrder);
             _context.SaveChanges();
             return GetStatInfo();
         }
